@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -7,7 +5,7 @@
 <meta name="robots" content="index,follow">
 <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CineAI Studio вЂ” РЎС‚РІРѕСЂСЋР№ С„С–Р»СЊРјРё Р· AI</title>
+<title>CineAI Studio — Створюй фільми з AI</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#07070d;--surface:#0f0f18;--surface2:#181824;--border:#252535;--gold:#d4a843;--gold2:#f0c060;--red:#e84040;--green:#3dba6e;--blue:#4a9eff;--text:#eeeef5;--muted:#68688a;--silver:#a0a0c0}
@@ -26,6 +24,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:16px 40px;display:fl
 .nav-links a:hover{color:var(--text)}
 .btn-nav{padding:9px 22px;background:var(--gold);color:#000;border:none;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
 .btn-nav:hover{background:var(--gold2)}
+.lang-sw{display:flex;background:var(--surface2);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.lang-btn{padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:none;color:var(--muted);font-family:'DM Sans',sans-serif;transition:all .2s}
+.lang-btn.on{background:var(--gold);color:#000}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;background:radial-gradient(ellipse at 30% 50%,rgba(212,168,67,.07),transparent 50%),radial-gradient(ellipse at 70% 30%,rgba(232,64,64,.05),transparent 50%)}
@@ -228,136 +229,137 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:40px
 </head>
 <body>
 
-<!-- в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ LANDING в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ -->
+<!-- ══════════ LANDING ══════════ -->
 <div id="pg-landing">
 
 <nav>
   <div class="logo">Cine<span>AI</span></div>
   <div class="nav-right">
     <div class="nav-links">
-      <a href="#features">РњРѕР¶Р»РёРІРѕСЃС‚С–</a>
-      <a href="#pricing">РўР°СЂРёС„Рё</a>
-      <a href="#how">РЇРє С†Рµ РїСЂР°С†СЋС”</a>
+      <a href="#features">Можливості</a>
+      <a href="#pricing">Тарифи</a>
+      <a href="#how">Як це працює</a>
     </div>
-    <button class="btn-nav" id="btn-signin">РџРѕС‡Р°С‚Рё Р±РµР·РєРѕС€С‚РѕРІРЅРѕ</button>
+    <div class="lang-sw"><button class="lang-btn on" id="lang-uk">УК</button><button class="lang-btn" id="lang-en">EN</button></div>
+    <button class="btn-nav" id="btn-signin">Почати безкоштовно</button>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-tag">рџЋ¬ AI-РїР»Р°С‚С„РѕСЂРјР° РґР»СЏ СЃС‚РІРѕСЂРµРЅРЅСЏ С„С–Р»СЊРјС–РІ</div>
+  <div class="hero-tag">🎬 AI-платформа для створення фільмів</div>
   <h1 class="hero-title">
-    <span class="t1">РЎРўР’РћР Р®Р™</span>
-    <span class="t2">Р¤Р†Р›Р¬РњР</span>
+    <span class="t1">СТВОРЮЙ</span>
+    <span class="t2">ФІЛЬМИ</span>
   </h1>
-  <p class="hero-sub">Р’С–Рґ СЃС†РµРЅР°СЂС–СЋ РґРѕ РіРѕС‚РѕРІРѕРіРѕ С„С–Р»СЊРјСѓ вЂ” <strong>Р±РµР· РєР°РјРµСЂРё, Р°РєС‚РѕСЂС–РІ С– РјРѕРЅС‚Р°Р¶РµСЂР°.</strong> РўС–Р»СЊРєРё С‚Рё С– AI.</p>
+  <p class="hero-sub">Від сценарію до готового фільму — <strong>без камери, акторів і монтажера.</strong> Тільки ти і AI.</p>
   <div class="hero-btns">
-    <button class="btn-gold" id="btn-hero-pro">рџљЂ РЎРїСЂРѕР±СѓРІР°С‚Рё 7 РґРЅС–РІ Р±РµР·РєРѕС€С‚РѕРІРЅРѕ</button>
-    <button class="btn-outline" id="btn-hero-login">РЈРІС–Р№С‚Рё</button>
+    <button class="btn-gold" id="btn-hero-pro">🚀 Спробувати 7 днів безкоштовно</button>
+    <button class="btn-outline" id="btn-hero-login">Увійти</button>
   </div>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-num">2,400+</div><div class="stat-label">Р¤С–Р»СЊРјС–РІ СЃС‚РІРѕСЂРµРЅРѕ</div></div>
-    <div class="stat"><div class="stat-num">847</div><div class="stat-label">РђРєС‚РёРІРЅРёС… РєРѕСЂРёСЃС‚СѓРІР°С‡С–РІ</div></div>
-    <div class="stat"><div class="stat-num">4.9в…</div><div class="stat-label">РЎРµСЂРµРґРЅСЏ РѕС†С–РЅРєР°</div></div>
+    <div class="stat"><div class="stat-num">2,400+</div><div class="stat-label">Фільмів створено</div></div>
+    <div class="stat"><div class="stat-num">847</div><div class="stat-label">Активних користувачів</div></div>
+    <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Середня оцінка</div></div>
   </div>
 </section>
 
 <section class="section" id="features">
   <div class="container">
-    <span class="sec-tag">РњРѕР¶Р»РёРІРѕСЃС‚С– РїР»Р°С‚С„РѕСЂРјРё</span>
-    <h2 class="sec-title">Р’СЃРµ С‰Рѕ РїРѕС‚СЂС–Р±РЅРѕ РґР»СЏ <span>РєС–РЅРѕ</span></h2>
-    <p class="sec-sub">Р’С–Рґ РЅР°РїРёСЃР°РЅРЅСЏ СЃС†РµРЅР°СЂС–СЋ РґРѕ С„С–РЅР°Р»СЊРЅРѕРіРѕ РјРѕРЅС‚Р°Р¶Сѓ вЂ” РІРµСЃСЊ РїСЂРѕС†РµСЃ РІ РѕРґРЅРѕРјСѓ РјС–СЃС†С–</p>
+    <span class="sec-tag">Можливості платформи</span>
+    <h2 class="sec-title">Все що потрібно для <span>кіно</span></h2>
+    <p class="sec-sub">Від написання сценарію до фінального монтажу — весь процес в одному місці</p>
     <div class="feat-grid">
-      <div class="feat"><div class="feat-icon">рџ“ќ</div><div class="feat-title">AI РЎС†РµРЅР°СЂРёСЃС‚</div><div class="feat-desc">РћРїРёС€С–С‚СЊ С–РґРµСЋ вЂ” AI РЅР°РїРёС€Рµ РїРѕРІРЅРѕС†С–РЅРЅРёР№ СЃС†РµРЅР°СЂС–Р№ Р· РґС–Р°Р»РѕРіР°РјРё, СЃС†РµРЅР°РјРё С‚Р° СЂРµРјР°СЂРєР°РјРё</div><span class="badge badge-free">вњ“ Р‘РµР·РєРѕС€С‚РѕРІРЅРѕ</span></div>
-      <div class="feat"><div class="feat-icon">рџЋЁ</div><div class="feat-title">Р“РµРЅРµСЂР°С†С–СЏ СЃС†РµРЅ</div><div class="feat-desc">РљРѕР¶РЅР° СЃС†РµРЅР° РїРµСЂРµС‚РІРѕСЂСЋС”С‚СЊСЃСЏ РЅР° РіС–РїРµСЂСЂРµР°Р»С–СЃС‚РёС‡РЅРµ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ Сѓ РІР°С€РѕРјСѓ СЃС‚РёР»С–</div><span class="badge badge-free">вњ“ Р‘РµР·РєРѕС€С‚РѕРІРЅРѕ</span></div>
-      <div class="feat"><div class="feat-icon">рџ‘¤</div><div class="feat-title">РџРѕСЂС‚СЂРµС‚Рё РіРµСЂРѕС—РІ</div><div class="feat-desc">AI Р·РЅР°С…РѕРґРёС‚СЊ РїРµСЂСЃРѕРЅР°Р¶С–РІ С– РіРµРЅРµСЂСѓС” С—С…РЅС– РїРѕСЂС‚СЂРµС‚Рё вЂ” СЃС‚Р°Р±С–Р»СЊРЅРёР№ РІРёРіР»СЏРґ Сѓ РІСЃС–С… СЃС†РµРЅР°С…</div><span class="badge badge-free">вњ“ Р‘РµР·РєРѕС€С‚РѕРІРЅРѕ</span></div>
-      <div class="feat"><div class="feat-icon">рџЋћпёЏ</div><div class="feat-title">РћР¶РёРІР»РµРЅРЅСЏ С„РѕС‚Рѕ</div><div class="feat-desc">РџРµСЂРµС‚РІРѕСЂС–С‚СЊ СЃС‚Р°С‚РёС‡РЅС– Р·РѕР±СЂР°Р¶РµРЅРЅСЏ РЅР° Р¶РёРІС– СЃС†РµРЅРё. РћР±Р»РёС‡С‡СЏ СЂСѓС…Р°СЋС‚СЊСЃСЏ, РґРёС…Р°СЋС‚СЊ, РіРѕРІРѕСЂСЏС‚СЊ</div><span class="badge badge-pro">в­ђ Pro</span></div>
-      <div class="feat"><div class="feat-icon">рџЋ™пёЏ</div><div class="feat-title">Р“РѕР»РѕСЃРё С– РґС–Р°Р»РѕРіРё</div><div class="feat-desc">Р РµР°Р»С–СЃС‚РёС‡РЅРµ TTS РѕР·РІСѓС‡РµРЅРЅСЏ РєРѕР¶РЅРѕРіРѕ РїРµСЂСЃРѕРЅР°Р¶Р°. РЈРєСЂР°С—РЅСЃСЊРєР°, Р°РЅРіР»С–Р№СЃСЊРєР° С‚Р° 28 РјРѕРІ</div><span class="badge badge-pro">в­ђ Pro</span></div>
-      <div class="feat"><div class="feat-icon">вњ‚пёЏ</div><div class="feat-title">Р’С–РґРµРѕ СЂРµРґР°РєС‚РѕСЂ</div><div class="feat-desc">РџРѕРІРЅРѕС†С–РЅРЅРёР№ РјРѕРЅС‚Р°Р¶: РїРµСЂРµС…РѕРґРё, СЃСѓР±С‚РёС‚СЂРё, РјСѓР·РёРєР°, РµС„РµРєС‚Рё. Р•РєСЃРїРѕСЂС‚ Сѓ 4K MP4</div><span class="badge badge-prem">рџ’Ћ Premium</span></div>
-      <div class="feat"><div class="feat-icon">вњЁ</div><div class="feat-title">РџРѕРєСЂР°С‰РµРЅРЅСЏ СЏРєРѕСЃС‚С– С„РѕС‚Рѕ</div><div class="feat-desc">РђРїСЃРєРµР№Р»С–РЅРі РґРѕ 4K, РїСЂРёР±РёСЂР°РЅРЅСЏ С€СѓРјСѓ, СЂС–Р·РєС–СЃС‚СЊ, РєРѕСЂРµРєС†С–СЏ РєРѕР»СЊРѕСЂСѓ вЂ” РѕРґРЅРёРј РєР»С–РєРѕРј</div><span class="badge badge-pro">в­ђ Pro</span></div>
-      <div class="feat"><div class="feat-icon">рџЋ¬</div><div class="feat-title">РџРѕРєСЂР°С‰РµРЅРЅСЏ СЏРєРѕСЃС‚С– РІС–РґРµРѕ</div><div class="feat-desc">AI Р°РїСЃРєРµР№Р»С–РЅРі РІС–РґРµРѕ РґРѕ 4K, СЃС‚Р°Р±С–Р»С–Р·Р°С†С–СЏ, С€СѓРјРѕР·Р°РіР»СѓС€РµРЅРЅСЏ С‚Р° РїРѕРєСЂР°С‰РµРЅРЅСЏ РєРѕР»СЊРѕСЂСѓ</div><span class="badge badge-prem">рџ’Ћ Premium</span></div>
-      <div class="feat"><div class="feat-icon">рџ“ё</div><div class="feat-title">AI Р¤РѕС‚РѕСЃРµСЃС–СЏ</div><div class="feat-desc">РЎС‚СѓРґС–Р№РЅРёР№/Р±С–Р»РёР№ С„РѕРЅ, РєРѕР»СЊРѕСЂРѕРІС– С„РѕРЅРё, РїСЂРёСЂРѕРґРЅС– Р»РѕРєР°С†С–С—. Р›СЋРґРё, С‚РѕРІР°СЂРё, С‚РІР°СЂРёРЅРё</div><span class="badge badge-pro">в­ђ Pro</span></div>
-      <div class="feat"><div class="feat-icon">рџ”„</div><div class="feat-title">360В° РћРіР»СЏРґ С‚РѕРІР°СЂСѓ</div><div class="feat-desc">РђРІС‚РѕРјР°С‚РёС‡РЅР° РіРµРЅРµСЂР°С†С–СЏ 360В° РѕР±РµСЂС‚Р°РЅРЅСЏ РІР°С€РѕРіРѕ С‚РѕРІР°СЂСѓ РґР»СЏ С–РЅС‚РµСЂРЅРµС‚-РјР°РіР°Р·РёРЅСѓ</div><span class="badge badge-prem">рџ’Ћ Premium</span></div>
-      <div class="feat"><div class="feat-icon">рџ“±</div><div class="feat-title">Р’С–РґРµРѕСЂРµРєР»Р°РјР° 9:16</div><div class="feat-desc">Р’СЃС‚Р°РІС‚Рµ С„РѕС‚Рѕ С‚РѕРІР°СЂСѓ вЂ” AI СЃС‚РІРѕСЂРёС‚СЊ СЂРµРєР»Р°РјРЅРµ РІС–РґРµРѕ РґР»СЏ TikTok С‚Р° Instagram Reels</div><span class="badge badge-pro">в­ђ Pro</span></div>
-      <div class="feat"><div class="feat-icon">рџ“є</div><div class="feat-title">Р’С–РґРµРѕСЂРµРєР»Р°РјР° 16:9</div><div class="feat-desc">РџСЂРѕС„РµСЃС–Р№РЅР° РІС–РґРµРѕСЂРµРєР»Р°РјР° РґР»СЏ YouTube С‚Р° Facebook Р· РІР°С€РёРј СЂРµР°Р»СЊРЅРёРј С‚РѕРІР°СЂРѕРј</div><span class="badge badge-prem">рџ’Ћ Premium</span></div>
+      <div class="feat"><div class="feat-icon">📝</div><div class="feat-title">AI Сценарист</div><div class="feat-desc">Опишіть ідею — AI напише повноцінний сценарій з діалогами, сценами та ремарками</div><span class="badge badge-free">✓ Безкоштовно</span></div>
+      <div class="feat"><div class="feat-icon">🎨</div><div class="feat-title">Генерація сцен</div><div class="feat-desc">Кожна сцена перетворюється на гіперреалістичне зображення у вашому стилі</div><span class="badge badge-free">✓ Безкоштовно</span></div>
+      <div class="feat"><div class="feat-icon">👤</div><div class="feat-title">Портрети героїв</div><div class="feat-desc">AI знаходить персонажів і генерує їхні портрети — стабільний вигляд у всіх сценах</div><span class="badge badge-free">✓ Безкоштовно</span></div>
+      <div class="feat"><div class="feat-icon">🎞️</div><div class="feat-title">Оживлення фото</div><div class="feat-desc">Перетворіть статичні зображення на живі сцени. Обличчя рухаються, дихають, говорять</div><span class="badge badge-pro">⭐ Pro</span></div>
+      <div class="feat"><div class="feat-icon">🎙️</div><div class="feat-title">Голоси і діалоги</div><div class="feat-desc">Реалістичне TTS озвучення кожного персонажа. Українська, англійська та 28 мов</div><span class="badge badge-pro">⭐ Pro</span></div>
+      <div class="feat"><div class="feat-icon">✂️</div><div class="feat-title">Відео редактор</div><div class="feat-desc">Повноцінний монтаж: переходи, субтитри, музика, ефекти. Експорт у 4K MP4</div><span class="badge badge-prem">💎 Premium</span></div>
+      <div class="feat"><div class="feat-icon">✨</div><div class="feat-title">Покращення якості фото</div><div class="feat-desc">Апскейлінг до 4K, прибирання шуму, різкість, корекція кольору — одним кліком</div><span class="badge badge-pro">⭐ Pro</span></div>
+      <div class="feat"><div class="feat-icon">🎬</div><div class="feat-title">Покращення якості відео</div><div class="feat-desc">AI апскейлінг відео до 4K, стабілізація, шумозаглушення та покращення кольору</div><span class="badge badge-prem">💎 Premium</span></div>
+      <div class="feat"><div class="feat-icon">📸</div><div class="feat-title">AI Фотосесія</div><div class="feat-desc">Студійний/білий фон, кольорові фони, природні локації. Люди, товари, тварини</div><span class="badge badge-pro">⭐ Pro</span></div>
+      <div class="feat"><div class="feat-icon">🔄</div><div class="feat-title">360° Огляд товару</div><div class="feat-desc">Автоматична генерація 360° обертання вашого товару для інтернет-магазину</div><span class="badge badge-prem">💎 Premium</span></div>
+      <div class="feat"><div class="feat-icon">📱</div><div class="feat-title">Відеореклама 9:16</div><div class="feat-desc">Вставте фото товару — AI створить рекламне відео для TikTok та Instagram Reels</div><span class="badge badge-pro">⭐ Pro</span></div>
+      <div class="feat"><div class="feat-icon">📺</div><div class="feat-title">Відеореклама 16:9</div><div class="feat-desc">Професійна відеореклама для YouTube та Facebook з вашим реальним товаром</div><span class="badge badge-prem">💎 Premium</span></div>
     </div>
   </div>
 </section>
 
 <section class="section section-dark" id="how">
   <div class="container">
-    <span class="sec-tag">РџСЂРѕС†РµСЃ СЂРѕР±РѕС‚Рё</span>
-    <h2 class="sec-title">4 РєСЂРѕРєРё РґРѕ <span>С„С–Р»СЊРјСѓ</span></h2>
-    <p class="sec-sub">РџСЂРѕСЃС‚С–С€Рµ РЅС–Р¶ Р·РґР°С”С‚СЊСЃСЏ</p>
+    <span class="sec-tag">Процес роботи</span>
+    <h2 class="sec-title">4 кроки до <span>фільму</span></h2>
+    <p class="sec-sub">Простіше ніж здається</p>
     <div class="how-grid">
-      <div class="how-step"><div class="how-num">1</div><div class="how-title">РќР°РїРёС€С–С‚СЊ С–РґРµСЋ</div><div class="how-desc">РљС–Р»СЊРєР° СЂРµС‡РµРЅСЊ Р°Р±Рѕ РїРѕРІРЅРёР№ СЃС†РµРЅР°СЂС–Р№ вЂ” AI Р°РґР°РїС‚СѓС”С‚СЊСЃСЏ</div></div>
-      <div class="how-step"><div class="how-num">2</div><div class="how-title">AI РіРµРЅРµСЂСѓС” СЃС†РµРЅРё</div><div class="how-desc">Р—РѕР±СЂР°Р¶РµРЅРЅСЏ, РїРµСЂСЃРѕРЅР°Р¶С– С‚Р° РґС–Р°Р»РѕРіРё Р°РІС‚РѕРјР°С‚РёС‡РЅРѕ</div></div>
-      <div class="how-step"><div class="how-num">3</div><div class="how-title">Р РµРґР°РіСѓР№С‚Рµ</div><div class="how-desc">Р—РјС–РЅСЋР№С‚Рµ СЃС†РµРЅРё, РґРѕРґР°РІР°Р№С‚Рµ РјСѓР·РёРєСѓ С– СЃСѓР±С‚РёС‚СЂРё</div></div>
-      <div class="how-step"><div class="how-num">4</div><div class="how-title">Р•РєСЃРїРѕСЂС‚СѓР№С‚Рµ</div><div class="how-desc">Р“РѕС‚РѕРІРёР№ MP4 Сѓ 4K РґР»СЏ YouTube Р°Р±Рѕ РєС–РЅРѕС„РµСЃС‚РёРІР°Р»СЋ</div></div>
+      <div class="how-step"><div class="how-num">1</div><div class="how-title">Напишіть ідею</div><div class="how-desc">Кілька речень або повний сценарій — AI адаптується</div></div>
+      <div class="how-step"><div class="how-num">2</div><div class="how-title">AI генерує сцени</div><div class="how-desc">Зображення, персонажі та діалоги автоматично</div></div>
+      <div class="how-step"><div class="how-num">3</div><div class="how-title">Редагуйте</div><div class="how-desc">Змінюйте сцени, додавайте музику і субтитри</div></div>
+      <div class="how-step"><div class="how-num">4</div><div class="how-title">Експортуйте</div><div class="how-desc">Готовий MP4 у 4K для YouTube або кінофестивалю</div></div>
     </div>
   </div>
 </section>
 
 <section class="section" id="pricing">
   <div class="container">
-    <span class="sec-tag">РўР°СЂРёС„Рё</span>
-    <h2 class="sec-title">РћР±РµСЂС–С‚СЊ СЃРІС–Р№ <span>РїР»Р°РЅ</span></h2>
-    <p class="sec-sub">РџРѕС‡РЅС–С‚СЊ Р±РµР·РєРѕС€С‚РѕРІРЅРѕ. РџС–РґРїРёСЃРєСѓ РјРѕР¶РЅР° СЃРєР°СЃСѓРІР°С‚Рё Р±СѓРґСЊ-РєРѕР»Рё</p>
+    <span class="sec-tag">Тарифи</span>
+    <h2 class="sec-title">Оберіть свій <span>план</span></h2>
+    <p class="sec-sub">Почніть безкоштовно. Підписку можна скасувати будь-коли</p>
     <div class="price-grid">
       <div class="plan">
         <div class="plan-name">STARTER</div>
-        <div class="plan-price"><span class="cur">$</span><span class="amt">0</span><span class="per">/РјС–СЃСЏС†СЊ</span></div>
-        <div class="plan-desc">Р”Р»СЏ Р·РЅР°Р№РѕРјСЃС‚РІР° Р· РїР»Р°С‚С„РѕСЂРјРѕСЋ</div>
+        <div class="plan-price"><span class="cur">$</span><span class="amt">0</span><span class="per">/місяць</span></div>
+        <div class="plan-desc">Для знайомства з платформою</div>
         <div class="plan-hr"></div>
         <div class="plan-feats">
-          <div class="pf"><span class="ck">вњ“</span><span>5 РїСЂРѕРµРєС‚С–РІ РЅР° РјС–СЃСЏС†СЊ</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>Р“РµРЅРµСЂР°С†С–СЏ СЃС†РµРЅР°СЂС–СЋ AI</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>20 Р·РѕР±СЂР°Р¶РµРЅСЊ РЅР° РјС–СЃСЏС†СЊ</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>Р‘Р°Р·РѕРІРёР№ TTS РіРѕР»РѕСЃ</span></div>
-          <div class="pf no"><span class="xx">вњ—</span><span>РћР¶РёРІР»РµРЅРЅСЏ С„РѕС‚Рѕ</span></div>
-          <div class="pf no"><span class="xx">вњ—</span><span>Р’С–РґРµРѕ СЂРµРґР°РєС‚РѕСЂ</span></div>
+          <div class="pf"><span class="ck">✓</span><span>5 проектів на місяць</span></div>
+          <div class="pf"><span class="ck">✓</span><span>Генерація сценарію AI</span></div>
+          <div class="pf"><span class="ck">✓</span><span>20 зображень на місяць</span></div>
+          <div class="pf"><span class="ck">✓</span><span>Базовий TTS голос</span></div>
+          <div class="pf no"><span class="xx">✗</span><span>Оживлення фото</span></div>
+          <div class="pf no"><span class="xx">✗</span><span>Відео редактор</span></div>
         </div>
-        <button class="btn-plan btn-plan-border" id="btn-starter">РџРѕС‡Р°С‚Рё Р±РµР·РєРѕС€С‚РѕРІРЅРѕ</button>
+        <button class="btn-plan btn-plan-border" id="btn-starter">Почати безкоштовно</button>
       </div>
       <div class="plan popular">
-        <div class="pop-badge">РќРђР™РџРћРџРЈР›РЇР РќР†РЁРР™</div>
+        <div class="pop-badge">НАЙПОПУЛЯРНІШИЙ</div>
         <div class="plan-name">PRO</div>
-        <div class="plan-price"><span class="cur">$</span><span class="amt">9</span><span class="per">.99/РјС–СЃСЏС†СЊ</span></div>
-        <div class="plan-desc">Р”Р»СЏ СЃРµСЂР№РѕР·РЅРёС… С‚РІРѕСЂС†С–РІ С– Р±Р»РѕРіРµСЂС–РІ</div>
+        <div class="plan-price"><span class="cur">$</span><span class="amt">9</span><span class="per">.99/місяць</span></div>
+        <div class="plan-desc">Для серйозних творців і блогерів</div>
         <div class="plan-hr"></div>
         <div class="plan-feats">
-          <div class="pf"><span class="ck">вњ“</span><span>РќРµРѕР±РјРµР¶РµРЅС– РїСЂРѕРµРєС‚Рё</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>200 Р·РѕР±СЂР°Р¶РµРЅСЊ РЅР° РјС–СЃСЏС†СЊ</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>РћР¶РёРІР»РµРЅРЅСЏ С„РѕС‚Рѕ (D-ID)</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>ElevenLabs РіРѕР»РѕСЃРё</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>Р’С–РґРµРѕ СЂРµРґР°РєС‚РѕСЂ + РµРєСЃРїРѕСЂС‚ 1080p</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>вњЁ РџРѕРєСЂР°С‰РµРЅРЅСЏ СЏРєРѕСЃС‚С– С„РѕС‚Рѕ (4K)</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>рџ“ё AI Р¤РѕС‚РѕСЃРµСЃС–СЏ (СЃС‚СѓРґС–СЏ, С„РѕРЅРё, Р»РѕРєР°С†С–С—)</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>рџ“± Р’С–РґРµРѕСЂРµРєР»Р°РјР° TikTok/Reels 9:16</span></div>
-          <div class="pf no"><span class="xx">вњ—</span><span>РџРѕРєСЂР°С‰РµРЅРЅСЏ СЏРєРѕСЃС‚С– РІС–РґРµРѕ</span></div>
-          <div class="pf no"><span class="xx">вњ—</span><span>360В° РѕРіР»СЏРґ С‚РѕРІР°СЂСѓ</span></div>
-          <div class="pf no"><span class="xx">вњ—</span><span>Р’С–РґРµРѕСЂРµРєР»Р°РјР° YouTube 16:9</span></div>
+          <div class="pf"><span class="ck">✓</span><span>Необмежені проекти</span></div>
+          <div class="pf"><span class="ck">✓</span><span>200 зображень на місяць</span></div>
+          <div class="pf"><span class="ck">✓</span><span>Оживлення фото (D-ID)</span></div>
+          <div class="pf"><span class="ck">✓</span><span>ElevenLabs голоси</span></div>
+          <div class="pf"><span class="ck">✓</span><span>Відео редактор + експорт 1080p</span></div>
+          <div class="pf"><span class="ck">✓</span><span>✨ Покращення якості фото (4K)</span></div>
+          <div class="pf"><span class="ck">✓</span><span>📸 AI Фотосесія (студія, фони, локації)</span></div>
+          <div class="pf"><span class="ck">✓</span><span>📱 Відеореклама TikTok/Reels 9:16</span></div>
+          <div class="pf no"><span class="xx">✗</span><span>Покращення якості відео</span></div>
+          <div class="pf no"><span class="xx">✗</span><span>360° огляд товару</span></div>
+          <div class="pf no"><span class="xx">✗</span><span>Відеореклама YouTube 16:9</span></div>
         </div>
-        <button class="btn-plan btn-plan-gold" id="btn-pro">рџљЂ РЎРїСЂРѕР±СѓРІР°С‚Рё 7 РґРЅС–РІ Р±РµР·РєРѕС€С‚РѕРІРЅРѕ</button>
-        <div class="plan-note">РџРѕС‚С–Рј $9.99/РјС–СЃ В· РЎРєР°СЃСѓРІР°РЅРЅСЏ Р±СѓРґСЊ-РєРѕР»Рё</div>
+        <button class="btn-plan btn-plan-gold" id="btn-pro">🚀 Спробувати 7 днів безкоштовно</button>
+        <div class="plan-note">Потім $9.99/міс · Скасування будь-коли</div>
       </div>
       <div class="plan">
         <div class="plan-name">PREMIUM</div>
-        <div class="plan-price"><span class="cur">$</span><span class="amt">19</span><span class="per">.99/РјС–СЃСЏС†СЊ</span></div>
-        <div class="plan-desc">Р”Р»СЏ СЃС‚СѓРґС–Р№ С– РїСЂРѕС„РµСЃС–Р№РЅРёС… СЂРµР¶РёСЃРµСЂС–РІ</div>
+        <div class="plan-price"><span class="cur">$</span><span class="amt">19</span><span class="per">.99/місяць</span></div>
+        <div class="plan-desc">Для студій і професійних режисерів</div>
         <div class="plan-hr"></div>
         <div class="plan-feats">
-          <div class="pf"><span class="ck">вњ“</span><span>Р’СЃРµ Р· Pro +</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>РќРµРѕР±РјРµР¶РµРЅС– Р·РѕР±СЂР°Р¶РµРЅРЅСЏ</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>Р•РєСЃРїРѕСЂС‚ 4K Ultra HD</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>рџЋ¬ РџРѕРєСЂР°С‰РµРЅРЅСЏ СЏРєРѕСЃС‚С– РІС–РґРµРѕ 4K</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>рџ”„ 360В° РѕРіР»СЏРґ С‚РѕРІР°СЂСѓ</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>рџ“є Р’С–РґРµРѕСЂРµРєР»Р°РјР° YouTube 16:9</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>РљР»РѕРЅСѓРІР°РЅРЅСЏ РіРѕР»РѕСЃСѓ</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>РљРѕРјРµСЂС†С–Р№РЅР° Р»С–С†РµРЅР·С–СЏ</span></div>
-          <div class="pf"><span class="ck">вњ“</span><span>РџСЂС–РѕСЂРёС‚РµС‚РЅР° РїС–РґС‚СЂРёРјРєР°</span></div>
+          <div class="pf"><span class="ck">✓</span><span>Все з Pro +</span></div>
+          <div class="pf"><span class="ck">✓</span><span>Необмежені зображення</span></div>
+          <div class="pf"><span class="ck">✓</span><span>Експорт 4K Ultra HD</span></div>
+          <div class="pf"><span class="ck">✓</span><span>🎬 Покращення якості відео 4K</span></div>
+          <div class="pf"><span class="ck">✓</span><span>🔄 360° огляд товару</span></div>
+          <div class="pf"><span class="ck">✓</span><span>📺 Відеореклама YouTube 16:9</span></div>
+          <div class="pf"><span class="ck">✓</span><span>Клонування голосу</span></div>
+          <div class="pf"><span class="ck">✓</span><span>Комерційна ліцензія</span></div>
+          <div class="pf"><span class="ck">✓</span><span>Пріоритетна підтримка</span></div>
         </div>
-        <button class="btn-plan btn-plan-red" id="btn-premium">рџ’Ћ РћР±СЂР°С‚Рё Premium</button>
-        <div class="plan-note">7 РґРЅС–РІ Р±РµР·РєРѕС€С‚РѕРІРЅРѕ В· РЎРєР°СЃСѓРІР°РЅРЅСЏ Р±СѓРґСЊ-РєРѕР»Рё</div>
+        <button class="btn-plan btn-plan-red" id="btn-premium">💎 Обрати Premium</button>
+        <div class="plan-note">7 днів безкоштовно · Скасування будь-коли</div>
       </div>
     </div>
   </div>
@@ -365,208 +367,208 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:40px
 
 <footer>
   <div class="foot-grid">
-    <div><div class="foot-logo">Cine<span>AI</span></div><p class="foot-p">AI-РїР»Р°С‚С„РѕСЂРјР° РґР»СЏ СЃС‚РІРѕСЂРµРЅРЅСЏ С„С–Р»СЊРјС–РІ. Р’С–Рґ С–РґРµС— РґРѕ РµРєСЂР°РЅСѓ вЂ” Р±РµР· РѕР±Р»Р°РґРЅР°РЅРЅСЏ.</p></div>
-    <div class="foot-col"><h4>РџСЂРѕРґСѓРєС‚</h4><a href="#features">РњРѕР¶Р»РёРІРѕСЃС‚С–</a><a href="#pricing">Р¦С–РЅРё</a><a href="#how">РЇРє С†Рµ РїСЂР°С†СЋС”</a></div>
-    <div class="foot-col"><h4>РџС–РґС‚СЂРёРјРєР°</h4><a href="#">Р”РѕРєСѓРјРµРЅС‚Р°С†С–СЏ</a><a href="#">FAQ</a><a href="#">РљРѕРЅС‚Р°РєС‚Рё</a></div>
-    <div class="foot-col"><h4>РџСЂР°РІРѕРІРµ</h4><a href="#">РЈРјРѕРІРё РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ</a><a href="#">РљРѕРЅС„С–РґРµРЅС†С–Р№РЅС–СЃС‚СЊ</a><a href="#">РџРѕРІРµСЂРЅРµРЅРЅСЏ РєРѕС€С‚С–РІ</a></div>
+    <div><div class="foot-logo">Cine<span>AI</span></div><p class="foot-p">AI-платформа для створення фільмів. Від ідеї до екрану — без обладнання.</p></div>
+    <div class="foot-col"><h4>Продукт</h4><a href="#features">Можливості</a><a href="#pricing">Ціни</a><a href="#how">Як це працює</a></div>
+    <div class="foot-col"><h4>Підтримка</h4><a href="#">Документація</a><a href="#">FAQ</a><a href="#">Контакти</a></div>
+    <div class="foot-col"><h4>Правове</h4><a href="#">Умови використання</a><a href="#">Конфіденційність</a><a href="#">Повернення коштів</a></div>
   </div>
-  <div class="foot-bottom"><span>В© 2025 CineAI Studio. Р’СЃС– РїСЂР°РІР° Р·Р°С…РёС‰РµРЅС–.</span><span>Wayforpay В· Paddle В· Р‘РµР·РїРµС‡РЅРѕ С‚Р° РЅР°РґС–Р№РЅРѕ</span></div>
+  <div class="foot-bottom"><span>© 2025 CineAI Studio. Всі права захищені.</span><span>Wayforpay · Paddle · Безпечно та надійно</span></div>
 </footer>
 
 </div><!-- /landing -->
 
-<!-- в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ DASHBOARD в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ -->
+<!-- ══════════ DASHBOARD ══════════ -->
 <div class="dash" id="pg-dash">
   <nav class="dash-nav">
     <div class="logo">Cine<span style="color:var(--red)">AI</span></div>
     <div class="dash-user">
       <div class="dash-ava" id="d-ava">U</div>
-      <div><div class="dash-name" id="d-name">РљРѕСЂРёСЃС‚СѓРІР°С‡</div><div class="dash-plan-tag" id="d-plan">PRO</div></div>
+      <div><div class="dash-name" id="d-name">Користувач</div><div class="dash-plan-tag" id="d-plan">PRO</div></div>
     </div>
-    <button class="btn-out" id="btn-logout">Р’РёР№С‚Рё</button>
+    <button class="btn-out" id="btn-logout">Вийти</button>
   </nav>
   <div class="dash-body">
-    <div class="dash-title">РџСЂРёРІС–С‚, <span id="d-greet">РўРІРѕСЂС†СЋ</span> рџ‘‹</div>
-    <div class="dash-subtitle">Р“РѕС‚РѕРІРёР№ РґРѕ РЅРѕРІРѕРіРѕ С„С–Р»СЊРјСѓ?</div>
+    <div class="dash-title">Привіт, <span id="d-greet">Творцю</span> 👋</div>
+    <div class="dash-subtitle">Готовий до нового фільму?</div>
     <div class="dash-cards">
-      <div class="dc"><div class="dc-icon">рџЋ¬</div><div class="dc-num" id="d-projects">0</div><div class="dc-label">РџСЂРѕРµРєС‚С–РІ</div></div>
-      <div class="dc"><div class="dc-icon">рџ–јпёЏ</div><div class="dc-num" id="d-images">0</div><div class="dc-label">Р—РѕР±СЂР°Р¶РµРЅСЊ</div></div>
-      <div class="dc"><div class="dc-icon">рџЋ™пёЏ</div><div class="dc-num" id="d-voice">0</div><div class="dc-label">РҐРІ РѕР·РІСѓС‡РµРЅРѕ</div></div>
-      <div class="dc"><div class="dc-icon">рџ“…</div><div class="dc-num" id="d-days">в€ћ</div><div class="dc-label">Р”РЅС–РІ РїС–РґРїРёСЃРєРё</div></div>
+      <div class="dc"><div class="dc-icon">🎬</div><div class="dc-num" id="d-projects">0</div><div class="dc-label">Проектів</div></div>
+      <div class="dc"><div class="dc-icon">🖼️</div><div class="dc-num" id="d-images">0</div><div class="dc-label">Зображень</div></div>
+      <div class="dc"><div class="dc-icon">🎙️</div><div class="dc-num" id="d-voice">0</div><div class="dc-label">Хв озвучено</div></div>
+      <div class="dc"><div class="dc-icon">📅</div><div class="dc-num" id="d-days">∞</div><div class="dc-label">Днів підписки</div></div>
     </div>
     <div id="upgrade-notice"></div>
     <div class="tool-grid" id="d-tools"></div>
     <div style="text-align:center">
-      <button class="btn-gold" id="btn-open-studio">рџЋ¬ Р’С–РґРєСЂРёС‚Рё CineAI Studio</button>
+      <button class="btn-gold" id="btn-open-studio">🎬 Відкрити CineAI Studio</button>
     </div>
   </div>
 </div>
 
-<!-- в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ ADMIN в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ -->
+<!-- ══════════ ADMIN ══════════ -->
 <div class="adm" id="pg-admin">
   <div class="adm-layout">
     <aside class="adm-side">
       <div class="adm-logo">Cine<span>AI</span></div>
       <div class="adm-nav">
-        <button class="adm-btn on" data-tab="overview">рџ“Љ РћРіР»СЏРґ</button>
-        <button class="adm-btn" data-tab="users">рџ‘Ґ РљРѕСЂРёСЃС‚СѓРІР°С‡С–</button>
-        <button class="adm-btn" data-tab="revenue">рџ’° Р”РѕС…РѕРґРё</button>
-        <button class="adm-btn" data-tab="settings">вљ™пёЏ API РљР»СЋС‡С–</button>
-        <button class="adm-btn" id="btn-adm-logout" style="margin-top:16px">в†ђ Р’РёР№С‚Рё</button>
+        <button class="adm-btn on" data-tab="overview">📊 Огляд</button>
+        <button class="adm-btn" data-tab="users">👥 Користувачі</button>
+        <button class="adm-btn" data-tab="revenue">💰 Доходи</button>
+        <button class="adm-btn" data-tab="settings">⚙️ API Ключі</button>
+        <button class="adm-btn" id="btn-adm-logout" style="margin-top:16px">← Вийти</button>
       </div>
     </aside>
     <main class="adm-main">
       <div id="tab-overview">
-        <div class="adm-title">РџР°РЅРµР»СЊ <span>Р°РґРјС–РЅР°</span></div>
+        <div class="adm-title">Панель <span>адміна</span></div>
         <div class="stats-row">
-          <div class="sc"><div class="sc-val">$247</div><div class="sc-label">Р”РѕС…С–Рґ С†СЊРѕРіРѕ РјС–СЃСЏС†СЏ</div><div class="sc-change">в†‘ +23%</div></div>
-          <div class="sc"><div class="sc-val">28</div><div class="sc-label">РђРєС‚РёРІРЅРёС… РїС–РґРїРёСЃРѕРє</div><div class="sc-change">в†‘ +5 С†СЊРѕРіРѕ С‚РёР¶РЅСЏ</div></div>
-          <div class="sc"><div class="sc-val">847</div><div class="sc-label">Р’СЃСЊРѕРіРѕ РєРѕСЂРёСЃС‚СѓРІР°С‡С–РІ</div><div class="sc-change">в†‘ +112</div></div>
-          <div class="sc"><div class="sc-val">$8.82</div><div class="sc-label">РЎРµСЂРµРґРЅС–Р№ РґРѕС…С–Рґ/СЋР·РµСЂ</div><div class="sc-change">в†‘ +$1.20</div></div>
+          <div class="sc"><div class="sc-val">$247</div><div class="sc-label">Дохід цього місяця</div><div class="sc-change">↑ +23%</div></div>
+          <div class="sc"><div class="sc-val">28</div><div class="sc-label">Активних підписок</div><div class="sc-change">↑ +5 цього тижня</div></div>
+          <div class="sc"><div class="sc-val">847</div><div class="sc-label">Всього користувачів</div><div class="sc-change">↑ +112</div></div>
+          <div class="sc"><div class="sc-val">$8.82</div><div class="sc-label">Середній дохід/юзер</div><div class="sc-change">↑ +$1.20</div></div>
         </div>
         <div class="tbl-wrap">
-          <div class="tbl-hd">РћСЃС‚Р°РЅРЅС– СЂРµС”СЃС‚СЂР°С†С–С—</div>
-          <table><thead><tr><th>Email</th><th>РўР°СЂРёС„</th><th>Р”Р°С‚Р°</th><th>РЎС‚Р°С‚СѓСЃ</th><th>РЎСѓРјР°</th></tr></thead>
+          <div class="tbl-hd">Останні реєстрації</div>
+          <table><thead><tr><th>Email</th><th>Тариф</th><th>Дата</th><th>Статус</th><th>Сума</th></tr></thead>
           <tbody>
-            <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="76171a130e36111b171f1a5815191b">[email&#160;protected]</a></td><td>Pro</td><td>25 Р»СЋС‚ 2026</td><td><span class="us us-a">РђРєС‚РёРІРЅРёР№</span></td><td>$9.99</td></tr>
-            <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9c4c8dbc0c8e9dcc2db87c7ccdd">[email&#160;protected]</a></td><td>Premium</td><td>24 Р»СЋС‚ 2026</td><td><span class="us us-a">РђРєС‚РёРІРЅРёР№</span></td><td>$19.99</td></tr>
-            <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="43272e3a37312c03242e222a2f6d202c2e">[email&#160;protected]</a></td><td>Pro</td><td>23 Р»СЋС‚ 2026</td><td><span class="us us-t">РўСЂС–Р°Р»</span></td><td>$0</td></tr>
-            <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4dbd8d1dad5f4cdd5dcdbdb9ad7dbd9">[email&#160;protected]</a></td><td>Starter</td><td>22 Р»СЋС‚ 2026</td><td><span class="us us-a">РђРєС‚РёРІРЅРёР№</span></td><td>$0</td></tr>
-            <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="513827303f11363c30383d7f323e3c">[email&#160;protected]</a></td><td>Premium</td><td>21 Р»СЋС‚ 2026</td><td><span class="us us-c">РЎРєР°СЃРѕРІР°РЅРѕ</span></td><td>$19.99</td></tr>
+            <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="76171a130e36111b171f1a5815191b">[email&#160;protected]</a></td><td>Pro</td><td>25 лют 2026</td><td><span class="us us-a">Активний</span></td><td>$9.99</td></tr>
+            <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9c4c8dbc0c8e9dcc2db87c7ccdd">[email&#160;protected]</a></td><td>Premium</td><td>24 лют 2026</td><td><span class="us us-a">Активний</span></td><td>$19.99</td></tr>
+            <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="43272e3a37312c03242e222a2f6d202c2e">[email&#160;protected]</a></td><td>Pro</td><td>23 лют 2026</td><td><span class="us us-t">Тріал</span></td><td>$0</td></tr>
+            <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4dbd8d1dad5f4cdd5dcdbdb9ad7dbd9">[email&#160;protected]</a></td><td>Starter</td><td>22 лют 2026</td><td><span class="us us-a">Активний</span></td><td>$0</td></tr>
+            <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="513827303f11363c30383d7f323e3c">[email&#160;protected]</a></td><td>Premium</td><td>21 лют 2026</td><td><span class="us us-c">Скасовано</span></td><td>$19.99</td></tr>
           </tbody></table>
         </div>
       </div>
       <div id="tab-users" style="display:none">
-        <div class="adm-title">Р’СЃС– <span>РєРѕСЂРёСЃС‚СѓРІР°С‡С–</span></div>
-        <div class="tbl-wrap"><table><thead><tr><th>Email</th><th>РўР°СЂРёС„</th><th>Р РµС”СЃС‚СЂР°С†С–СЏ</th><th>РЎС‚Р°С‚СѓСЃ</th></tr></thead>
+        <div class="adm-title">Всі <span>користувачі</span></div>
+        <div class="tbl-wrap"><table><thead><tr><th>Email</th><th>Тариф</th><th>Реєстрація</th><th>Статус</th></tr></thead>
         <tbody>
-          <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7c1d1019043c1b111d1510521f1311">[email&#160;protected]</a></td><td>Pro</td><td>25.02.2026</td><td><span class="us us-a">РђРєС‚РёРІРЅРёР№</span></td></tr>
-          <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4d202c3f242c0d38263f63232839">[email&#160;protected]</a></td><td>Premium</td><td>24.02.2026</td><td><span class="us us-a">РђРєС‚РёРІРЅРёР№</span></td></tr>
+          <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7c1d1019043c1b111d1510521f1311">[email&#160;protected]</a></td><td>Pro</td><td>25.02.2026</td><td><span class="us us-a">Активний</span></td></tr>
+          <tr><td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4d202c3f242c0d38263f63232839">[email&#160;protected]</a></td><td>Premium</td><td>24.02.2026</td><td><span class="us us-a">Активний</span></td></tr>
         </tbody></table></div>
       </div>
       <div id="tab-revenue" style="display:none">
-        <div class="adm-title">Р¤С–РЅР°РЅСЃРѕРІР° <span>Р·РІС–С‚РЅС–СЃС‚СЊ</span></div>
+        <div class="adm-title">Фінансова <span>звітність</span></div>
         <div class="stats-row">
-          <div class="sc"><div class="sc-val">$247</div><div class="sc-label">Р›СЋС‚РёР№ 2026</div></div>
-          <div class="sc"><div class="sc-val">$201</div><div class="sc-label">РЎС–С‡РµРЅСЊ 2026</div></div>
-          <div class="sc"><div class="sc-val">$89</div><div class="sc-label">Р“СЂСѓРґРµРЅСЊ 2025</div></div>
-          <div class="sc"><div class="sc-val">$537</div><div class="sc-label">Р’СЃСЊРѕРіРѕ</div></div>
+          <div class="sc"><div class="sc-val">$247</div><div class="sc-label">Лютий 2026</div></div>
+          <div class="sc"><div class="sc-val">$201</div><div class="sc-label">Січень 2026</div></div>
+          <div class="sc"><div class="sc-val">$89</div><div class="sc-label">Грудень 2025</div></div>
+          <div class="sc"><div class="sc-val">$537</div><div class="sc-label">Всього</div></div>
         </div>
-        <p style="font-size:14px;color:var(--muted)">рџ’Ў Wayforpay С‚Р° Paddle Р°РІС‚РѕРјР°С‚РёС‡РЅРѕ СЃРїРёСЃСѓСЋС‚СЊ РєРѕС€С‚Рё С‰РѕРјС–СЃСЏС†СЏ. Р’РёРїР»Р°С‚Рё РЅР°РґС…РѕРґСЏС‚СЊ РїСЂРѕС‚СЏРіРѕРј 1-3 СЂРѕР±РѕС‡РёС… РґРЅС–РІ.</p>
+        <p style="font-size:14px;color:var(--muted)">💡 Wayforpay та Paddle автоматично списують кошти щомісяця. Виплати надходять протягом 1-3 робочих днів.</p>
       </div>
       <div id="tab-settings" style="display:none">
-        <div class="adm-title">РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ <span>API</span></div>
+        <div class="adm-title">Налаштування <span>API</span></div>
         <div class="api-grid">
           <div class="field"><label>Wayforpay Merchant Account</label><input type="text" placeholder="your_merchant_account" id="wfp-merchant"></div>
-          <div class="field"><label>Wayforpay Secret Key</label><input type="password" placeholder="вЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂў" id="wfp-secret"></div>
+          <div class="field"><label>Wayforpay Secret Key</label><input type="password" placeholder="••••••••••••••••" id="wfp-secret"></div>
           <div class="field"><label>Paddle Vendor ID</label><input type="text" placeholder="12345" id="paddle-vendor"></div>
-          <div class="field"><label>Paddle API Key</label><input type="password" placeholder="вЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂў" id="paddle-key"></div>
+          <div class="field"><label>Paddle API Key</label><input type="password" placeholder="••••••••••••••••" id="paddle-key"></div>
           <div class="field"><label>Stability AI Key</label><input type="password" placeholder="sk-..." id="stability-key"></div>
-          <div class="field"><label>ElevenLabs API Key</label><input type="password" placeholder="вЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂў" id="eleven-key"></div>
-          <div class="field"><label>D-ID API Key</label><input type="password" placeholder="вЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂў" id="did-key"></div>
+          <div class="field"><label>ElevenLabs API Key</label><input type="password" placeholder="••••••••••••••••" id="eleven-key"></div>
+          <div class="field"><label>D-ID API Key</label><input type="password" placeholder="••••••••••••••••" id="did-key"></div>
           <div class="field"><label>Anthropic API Key</label><input type="password" placeholder="sk-ant-..." id="ant-key"></div>
-          <button class="btn-submit" style="width:auto;padding:11px 28px" id="btn-save-api">рџ’ѕ Р—Р±РµСЂРµРіС‚Рё РєР»СЋС‡С–</button>
+          <button class="btn-submit" style="width:auto;padding:11px 28px" id="btn-save-api">💾 Зберегти ключі</button>
         </div>
       </div>
     </main>
   </div>
 </div>
 
-<!-- в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ AUTH MODAL в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ -->
+<!-- ══════════ AUTH MODAL ══════════ -->
 <div class="overlay" id="modal-auth">
   <div class="modal">
-    <button class="modal-x" id="close-auth">вњ•</button>
+    <button class="modal-x" id="close-auth">✕</button>
     <div class="modal-logo">Cine<span>AI</span></div>
-    <div class="modal-sub">РЈРІС–Р№РґС–С‚СЊ Р°Р±Рѕ СЃС‚РІРѕСЂС–С‚СЊ Р°РєР°СѓРЅС‚</div>
+    <div class="modal-sub">Увійдіть або створіть акаунт</div>
     <div class="tabs">
-      <button class="tab on" id="tab-login">Р’С…С–Рґ</button>
-      <button class="tab" id="tab-register">Р РµС”СЃС‚СЂР°С†С–СЏ</button>
+      <button class="tab on" id="tab-login">Вхід</button>
+      <button class="tab" id="tab-register">Реєстрація</button>
     </div>
     <div id="form-login">
       <div class="field"><label>Email</label><input type="email" id="in-email" placeholder="you@example.com"></div>
-      <div class="field"><label>РџР°СЂРѕР»СЊ</label><input type="password" id="in-pass" placeholder="вЂўвЂўвЂўвЂўвЂўвЂўвЂўвЂў"></div>
-      <button class="btn-submit" id="btn-do-login">РЈРІС–Р№С‚Рё в†’</button>
+      <div class="field"><label>Пароль</label><input type="password" id="in-pass" placeholder="••••••••"></div>
+      <button class="btn-submit" id="btn-do-login">Увійти →</button>
     </div>
     <div id="form-reg" style="display:none">
-      <div class="field"><label>Р†Рј'СЏ</label><input type="text" id="reg-name" placeholder="Р’Р°С€Рµ С–Рј'СЏ"></div>
+      <div class="field"><label>Ім'я</label><input type="text" id="reg-name" placeholder="Ваше ім'я"></div>
       <div class="field"><label>Email</label><input type="email" id="reg-email" placeholder="you@example.com"></div>
-      <div class="field"><label>РџР°СЂРѕР»СЊ</label><input type="password" id="reg-pass" placeholder="РњС–РЅС–РјСѓРј 8 СЃРёРјРІРѕР»С–РІ"></div>
-      <button class="btn-submit" id="btn-do-reg">РЎС‚РІРѕСЂРёС‚Рё Р°РєР°СѓРЅС‚ в†’</button>
+      <div class="field"><label>Пароль</label><input type="password" id="reg-pass" placeholder="Мінімум 8 символів"></div>
+      <button class="btn-submit" id="btn-do-reg">Створити акаунт →</button>
     </div>
-    <div class="divider">Р°Р±Рѕ</div>
+    <div class="divider">або</div>
     <button class="btn-google" id="btn-google">
       <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-      РџСЂРѕРґРѕРІР¶РёС‚Рё Р· Google
+      Продовжити з Google
     </button>
   </div>
 </div>
 
-<!-- в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ CHECKOUT MODAL в•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђв•ђ -->
+<!-- ══════════ CHECKOUT MODAL ══════════ -->
 <div class="overlay" id="modal-checkout">
   <div class="modal" style="max-width:440px">
-    <button class="modal-x" id="close-checkout">вњ•</button>
+    <button class="modal-x" id="close-checkout">✕</button>
     <div class="modal-logo">Cine<span>AI</span></div>
-    <div class="modal-sub">РћС„РѕСЂРјР»РµРЅРЅСЏ РїС–РґРїРёСЃРєРё</div>
+    <div class="modal-sub">Оформлення підписки</div>
     <div class="plan-box">
-      <div><div class="plan-box-name" id="co-plan-name">Pro</div><div style="font-size:12px;color:var(--muted)">7 РґРЅС–РІ Р±РµР·РєРѕС€С‚РѕРІРЅРѕ, РїРѕС‚С–Рј Р°РІС‚РѕРјР°С‚РёС‡РЅРѕ</div></div>
-      <div class="plan-box-price" id="co-plan-price">$9.99/РјС–СЃ</div>
+      <div><div class="plan-box-name" id="co-plan-name">Pro</div><div style="font-size:12px;color:var(--muted)">7 днів безкоштовно, потім автоматично</div></div>
+      <div class="plan-box-price" id="co-plan-price">$9.99/міс</div>
     </div>
-    <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px">РћР±РµСЂС–С‚СЊ СЃРїРѕСЃС–Р± РѕРїР»Р°С‚Рё</div>
+    <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Оберіть спосіб оплати</div>
     <div class="pay-sel">
       <div class="pay-opt on" id="pay-wfp">
-        <div class="pay-opt-icon">рџ‡єрџ‡¦</div>
+        <div class="pay-opt-icon">🇺🇦</div>
         <div class="pay-opt-name">Wayforpay</div>
-        <div class="pay-opt-tag">Р“СЂРёРІРЅСЏ В· UAH</div>
+        <div class="pay-opt-tag">Гривня · UAH</div>
       </div>
       <div class="pay-opt" id="pay-paddle">
-        <div class="pay-opt-icon">рџЊЌ</div>
+        <div class="pay-opt-icon">🌍</div>
         <div class="pay-opt-name">Paddle</div>
-        <div class="pay-opt-tag">Р”РѕР»Р°СЂ В· USD</div>
+        <div class="pay-opt-tag">Долар · USD</div>
       </div>
     </div>
     <div class="field"><label>Email</label><input type="email" id="co-email" placeholder="you@example.com"></div>
     <div class="pay-form on" id="pf-wfp">
-      <div class="field"><label>РќРѕРјРµСЂ РєР°СЂС‚РєРё</label><input type="text" id="co-card" placeholder="4242 4242 4242 4242" maxlength="19"></div>
+      <div class="field"><label>Номер картки</label><input type="text" id="co-card" placeholder="4242 4242 4242 4242" maxlength="19"></div>
       <div class="card-row">
-        <div class="field"><label>РўРµСЂРјС–РЅ РґС–С—</label><input type="text" id="co-exp" placeholder="MM/YY" maxlength="5"></div>
-        <div class="field"><label>CVV</label><input type="password" id="co-cvv" placeholder="вЂўвЂўвЂў" maxlength="3"></div>
+        <div class="field"><label>Термін дії</label><input type="text" id="co-exp" placeholder="MM/YY" maxlength="5"></div>
+        <div class="field"><label>CVV</label><input type="password" id="co-cvv" placeholder="•••" maxlength="3"></div>
       </div>
-      <div class="field"><label>Р†Рј'СЏ РЅР° РєР°СЂС‚С†С–</label><input type="text" id="co-name" placeholder="IVAN PETRENKO"></div>
-      <button class="btn-submit" id="btn-pay-wfp">рџ”’ РћРїР»Р°С‚РёС‚Рё С‡РµСЂРµР· Wayforpay</button>
-      <div class="secure">рџ”’ Wayforpay В· SSL В· PCI DSS В· Р“СЂРёРІРЅСЏ</div>
+      <div class="field"><label>Ім'я на картці</label><input type="text" id="co-name" placeholder="IVAN PETRENKO"></div>
+      <button class="btn-submit" id="btn-pay-wfp">🔒 Оплатити через Wayforpay</button>
+      <div class="secure">🔒 Wayforpay · SSL · PCI DSS · Гривня</div>
     </div>
     <div class="pay-form" id="pf-paddle">
-      <div class="paddle-box"><strong>рџЊЌ Paddle вЂ” РјС–Р¶РЅР°СЂРѕРґРЅР° РѕРїР»Р°С‚Р°</strong>РџС–СЃР»СЏ РЅР°С‚РёСЃРєР°РЅРЅСЏ РІРё Р±СѓРґРµС‚Рµ РїРµСЂРµРЅР°РїСЂР°РІР»РµРЅС– РЅР° Р·Р°С…РёС‰РµРЅСѓ СЃС‚РѕСЂС–РЅРєСѓ Paddle. РџСЂРёР№РјР°С” Visa, Mastercard, PayPal Р· СѓСЃСЊРѕРіРѕ СЃРІС–С‚Сѓ.</div>
-      <button class="btn-submit" id="btn-pay-paddle" style="background:linear-gradient(135deg,#0066cc,#0088ff)">рџЊЌ РћРїР»Р°С‚РёС‚Рё С‡РµСЂРµР· Paddle</button>
-      <div class="secure">рџЊЌ Paddle В· SSL В· РџРѕРґР°С‚РєРё РІРєР»СЋС‡РµРЅРѕ В· 245 РєСЂР°С—РЅ</div>
+      <div class="paddle-box"><strong>🌍 Paddle — міжнародна оплата</strong>Після натискання ви будете перенаправлені на захищену сторінку Paddle. Приймає Visa, Mastercard, PayPal з усього світу.</div>
+      <button class="btn-submit" id="btn-pay-paddle" style="background:linear-gradient(135deg,#0066cc,#0088ff)">🌍 Оплатити через Paddle</button>
+      <div class="secure">🌍 Paddle · SSL · Податки включено · 245 країн</div>
     </div>
   </div>
 </div>
 
 <!-- TOAST -->
-<div class="toast" id="toast"><span id="t-icon">вњ…</span><span id="t-text"></span></div>
+<div class="toast" id="toast"><span id="t-icon">✅</span><span id="t-text"></span></div>
 
 <script data-cfasync="false">
-// в•ђв•ђ STATE в•ђв•ђ
+// ══ STATE ══
 var state = { user: null, plan: null, pendingPlan: null, payMethod: 'wfp' };
 
 var USERS = {
-  'admin@cineai.com': { pass: 'admin123', role: 'admin', name: 'РђРґРјС–РЅ', plan: 'premium' },
-  'demo@cineai.com':  { pass: 'demo123',  role: 'user',  name: 'Р”РµРјРѕ РљРѕСЂРёСЃС‚СѓРІР°С‡', plan: 'pro' },
+  'admin@cineai.com': { pass: 'admin123', role: 'admin', name: 'Адмін', plan: 'premium' },
+  'demo@cineai.com':  { pass: 'demo123',  role: 'user',  name: 'Демо Користувач', plan: 'pro' },
   'free@cineai.com':  { pass: 'free123',  role: 'user',  name: 'Starter User', plan: 'starter' }
 };
 
-// в•ђв•ђ PAGES в•ђв•ђ
+// ══ PAGES ══
 function showPage(id) {
   ['pg-landing','pg-dash','pg-admin'].forEach(function(p){ document.getElementById(p).style.display = 'none'; });
   document.getElementById(id).style.display = 'block';
 }
 
-// в•ђв•ђ MODALS в•ђв•ђ
+// ══ MODALS ══
 function openModal(id) { document.getElementById(id).classList.add('show'); }
 function closeModal(id) { document.getElementById(id).classList.remove('show'); }
 
-// в•ђв•ђ TOAST в•ђв•ђ
+// ══ TOAST ══
 function toast(icon, text, type) {
   var el = document.getElementById('toast');
   document.getElementById('t-icon').textContent = icon;
@@ -576,13 +578,13 @@ function toast(icon, text, type) {
   el._t = setTimeout(function(){ el.classList.remove('show'); }, 3200);
 }
 
-// в•ђв•ђ AUTH в•ђв•ђ
+// ══ AUTH ══
 function doLogin() {
   var email = document.getElementById('in-email').value.trim().toLowerCase();
   var pass  = document.getElementById('in-pass').value;
-  if (!email || !pass) { toast('вљ пёЏ', 'Р—Р°РїРѕРІРЅС–С‚СЊ РІСЃС– РїРѕР»СЏ', 'error'); return; }
+  if (!email || !pass) { toast('⚠️', 'Заповніть всі поля', 'error'); return; }
   var u = USERS[email];
-  if (!u || u.pass !== pass) { toast('вќЊ', 'РќРµРІС–СЂРЅРёР№ email Р°Р±Рѕ РїР°СЂРѕР»СЊ', 'error'); return; }
+  if (!u || u.pass !== pass) { toast('❌', 'Невірний email або пароль', 'error'); return; }
   loginOk(email, u);
 }
 
@@ -590,8 +592,8 @@ function doRegister() {
   var name  = document.getElementById('reg-name').value.trim();
   var email = document.getElementById('reg-email').value.trim().toLowerCase();
   var pass  = document.getElementById('reg-pass').value;
-  if (!name || !email || !pass) { toast('вљ пёЏ', 'Р—Р°РїРѕРІРЅС–С‚СЊ РІСЃС– РїРѕР»СЏ', 'error'); return; }
-  if (pass.length < 8) { toast('вљ пёЏ', 'РџР°СЂРѕР»СЊ РјС–РЅС–РјСѓРј 8 СЃРёРјРІРѕР»С–РІ', 'error'); return; }
+  if (!name || !email || !pass) { toast('⚠️', 'Заповніть всі поля', 'error'); return; }
+  if (pass.length < 8) { toast('⚠️', 'Пароль мінімум 8 символів', 'error'); return; }
   USERS[email] = { pass: pass, role: 'user', name: name, plan: 'starter' };
   loginOk(email, USERS[email]);
 }
@@ -602,20 +604,20 @@ function loginOk(email, u) {
   closeModal('modal-checkout');
   if (u.role === 'admin') showAdmin();
   else showDash();
-  toast('вњ…', 'Р›Р°СЃРєР°РІРѕ РїСЂРѕСЃРёРјРѕ, ' + u.name + '!', 'success');
+  toast('✅', 'Ласкаво просимо, ' + u.name + '!', 'success');
 }
 
 function doLogout() {
   state.user = null;
   showPage('pg-landing');
-  toast('рџ‘‹', 'Р’Рё РІРёР№С€Р»Рё Р· Р°РєР°СѓРЅС‚Сѓ', 'success');
+  toast('👋', 'Ви вийшли з акаунту', 'success');
 }
 
-// в•ђв•ђ CHECKOUT в•ђв•ђ
+// ══ CHECKOUT ══
 var PLANS = {
-  starter: { name: 'Starter', price: 'Р‘РµР·РєРѕС€С‚РѕРІРЅРѕ' },
-  pro:     { name: 'Pro',     price: '$9.99/РјС–СЃ' },
-  premium: { name: 'Premium', price: '$19.99/РјС–СЃ' }
+  starter: { name: 'Starter', price: 'Безкоштовно' },
+  pro:     { name: 'Pro',     price: '$9.99/міс' },
+  premium: { name: 'Premium', price: '$19.99/міс' }
 };
 
 function openCheckout(plan) {
@@ -636,39 +638,39 @@ function selectPay(method) {
 
 function doPay(method) {
   var email = document.getElementById('co-email').value.trim();
-  if (!email) { toast('вљ пёЏ', 'Р’РІРµРґС–С‚СЊ email', 'error'); return; }
+  if (!email) { toast('⚠️', 'Введіть email', 'error'); return; }
   var plan = state.pendingPlan || 'pro';
 
   if (method === 'wfp') {
     var card = document.getElementById('co-card').value.replace(/\s/g,'');
-    if (card.length < 16) { toast('вљ пёЏ', 'Р’РІРµРґС–С‚СЊ РЅРѕРјРµСЂ РєР°СЂС‚РєРё', 'error'); return; }
+    if (card.length < 16) { toast('⚠️', 'Введіть номер картки', 'error'); return; }
     var btn = document.getElementById('btn-pay-wfp');
-    btn.textContent = 'вЏі РћР±СЂРѕР±РєР°...';
+    btn.textContent = '⏳ Обробка...';
     btn.disabled = true;
     setTimeout(function(){
-      btn.textContent = 'рџ”’ РћРїР»Р°С‚РёС‚Рё С‡РµСЂРµР· Wayforpay';
+      btn.textContent = '🔒 Оплатити через Wayforpay';
       btn.disabled = false;
       var name = email.split('@')[0];
       USERS[email] = { pass: 'auto', role: 'user', name: name, plan: plan };
       loginOk(email, USERS[email]);
-      toast('рџ‡єрџ‡¦', 'РџС–РґРїРёСЃРєСѓ Р°РєС‚РёРІРѕРІР°РЅРѕ С‡РµСЂРµР· Wayforpay!', 'success');
+      toast('🇺🇦', 'Підписку активовано через Wayforpay!', 'success');
     }, 2000);
   } else {
     var btn2 = document.getElementById('btn-pay-paddle');
-    btn2.textContent = 'вЏі РџРµСЂРµРЅР°РїСЂР°РІР»РµРЅРЅСЏ...';
+    btn2.textContent = '⏳ Перенаправлення...';
     btn2.disabled = true;
     setTimeout(function(){
-      btn2.textContent = 'рџЊЌ РћРїР»Р°С‚РёС‚Рё С‡РµСЂРµР· Paddle';
+      btn2.textContent = '🌍 Оплатити через Paddle';
       btn2.disabled = false;
       var name2 = email.split('@')[0];
       USERS[email] = { pass: 'auto', role: 'user', name: name2, plan: plan };
       loginOk(email, USERS[email]);
-      toast('рџЊЌ', 'РџС–РґРїРёСЃРєСѓ Р°РєС‚РёРІРѕРІР°РЅРѕ С‡РµСЂРµР· Paddle!', 'success');
+      toast('🌍', 'Підписку активовано через Paddle!', 'success');
     }, 1500);
   }
 }
 
-// в•ђв•ђ DASHBOARD в•ђв•ђ
+// ══ DASHBOARD ══
 function showDash() {
   showPage('pg-dash');
   var u = state.user;
@@ -676,16 +678,16 @@ function showDash() {
   document.getElementById('d-ava').textContent = initials;
   document.getElementById('d-name').textContent = u.name;
   document.getElementById('d-greet').textContent = u.name.split(' ')[0];
-  var planLabels = { starter: 'STARTER', pro: 'PRO в­ђ', premium: 'PREMIUM рџ’Ћ' };
+  var planLabels = { starter: 'STARTER', pro: 'PRO ⭐', premium: 'PREMIUM 💎' };
   document.getElementById('d-plan').textContent = planLabels[u.plan] || 'FREE';
   document.getElementById('d-projects').textContent = Math.floor(Math.random()*12)+1;
   document.getElementById('d-images').textContent = Math.floor(Math.random()*120)+5;
   document.getElementById('d-voice').textContent = (Math.random()*30+1).toFixed(1);
-  document.getElementById('d-days').textContent = u.plan === 'starter' ? 'в€ћ' : Math.floor(Math.random()*20)+10;
+  document.getElementById('d-days').textContent = u.plan === 'starter' ? '∞' : Math.floor(Math.random()*20)+10;
   renderTools(u.plan);
   var notice = document.getElementById('upgrade-notice');
   if (u.plan === 'starter') {
-    notice.innerHTML = '<div class="upgrade-box"><p>в­ђ РћРЅРѕРІС–С‚СЊ РґРѕ Pro С‰РѕР± СЂРѕР·Р±Р»РѕРєСѓРІР°С‚Рё РѕР¶РёРІР»РµРЅРЅСЏ С„РѕС‚Рѕ, РіРѕР»РѕСЃРё С‚Р° РІС–РґРµРѕ СЂРµРґР°РєС‚РѕСЂ</p><button class="btn-gold" onclick="showLanding()">РџРµСЂРµРіР»СЏРЅСѓС‚Рё С‚Р°СЂРёС„Рё в†’</button></div>';
+    notice.innerHTML = '<div class="upgrade-box"><p>⭐ Оновіть до Pro щоб розблокувати оживлення фото, голоси та відео редактор</p><button class="btn-gold" onclick="showLanding()">Переглянути тарифи →</button></div>';
   } else {
     notice.innerHTML = '';
   }
@@ -695,23 +697,23 @@ function renderTools(plan) {
   var isPro = plan === 'pro' || plan === 'premium';
   var isPrem = plan === 'premium';
   var tools = [
-    { icon:'рџ“ќ', name:'AI РЎС†РµРЅР°СЂРёСЃС‚', desc:'РќР°РїРёС€С–С‚СЊ С–РґРµСЋ вЂ” РѕС‚СЂРёРјР°Р№С‚Рµ СЃС†РµРЅР°СЂС–Р№', locked: false, badge:'вњ“ Р”РѕСЃС‚СѓРїРЅРѕ', badgeClass:'badge-free' },
-    { icon:'рџЋЁ', name:'Р“РµРЅРµСЂР°С†С–СЏ СЃС†РµРЅ', desc:'AI РїРµСЂРµС‚РІРѕСЂСЋС” СЃС†РµРЅРё РЅР° Р·РѕР±СЂР°Р¶РµРЅРЅСЏ', locked: false, badge:'вњ“ Р”РѕСЃС‚СѓРїРЅРѕ', badgeClass:'badge-free' },
-    { icon:'рџЋћпёЏ', name:'РћР¶РёРІР»РµРЅРЅСЏ С„РѕС‚Рѕ', desc:'РђРЅС–РјР°С†С–СЏ РѕР±Р»РёС‡ С‡РµСЂРµР· D-ID API', locked: !isPro, badge: isPro?'вњ“ Pro':'рџ”’ Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'рџЋ™пёЏ', name:'Р“РѕР»РѕСЃРё & TTS', desc:'ElevenLabs СЂРµР°Р»С–СЃС‚РёС‡РЅРµ РѕР·РІСѓС‡РµРЅРЅСЏ', locked: !isPro, badge: isPro?'вњ“ Pro':'рџ”’ Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'вњ‚пёЏ', name:'Р’С–РґРµРѕ Р РµРґР°РєС‚РѕСЂ', desc:'РњРѕРЅС‚Р°Р¶, РїРµСЂРµС…РѕРґРё, РјСѓР·РёРєР°, СЃСѓР±С‚РёС‚СЂРё', locked: !isPro, badge: isPro?'вњ“ Pro':'рџ”’ Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'вњЁ', name:'РџРѕРєСЂР°С‰РµРЅРЅСЏ С„РѕС‚Рѕ', desc:'РђРїСЃРєРµР№Р»С–РЅРі РґРѕ 4K, СЂС–Р·РєС–СЃС‚СЊ, РєРѕСЂРµРєС†С–СЏ РєРѕР»СЊРѕСЂСѓ', locked: !isPro, badge: isPro?'вњ“ Pro':'рџ”’ Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'рџ“ё', name:'AI Р¤РѕС‚РѕСЃРµСЃС–СЏ', desc:'РЎС‚СѓРґС–СЏ, РєРѕР»СЊРѕСЂРѕРІС– С„РѕРЅРё, РїСЂРёСЂРѕРґРЅС– Р»РѕРєР°С†С–С—', locked: !isPro, badge: isPro?'вњ“ Pro':'рџ”’ Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'рџ“±', name:'Р РµРєР»Р°РјР° TikTok 9:16', desc:'Р’СЃС‚Р°РІС‚Рµ С„РѕС‚Рѕ С‚РѕРІР°СЂСѓ в†’ РіРѕС‚РѕРІРµ РІС–РґРµРѕ РґР»СЏ Reels', locked: !isPro, badge: isPro?'вњ“ Pro':'рџ”’ Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'рџЋ¬', name:'РџРѕРєСЂР°С‰РµРЅРЅСЏ РІС–РґРµРѕ', desc:'AI Р°РїСЃРєРµР№Р»С–РЅРі РІС–РґРµРѕ РґРѕ 4K, СЃС‚Р°Р±С–Р»С–Р·Р°С†С–СЏ', locked: !isPrem, badge: isPrem?'вњ“ Premium':'рџ”’ Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
-    { icon:'рџ”„', name:'360В° РћРіР»СЏРґ С‚РѕРІР°СЂСѓ', desc:'РђРІС‚РѕРјР°С‚РёС‡РЅРµ 360В° РѕР±РµСЂС‚Р°РЅРЅСЏ РґР»СЏ РјР°РіР°Р·РёРЅСѓ', locked: !isPrem, badge: isPrem?'вњ“ Premium':'рџ”’ Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
-    { icon:'рџ“є', name:'Р РµРєР»Р°РјР° YouTube 16:9', desc:'Р’С–РґРµРѕСЂРµРєР»Р°РјР° Р· СЂРµР°Р»СЊРЅРёРј С‚РѕРІР°СЂРѕРј РґР»СЏ YouTube', locked: !isPrem, badge: isPrem?'вњ“ Premium':'рџ”’ Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
-    { icon:'рџ“¦', name:'Р•РєСЃРїРѕСЂС‚ 4K', desc:'Р“РѕС‚РѕРІРёР№ MP4 Сѓ 4K Ultra HD СЏРєРѕСЃС‚С–', locked: !isPrem, badge: isPrem?'вњ“ Premium':'рџ”’ Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
+    { icon:'📝', name:'AI Сценарист', desc:'Напишіть ідею — отримайте сценарій', locked: false, badge:'✓ Доступно', badgeClass:'badge-free' },
+    { icon:'🎨', name:'Генерація сцен', desc:'AI перетворює сцени на зображення', locked: false, badge:'✓ Доступно', badgeClass:'badge-free' },
+    { icon:'🎞️', name:'Оживлення фото', desc:'Анімація облич через D-ID API', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
+    { icon:'🎙️', name:'Голоси & TTS', desc:'ElevenLabs реалістичне озвучення', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
+    { icon:'✂️', name:'Відео Редактор', desc:'Монтаж, переходи, музика, субтитри', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
+    { icon:'✨', name:'Покращення фото', desc:'Апскейлінг до 4K, різкість, корекція кольору', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
+    { icon:'📸', name:'AI Фотосесія', desc:'Студія, кольорові фони, природні локації', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
+    { icon:'📱', name:'Реклама TikTok 9:16', desc:'Вставте фото товару → готове відео для Reels', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
+    { icon:'🎬', name:'Покращення відео', desc:'AI апскейлінг відео до 4K, стабілізація', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
+    { icon:'🔄', name:'360° Огляд товару', desc:'Автоматичне 360° обертання для магазину', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
+    { icon:'📺', name:'Реклама YouTube 16:9', desc:'Відеореклама з реальним товаром для YouTube', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
+    { icon:'📦', name:'Експорт 4K', desc:'Готовий MP4 у 4K Ultra HD якості', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
   ];
   var html = '';
   tools.forEach(function(t){
     html += '<div class="tool' + (t.locked?' locked':'') + '" onclick="' + (t.locked?'showLanding()':'openStudio()') + '">';
-    if (t.locked) html += '<div class="tool-lock">рџ”’</div>';
+    if (t.locked) html += '<div class="tool-lock">🔒</div>';
     html += '<div class="tool-icon">' + t.icon + '</div>';
     html += '<div class="tool-name">' + t.name + '</div>';
     html += '<div class="tool-desc">' + t.desc + '</div>';
@@ -722,7 +724,7 @@ function renderTools(plan) {
 }
 
 function openStudio() {
-  toast('рџ’Ў', 'Р’С–РґРєСЂРёР№С‚Рµ С„Р°Р№Р» cineai-studio.html', 'success');
+  toast('💡', 'Відкрийте файл cineai-studio.html', 'success');
 }
 
 function showLanding() {
@@ -730,12 +732,12 @@ function showLanding() {
   setTimeout(function(){ document.getElementById('pricing').scrollIntoView({behavior:'smooth'}); }, 200);
 }
 
-// в•ђв•ђ ADMIN в•ђв•ђ
+// ══ ADMIN ══
 function showAdmin() {
   showPage('pg-admin');
 }
 
-// в•ђв•ђ AUTH TABS в•ђв•ђ
+// ══ AUTH TABS ══
 function switchToLogin() {
   document.getElementById('form-login').style.display = 'block';
   document.getElementById('form-reg').style.display = 'none';
@@ -749,7 +751,7 @@ function switchToReg() {
   document.getElementById('tab-register').classList.add('on');
 }
 
-// в•ђв•ђ EVENT LISTENERS в•ђв•ђ
+// ══ EVENT LISTENERS ══
 document.addEventListener('DOMContentLoaded', function() {
 
   // Nav
@@ -799,7 +801,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Admin
   document.getElementById('btn-adm-logout').addEventListener('click', doLogout);
   document.getElementById('btn-save-api').addEventListener('click', function(){
-    toast('рџ’ѕ', 'РљР»СЋС‡С– Р·Р±РµСЂРµР¶РµРЅРѕ!', 'success');
+    toast('💾', 'Ключі збережено!', 'success');
   });
 
   // Admin tabs
@@ -822,6 +824,47 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('in-email').addEventListener('keypress', function(e){ if(e.key==='Enter') doLogin(); });
 
 });
+
+// ══ LANGUAGE ══
+var TRANSLATIONS = {
+  uk: {
+    'btn-signin': 'Почати безкоштовно',
+    'btn-hero-pro': '🚀 Спробувати 7 днів безкоштовно',
+    'btn-hero-login': 'Увійти',
+    'btn-starter': 'Почати безкоштовно',
+    'btn-pro': '🚀 Спробувати 7 днів безкоштовно',
+    'btn-premium': '💎 Обрати Premium',
+    'btn-logout': 'Вийти',
+    'dash-subtitle': 'Готовий до нового фільму?',
+  },
+  en: {
+    'btn-signin': 'Start free',
+    'btn-hero-pro': '🚀 Try 7 days free',
+    'btn-hero-login': 'Sign in',
+    'btn-starter': 'Start free',
+    'btn-pro': '🚀 Try 7 days free',
+    'btn-premium': '💎 Choose Premium',
+    'btn-logout': 'Log out',
+    'dash-subtitle': 'Ready for a new film?',
+  }
+};
+
+function setLang(lang) {
+  state.lang = lang;
+  document.getElementById('lang-uk').classList.toggle('on', lang === 'uk');
+  document.getElementById('lang-en').classList.toggle('on', lang === 'en');
+  var t = TRANSLATIONS[lang];
+  Object.keys(t).forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = t[id];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('lang-uk').addEventListener('click', function(){ setLang('uk'); });
+  document.getElementById('lang-en').addEventListener('click', function(){ setLang('en'); });
+});
+
 </script>
 </body>
 </html>
