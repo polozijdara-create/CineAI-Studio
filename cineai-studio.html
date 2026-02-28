@@ -2,6 +2,7 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CineAI Studio вЂ” РўРІРѕСЂС‡Р° РЎС‚СѓРґС–СЏ</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -168,6 +169,8 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif}
     <button class="sb-item" data-page="voice"><span class="sb-item-icon">рџЋ™пёЏ</span>Р“РѕР»РѕСЃРё &amp; TTS<span class="sb-badge badge-pro">Pro</span></button>
     <button class="sb-item" data-page="enhance"><span class="sb-item-icon">вњЁ</span>РџРѕРєСЂР°С‰РµРЅРЅСЏ СЏРєРѕСЃС‚С–<span class="sb-badge badge-pro">Pro</span></button>
     <button class="sb-item" data-page="editor"><span class="sb-item-icon">вњ‚пёЏ</span>Р’С–РґРµРѕ Р РµРґР°РєС‚РѕСЂ<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="dubbing"><span class="sb-item-icon">рџЋ­</span>РђРІС‚Рѕ Р”СѓР±Р»СЏР¶<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="cartoon3d"><span class="sb-item-icon">рџЋЁ</span>2D в†’ 3D<span class="sb-badge badge-prem">Premium</span></button>
   </div>
   <div class="sb-section">
     <div class="sb-label">Р‘С–Р·РЅРµСЃ</div>
@@ -486,6 +489,130 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif}
     </div>
   </div>
 
+  <div class="page" id="page-dubbing">
+    <div class="pg-title">РђРІС‚Рѕ <span>Р”СѓР±Р»СЏР¶</span></div>
+    <div class="pg-sub">РЎРёРЅС…СЂРѕРЅС–Р·Р°С†С–СЏ РіСѓР±, РµРјРѕС†С–Р№ С– РіРѕР»РѕСЃСѓ РЅР° Р±СѓРґСЊ-СЏРєСѓ РјРѕРІСѓ Р°РІС‚РѕРјР°С‚РёС‡РЅРѕ</div>
+
+    <div class="card">
+      <div class="card-title"><span>рџ“¤</span> Р—Р°РІР°РЅС‚Р°Р¶С‚Рµ РІС–РґРµРѕ РґР»СЏ РґСѓР±Р»СЏР¶Сѓ</div>
+      <div class="upload-zone" id="upload-dub"><div class="upload-icon">рџЋ¬</div><div class="upload-text"><strong>Р—Р°РІР°РЅС‚Р°Р¶С‚Рµ РІС–РґРµРѕ</strong> Р· РѕСЂРёРіС–РЅР°Р»СЊРЅРёРј РіРѕР»РѕСЃРѕРј<br>MP4, MOV, AVI РґРѕ 500MB</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>рџЊЌ</span> РњРѕРІР° РґСѓР±Р»СЏР¶Сѓ</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px" id="lang-grid">
+        <div class="voice-opt on" data-lang="uk"><div class="voice-icon">рџ‡єрџ‡¦</div><div class="voice-name">РЈРєСЂР°С—РЅСЃСЊРєР°</div></div>
+        <div class="voice-opt" data-lang="en"><div class="voice-icon">рџ‡¬рџ‡§</div><div class="voice-name">English</div></div>
+        <div class="voice-opt" data-lang="de"><div class="voice-icon">рџ‡©рџ‡Є</div><div class="voice-name">Deutsch</div></div>
+        <div class="voice-opt" data-lang="fr"><div class="voice-icon">рџ‡«рџ‡·</div><div class="voice-name">FranГ§ais</div></div>
+        <div class="voice-opt" data-lang="es"><div class="voice-icon">рџ‡Єрџ‡ё</div><div class="voice-name">EspaГ±ol</div></div>
+        <div class="voice-opt" data-lang="it"><div class="voice-icon">рџ‡®рџ‡№</div><div class="voice-name">Italiano</div></div>
+        <div class="voice-opt" data-lang="pl"><div class="voice-icon">рџ‡µрџ‡±</div><div class="voice-name">Polski</div></div>
+        <div class="voice-opt" data-lang="ja"><div class="voice-icon">рџ‡Їрџ‡µ</div><div class="voice-name">ж—Ґжњ¬иЄћ</div></div>
+        <div class="voice-opt" data-lang="zh"><div class="voice-icon">рџ‡Ёрџ‡і</div><div class="voice-name">дё­ж–‡</div></div>
+        <div class="voice-opt" data-lang="ko"><div class="voice-icon">рџ‡°рџ‡·</div><div class="voice-name">н•њкµ­м–ґ</div></div>
+        <div class="voice-opt" data-lang="ar"><div class="voice-icon">рџ‡ёрџ‡¦</div><div class="voice-name">Ш§Щ„Ш№Ш±ШЁЩЉШ©</div></div>
+        <div class="voice-opt" data-lang="hi"><div class="voice-icon">рџ‡®рџ‡і</div><div class="voice-name">а¤№а¤їа¤ЁаҐЌа¤¦аҐЂ</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>рџЋ­</span> РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ СЃРёРЅС…СЂРѕРЅС–Р·Р°С†С–С—</div>
+      <div class="enhance-grid">
+        <div class="enhance-card on" data-dub="lips"><div class="enhance-icon">рџ‘„</div><div class="enhance-name">РЎРёРЅС…СЂРѕРЅС–Р·Р°С†С–СЏ РіСѓР±</div><div class="enhance-desc">AI СЂСѓС…Р°С” РіСѓР±Р°РјРё РїРµСЂСЃРѕРЅР°Р¶С–РІ С‚РѕС‡РЅРѕ РїС–Рґ РЅРѕРІСѓ РјРѕРІСѓ</div></div>
+        <div class="enhance-card on" data-dub="emotion"><div class="enhance-icon">рџЉ</div><div class="enhance-name">РџРµСЂРµРґР°С‡Р° РµРјРѕС†С–Р№</div><div class="enhance-desc">Р Р°РґС–СЃС‚СЊ, СЃРјСѓС‚РѕРє, РіРЅС–РІ вЂ” Р·Р±РµСЂС–РіР°СЋС‚СЊСЃСЏ РїСЂРё РїРµСЂРµРєР»Р°РґС–</div></div>
+        <div class="enhance-card on" data-dub="voice"><div class="enhance-icon">рџЋ™пёЏ</div><div class="enhance-name">РљР»РѕРЅСѓРІР°РЅРЅСЏ РіРѕР»РѕСЃСѓ</div><div class="enhance-desc">Р—Р±РµСЂС–РіР°С” С‚РµРјР±СЂ С– С…Р°СЂР°РєС‚РµСЂ РѕСЂРёРіС–РЅР°Р»СЊРЅРѕРіРѕ РіРѕР»РѕСЃСѓ</div></div>
+        <div class="enhance-card on" data-dub="tempo"><div class="enhance-icon">вЏ±пёЏ</div><div class="enhance-name">РђРІС‚Рѕ С‚Р°Р№РјРёРЅРі</div><div class="enhance-desc">РџС–РґРіР°РЅСЏС” С‚РµРјРї РјРѕРІР»РµРЅРЅСЏ РїС–Рґ С‚СЂРёРІР°Р»С–СЃС‚СЊ СЃС†РµРЅРё</div></div>
+      </div>
+      <div class="row2" style="margin-top:14px">
+        <div class="field"><label>РЇРєС–СЃС‚СЊ РґСѓР±Р»СЏР¶Сѓ</label><select><option>РњР°РєСЃРёРјР°Р»СЊРЅР° (РїРѕРІС–Р»СЊРЅС–С€Рµ)</option><option>Р’РёСЃРѕРєР°</option><option>РЎС‚Р°РЅРґР°СЂС‚РЅР° (С€РІРёРґС€Рµ)</option></select></div>
+        <div class="field"><label>РћСЂРёРіС–РЅР°Р»СЊРЅРёР№ Р·РІСѓРє</label><select><option>Р—Р°РјС–РЅРёС‚Рё РїРѕРІРЅС–СЃС‚СЋ</option><option>Р—Р°Р»РёС€РёС‚Рё С„РѕРЅРѕРІС– Р·РІСѓРєРё</option><option>РњС–РєСЃ (30% РѕСЂРёРіС–РЅР°Р»)</option></select></div>
+      </div>
+      <div class="btns-row">
+        <button class="btn btn-gold" id="btn-start-dub">рџЋ­ РџРѕС‡Р°С‚Рё РґСѓР±Р»СЏР¶</button>
+      </div>
+      <div class="progress-wrap" id="dub-progress" style="display:none">
+        <div class="progress-label"><span id="dub-status">РђРЅР°Р»С–Р· РІС–РґРµРѕ...</span><span id="dub-pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="dub-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="card" id="dub-result-card" style="display:none">
+      <div class="card-title"><span>вњ…</span> Р”СѓР±Р»СЏР¶ РіРѕС‚РѕРІРёР№</div>
+      <div style="background:var(--s2);border:1px solid var(--green);border-radius:10px;padding:20px;text-align:center">
+        <div style="font-size:40px;margin-bottom:10px">рџЋ¬</div>
+        <div style="color:var(--green);font-weight:600;margin-bottom:6px">Р”СѓР±Р»СЏР¶ Р·Р°РІРµСЂС€РµРЅРѕ!</div>
+        <div style="font-size:12px;color:var(--muted)" id="dub-result-info">Р’С–РґРµРѕ РїСЂРѕРґСѓР±Р»СЊРѕРІР°РЅРѕ РЅР° РѕР±СЂР°РЅСѓ РјРѕРІСѓ</div>
+      </div>
+      <div class="btns-row">
+        <button class="btn btn-gold btn-sm" id="btn-dl-dub">в¬‡пёЏ Р—Р°РІР°РЅС‚Р°Р¶РёС‚Рё РІС–РґРµРѕ</button>
+        <button class="btn btn-ghost btn-sm" id="btn-regen-dub">рџ”„ Р—РјС–РЅРёС‚Рё РјРѕРІСѓ</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-cartoon3d">
+    <div class="pg-title">2D РњСѓР»СЊС‚С„С–Р»СЊРј в†’ <span>3D</span></div>
+    <div class="pg-sub">РџРµСЂРµС‚РІРѕСЂРµРЅРЅСЏ РјР°Р»СЊРѕРІР°РЅРёС… РјСѓР»СЊС‚С„С–Р»СЊРјС–РІ Сѓ РїРѕРІРЅРѕС†С–РЅРЅРµ 3D</div>
+
+    <div class="card">
+      <div class="card-title"><span>рџ“¤</span> Р—Р°РІР°РЅС‚Р°Р¶С‚Рµ РјСѓР»СЊС‚С„С–Р»СЊРј</div>
+      <div class="upload-zone" id="upload-cartoon"><div class="upload-icon">рџЋЁ</div><div class="upload-text"><strong>Р—Р°РІР°РЅС‚Р°Р¶С‚Рµ 2D РјСѓР»СЊС‚С„С–Р»СЊРј Р°Р±Рѕ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ</strong><br>MP4, PNG, JPG, GIF РґРѕ 200MB</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>рџЋЁ</span> РЎС‚РёР»СЊ 3D РїРµСЂРµС‚РІРѕСЂРµРЅРЅСЏ</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
+        <div class="enhance-card on" data-style3d="pixar"><div class="enhance-icon">рџЏ†</div><div class="enhance-name">Pixar / Disney</div><div class="enhance-desc">Рњ'СЏРєРёР№ 3D СЃС‚РёР»СЊ РІРµР»РёРєРёС… СЃС‚СѓРґС–Р№</div></div>
+        <div class="enhance-card" data-style3d="anime3d"><div class="enhance-icon">в›©пёЏ</div><div class="enhance-name">РђРЅС–РјРµ 3D</div><div class="enhance-desc">РЇРїРѕРЅСЃСЊРєРёР№ СЃС‚РёР»СЊ Сѓ С‚СЂРёРІРёРјС–СЂРЅРѕРјСѓ РїСЂРѕСЃС‚РѕСЂС–</div></div>
+        <div class="enhance-card" data-style3d="realistic"><div class="enhance-icon">рџЋ¬</div><div class="enhance-name">Р РµР°Р»С–СЃС‚РёС‡РЅРёР№</div><div class="enhance-desc">РњР°РєСЃРёРјР°Р»СЊРЅРѕ СЂРµР°Р»С–СЃС‚РёС‡РЅРµ 3D</div></div>
+        <div class="enhance-card" data-style3d="claymation"><div class="enhance-icon">рџ§ё</div><div class="enhance-name">РљР»РµР№РјРµР№С€РЅ</div><div class="enhance-desc">РЎС‚РёР»СЊ РїР»Р°СЃС‚РёР»С–РЅРѕРІРѕС— Р°РЅС–РјР°С†С–С—</div></div>
+        <div class="enhance-card" data-style3d="stylized"><div class="enhance-icon">вњЁ</div><div class="enhance-name">РЎС‚РёР»С–Р·РѕРІР°РЅРёР№</div><div class="enhance-desc">РҐСѓРґРѕР¶РЅС–Р№ 3D Р· Р·Р±РµСЂРµР¶РµРЅРЅСЏРј СЃС‚РёР»СЋ</div></div>
+        <div class="enhance-card" data-style3d="game"><div class="enhance-icon">рџЋ®</div><div class="enhance-name">Р†РіСЂРѕРІРёР№</div><div class="enhance-desc">3D Сѓ СЃС‚РёР»С– РІС–РґРµРѕС–РіРѕСЂ</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>вљ™пёЏ</span> РџР°СЂР°РјРµС‚СЂРё РєРѕРЅРІРµСЂС‚Р°С†С–С—</div>
+      <div class="row3">
+        <div class="field"><label>Р“Р»РёР±РёРЅР° 3D</label><select><option>РЎРµСЂРµРґРЅСЏ</option><option>РЎР»Р°Р±РєР°</option><option>РЎРёР»СЊРЅР°</option><option>РњР°РєСЃРёРјР°Р»СЊРЅР°</option></select></div>
+        <div class="field"><label>РћСЃРІС–С‚Р»РµРЅРЅСЏ</label><select><option>РђРІС‚Рѕ</option><option>РЎС‚СѓРґС–Р№РЅРµ</option><option>РљС–РЅРµРјР°С‚РѕРіСЂР°С„С–С‡РЅРµ</option><option>РџСЂРёСЂРѕРґРЅС”</option></select></div>
+        <div class="field"><label>Р РѕР·РґС–Р»СЊРЅР° Р·РґР°С‚РЅС–СЃС‚СЊ</label><select><option>1080p</option><option>4K</option><option>720p</option></select></div>
+      </div>
+      <div class="field"><label>Р”РѕРґР°С‚РєРѕРІС– РµС„РµРєС‚Рё</label>
+        <div class="chips">
+          <div class="chip on" onclick="toggleChip(this)">РћР±'С”РјРЅС– С‚С–РЅС–</div>
+          <div class="chip on" onclick="toggleChip(this)">Р’С–РґР±Р»РёСЃРєРё</div>
+          <div class="chip" onclick="toggleChip(this)">Р“Р»РёР±РёРЅР° СЂС–Р·РєРѕСЃС‚С–</div>
+          <div class="chip" onclick="toggleChip(this)">РўСѓРјР°РЅ</div>
+          <div class="chip" onclick="toggleChip(this)">Р§Р°СЃС‚РёРЅРєРё</div>
+          <div class="chip" onclick="toggleChip(this)">Motion blur</div>
+        </div>
+      </div>
+      <div class="btns-row">
+        <button class="btn btn-gold" id="btn-start-3d">рџЋЁ РљРѕРЅРІРµСЂС‚СѓРІР°С‚Рё РІ 3D</button>
+        <button class="btn btn-ghost" id="btn-preview-3d">рџ‘ЃпёЏ РџРѕРїРµСЂРµРґРЅС–Р№ РїРµСЂРµРіР»СЏРґ</button>
+      </div>
+      <div class="progress-wrap" id="c3d-progress" style="display:none">
+        <div class="progress-label"><span id="c3d-status">РђРЅР°Р»С–Р· Р·РѕР±СЂР°Р¶РµРЅСЊ...</span><span id="c3d-pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="c3d-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="card" id="c3d-result-card" style="display:none">
+      <div class="card-title"><span>вњ…</span> 3D РєРѕРЅРІРµСЂС‚Р°С†С–СЏ РіРѕС‚РѕРІР°</div>
+      <div style="background:var(--s2);border:1px solid var(--green);border-radius:10px;padding:20px;text-align:center">
+        <div style="font-size:40px;margin-bottom:10px">рџЋ¬</div>
+        <div style="color:var(--green);font-weight:600;margin-bottom:6px">3D РєРѕРЅРІРµСЂС‚Р°С†С–СЋ Р·Р°РІРµСЂС€РµРЅРѕ!</div>
+        <div style="font-size:12px;color:var(--muted)">РњСѓР»СЊС‚С„С–Р»СЊРј РїРµСЂРµС‚РІРѕСЂРµРЅРѕ Сѓ 3D</div>
+      </div>
+      <div class="btns-row">
+        <button class="btn btn-gold btn-sm" id="btn-dl-3d">в¬‡пёЏ Р—Р°РІР°РЅС‚Р°Р¶РёС‚Рё 3D РІС–РґРµРѕ</button>
+        <button class="btn btn-ghost btn-sm" id="btn-regen-3d">рџ”„ Р—РјС–РЅРёС‚Рё СЃС‚РёР»СЊ</button>
+      </div>
+    </div>
+  </div>
+
   <div class="page" id="page-export">
     <div class="pg-title">Р•РєСЃРїРѕСЂС‚ <span>РџСЂРѕРµРєС‚Сѓ</span></div>
     <div class="pg-sub">Р—Р°РІР°РЅС‚Р°Р¶С‚Рµ РіРѕС‚РѕРІРёР№ С„С–Р»СЊРј Сѓ РїРѕС‚СЂС–Р±РЅРѕРјСѓ С„РѕСЂРјР°С‚С–</div>
@@ -554,7 +681,7 @@ document.addEventListener('DOMContentLoaded', function() {
       this.classList.add('active');
       document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
       document.getElementById('page-' + page).classList.add('active');
-      var names = { scenario:'рџ“ќ AI РЎС†РµРЅР°СЂРёСЃС‚', scenes:'рџЋЁ Р“РµРЅРµСЂР°С†С–СЏ СЃС†РµРЅ', characters:'рџ‘¤ РџРµСЂСЃРѕРЅР°Р¶С–', animate:'рџЋћпёЏ РћР¶РёРІР»РµРЅРЅСЏ С„РѕС‚Рѕ', voice:'рџЋ™пёЏ Р“РѕР»РѕСЃРё & TTS', enhance:'вњЁ РџРѕРєСЂР°С‰РµРЅРЅСЏ', editor:'вњ‚пёЏ Р’С–РґРµРѕ Р РµРґР°РєС‚РѕСЂ', photo:'рџ“ё AI Р¤РѕС‚РѕСЃРµСЃС–СЏ', ads:'рџ“± Р’С–РґРµРѕСЂРµРєР»Р°РјР°', export:'рџ“¦ Р•РєСЃРїРѕСЂС‚' };
+      var names = { scenario:'рџ“ќ AI РЎС†РµРЅР°СЂРёСЃС‚', scenes:'рџЋЁ Р“РµРЅРµСЂР°С†С–СЏ СЃС†РµРЅ', characters:'рџ‘¤ РџРµСЂСЃРѕРЅР°Р¶С–', animate:'рџЋћпёЏ РћР¶РёРІР»РµРЅРЅСЏ С„РѕС‚Рѕ', voice:'рџЋ™пёЏ Р“РѕР»РѕСЃРё & TTS', enhance:'вњЁ РџРѕРєСЂР°С‰РµРЅРЅСЏ', editor:'вњ‚пёЏ Р’С–РґРµРѕ Р РµРґР°РєС‚РѕСЂ', dubbing:'рџЋ­ РђРІС‚Рѕ Р”СѓР±Р»СЏР¶', cartoon3d:'рџЋЁ 2D в†’ 3D', photo:'рџ“ё AI Р¤РѕС‚РѕСЃРµСЃС–СЏ', ads:'рџ“± Р’С–РґРµРѕСЂРµРєР»Р°РјР°', export:'рџ“¦ Р•РєСЃРїРѕСЂС‚' };
       document.getElementById('tb-tool').textContent = names[page] || 'рџЋ¬ РЎС‚СѓРґС–СЏ';
     });
   });
@@ -750,6 +877,96 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+
+  // Dubbing language select
+  document.querySelectorAll('#lang-grid .voice-opt').forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      document.querySelectorAll('#lang-grid .voice-opt').forEach(function(o) { o.classList.remove('on'); });
+      this.classList.add('on');
+    });
+  });
+
+  // Dubbing enhance cards
+  document.querySelectorAll('[data-dub]').forEach(function(card) {
+    card.addEventListener('click', function() { this.classList.toggle('on'); });
+  });
+
+  // Upload dubbing
+  document.getElementById('upload-dub').addEventListener('click', function() { showToast('рџ“Ѓ', 'РџС–РґРєР»СЋС‡С–С‚СЊ API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ РІС–РґРµРѕ', 'ok'); });
+
+  // Start dubbing
+  document.getElementById('btn-start-dub').addEventListener('click', function() {
+    var lang = document.querySelector('#lang-grid .voice-opt.on');
+    if (!lang) { showToast('вљ пёЏ', 'РћР±РµСЂС–С‚СЊ РјРѕРІСѓ РґСѓР±Р»СЏР¶Сѓ', 'err'); return; }
+    var langName = lang.querySelector('.voice-name').textContent;
+    var statuses = ['РђРЅР°Р»С–Р· РІС–РґРµРѕ...', 'Р РѕР·РїС–Р·РЅР°РІР°РЅРЅСЏ РјРѕРІР»РµРЅРЅСЏ...', 'РџРµСЂРµРєР»Р°Рґ С‚РµРєСЃС‚Сѓ...', 'РљР»РѕРЅСѓРІР°РЅРЅСЏ РіРѕР»РѕСЃСѓ...', 'РЎРёРЅС…СЂРѕРЅС–Р·Р°С†С–СЏ РіСѓР±...', 'РћР±СЂРѕР±РєР° РµРјРѕС†С–Р№...', 'Р¤С–РЅР°Р»СЊРЅРёР№ СЂРµРЅРґРµСЂ...'];
+    var si = 0;
+    document.getElementById('dub-progress').style.display = 'block';
+    var val = 0;
+    var iv = setInterval(function() {
+      val += Math.random() * 8;
+      if (val >= 100) { val = 100; clearInterval(iv);
+        setTimeout(function() {
+          document.getElementById('dub-progress').style.display = 'none';
+          document.getElementById('dub-fill').style.width = '0%';
+          document.getElementById('dub-result-card').style.display = 'block';
+          document.getElementById('dub-result-info').textContent = 'Р’С–РґРµРѕ РїСЂРѕРґСѓР±Р»СЊРѕРІР°РЅРѕ РЅР° ' + langName;
+          showToast('рџЋ‰', 'Р”СѓР±Р»СЏР¶ РЅР° ' + langName + ' РіРѕС‚РѕРІРёР№!', 'ok');
+        }, 400);
+      }
+      if (Math.floor(val / 15) > si && si < statuses.length - 1) {
+        si++;
+        document.getElementById('dub-status').textContent = statuses[si];
+      }
+      document.getElementById('dub-fill').style.width = val + '%';
+      document.getElementById('dub-pct').textContent = Math.round(val) + '%';
+    }, 300);
+  });
+
+  document.getElementById('btn-dl-dub').addEventListener('click', function() { showToast('в¬‡пёЏ', 'РџС–РґРєР»СЋС‡С–С‚СЊ D-ID/ElevenLabs API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ', 'ok'); });
+  document.getElementById('btn-regen-dub').addEventListener('click', function() { document.getElementById('dub-result-card').style.display = 'none'; });
+
+  // Cartoon 3D
+  document.querySelectorAll('[data-style3d]').forEach(function(card) {
+    card.addEventListener('click', function() {
+      document.querySelectorAll('[data-style3d]').forEach(function(c) { c.classList.remove('on'); });
+      this.classList.add('on');
+    });
+  });
+
+  document.getElementById('upload-cartoon').addEventListener('click', function() { showToast('рџ“Ѓ', 'РџС–РґРєР»СЋС‡С–С‚СЊ API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ', 'ok'); });
+
+  document.getElementById('btn-preview-3d').addEventListener('click', function() { showToast('рџ‘ЃпёЏ', 'РџРѕРїРµСЂРµРґРЅС–Р№ РїРµСЂРµРіР»СЏРґ Р±СѓРґРµ РґРѕСЃС‚СѓРїРЅРёР№ РїС–СЃР»СЏ РїС–РґРєР»СЋС‡РµРЅРЅСЏ API', 'ok'); });
+
+  document.getElementById('btn-start-3d').addEventListener('click', function() {
+    var style = document.querySelector('[data-style3d].on');
+    var styleName = style ? style.querySelector('.enhance-name').textContent : '3D';
+    var statuses = ['РђРЅР°Р»С–Р· РєР°РґСЂС–РІ...', 'Р’РёР·РЅР°С‡РµРЅРЅСЏ РіР»РёР±РёРЅРё...', 'РџРѕР±СѓРґРѕРІР° 3D РјРѕРґРµР»РµР№...', 'РўРµРєСЃС‚СѓСЂСѓРІР°РЅРЅСЏ...', 'РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РѕСЃРІС–С‚Р»РµРЅРЅСЏ...', 'Р РµРЅРґРµСЂРёРЅРі...'];
+    var si = 0;
+    document.getElementById('c3d-progress').style.display = 'block';
+    var val = 0;
+    var iv = setInterval(function() {
+      val += Math.random() * 6;
+      if (val >= 100) { val = 100; clearInterval(iv);
+        setTimeout(function() {
+          document.getElementById('c3d-progress').style.display = 'none';
+          document.getElementById('c3d-fill').style.width = '0%';
+          document.getElementById('c3d-result-card').style.display = 'block';
+          showToast('рџЋ‰', styleName + ' 3D РєРѕРЅРІРµСЂС‚Р°С†С–СЏ РіРѕС‚РѕРІР°!', 'ok');
+        }, 400);
+      }
+      if (Math.floor(val / 18) > si && si < statuses.length - 1) {
+        si++;
+        document.getElementById('c3d-status').textContent = statuses[si];
+      }
+      document.getElementById('c3d-fill').style.width = val + '%';
+      document.getElementById('c3d-pct').textContent = Math.round(val) + '%';
+    }, 350);
+  });
+
+  document.getElementById('btn-dl-3d').addEventListener('click', function() { showToast('в¬‡пёЏ', 'РџС–РґРєР»СЋС‡С–С‚СЊ 3D API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ', 'ok'); });
+  document.getElementById('btn-regen-3d').addEventListener('click', function() { document.getElementById('c3d-result-card').style.display = 'none'; });
+
   // Export
   document.getElementById('btn-export').addEventListener('click', function() {
     animateProgress('export-fill', 'export-pct', 'export-progress', function() {
@@ -761,3 +978,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
+
