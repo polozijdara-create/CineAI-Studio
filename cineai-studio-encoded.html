@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CineAI Studio &#8212; &#1058;&#1074;&#1086;&#1088;&#1095;&#1072; &#1057;&#1090;&#1091;&#1076;&#1110;&#1103;</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07070d;--s1:#0f0f18;--s2:#141420;--s3:#1a1a28;--border:#252535;--gold:#d4a843;--gold2:#f0c060;--red:#e84040;--green:#3dba6e;--blue:#4a9eff;--text:#eeeef5;--muted:#68688a;--silver:#a0a0c0}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text)}
+button{cursor:pointer;font-family:'DM Sans',sans-serif}
+.app{display:grid;grid-template-columns:220px 1fr;grid-template-rows:52px 1fr;height:100vh}
+.topbar{grid-column:1/-1;background:var(--s1);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:12px;z-index:100}
+.sidebar{background:var(--s1);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto}
+.main{overflow-y:auto;background:var(--bg)}
+.tb-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:var(--gold)}
+.tb-logo span{color:var(--red)}
+.tb-logo small{font-size:11px;letter-spacing:2px;color:var(--muted);margin-left:6px;font-family:'DM Sans',sans-serif;font-weight:400}
+.tb-sep{width:1px;height:24px;background:var(--border);margin:0 4px}
+.tb-tool{font-size:13px;color:var(--silver);font-weight:500}
+.tb-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.btn{padding:10px 22px;border-radius:8px;font-size:13px;font-weight:600;border:none;transition:all .2s;cursor:pointer}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(212,168,67,.35)}
+.btn-ghost{background:none;border:1px solid var(--border);color:var(--silver)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-sm{padding:7px 14px;font-size:12px}
+.btns-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.sb-section{padding:12px 10px 4px}
+.sb-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:0 6px;margin-bottom:6px}
+.sb-item{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;font-size:13px;color:var(--silver);cursor:pointer;transition:all .2s;border:none;background:none;width:100%;text-align:left}
+.sb-item:hover{background:var(--s2);color:var(--text)}
+.sb-item.active{background:rgba(212,168,67,.1);color:var(--gold);border-left:2px solid var(--gold)}
+.sb-item-icon{font-size:16px;width:20px;text-align:center;flex-shrink:0}
+.sb-badge{margin-left:auto;font-size:9px;padding:2px 7px;border-radius:8px;font-weight:700}
+.badge-pro{background:rgba(212,168,67,.2);color:var(--gold)}
+.badge-prem{background:rgba(232,64,64,.15);color:var(--red)}
+.sb-project{padding:10px;margin:10px;background:var(--s2);border-radius:10px;border:1px solid var(--border)}
+.sb-proj-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.sb-proj-name{font-size:13px;font-weight:600;margin-bottom:8px;color:var(--text)}
+.sb-proj-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:4px}
+.sb-proj-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;width:35%}
+.sb-proj-stat{font-size:11px;color:var(--muted)}
+.page{display:none;padding:28px;min-height:100%}
+.page.active{display:block}
+.pg-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;margin-bottom:4px}
+.pg-title span{color:var(--gold)}
+.pg-sub{font-size:13px;color:var(--muted);margin-bottom:24px}
+.card{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.card-title{font-size:15px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;padding:10px 14px;outline:none;transition:border-color .2s;resize:none}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold)}
+.field textarea{min-height:100px;line-height:1.6}
+.field select option{background:var(--s2)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{padding:5px 12px;background:var(--s2);border:1px solid var(--border);border-radius:20px;font-size:12px;color:var(--silver);cursor:pointer;transition:all .2s}
+.chip:hover,.chip.on{background:rgba(212,168,67,.1);border-color:var(--gold);color:var(--gold)}
+.result-box{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:16px;min-height:120px;font-size:14px;line-height:1.7;color:var(--silver);white-space:pre-wrap;position:relative}
+.result-box.loading{opacity:.6}
+.result-empty{text-align:center;padding:30px;color:var(--muted);font-size:13px}
+.result-empty .ei{font-size:32px;margin-bottom:8px}
+.scene-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.scene-card{background:var(--s2);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .2s}
+.scene-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.scene-img{height:140px;display:flex;align-items:center;justify-content:center;font-size:36px;background:linear-gradient(135deg,var(--s2),var(--s3))}
+.scene-info{padding:10px}
+.scene-num{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.scene-title{font-size:13px;font-weight:500;margin-top:2px}
+.bg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.bg-opt{height:70px;border-radius:8px;border:2px solid var(--border);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;letter-spacing:.5px;text-align:center;padding:4px}
+.bg-opt:hover,.bg-opt.on{border-color:var(--gold)}
+.bg-white{background:#f0f0f0;color:#333}
+.bg-black{background:#111;color:#888}
+.bg-gradient{background:linear-gradient(135deg,#1a1a3e,#3a1a5e);color:#a0a0d0}
+.bg-nature{background:linear-gradient(135deg,#1a3a1a,#2d5a1b);color:#80c080}
+.bg-studio{background:linear-gradient(135deg,#2a2020,#4a3030);color:#c09090}
+.bg-ocean{background:linear-gradient(135deg,#0a1a3a,#1a3a6a);color:#6090d0}
+.bg-sunset{background:linear-gradient(135deg,#3a1a0a,#6a2a1a);color:#d08060}
+.bg-urban{background:linear-gradient(135deg,#1a1a1a,#2a2a2a);color:#808080}
+.photo-result{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.photo-card{background:var(--s2);border:1px solid var(--border);border-radius:10px;height:150px;display:flex;align-items:center;justify-content:center;font-size:40px;position:relative}
+.photo-label{position:absolute;bottom:0;left:0;right:0;padding:6px 10px;background:rgba(0,0,0,.6);font-size:11px;color:var(--silver)}
+.format-sel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.format-opt{background:var(--s2);border:2px solid var(--border);border-radius:10px;padding:14px;cursor:pointer;transition:all .2s;text-align:center}
+.format-opt:hover,.format-opt.on{border-color:var(--gold);background:rgba(212,168,67,.06)}
+.format-icon{font-size:24px;margin-bottom:6px}
+.format-name{font-size:13px;font-weight:600}
+.format-size{font-size:11px;color:var(--muted);margin-top:2px}
+.enhance-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.enhance-card{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;cursor:pointer;transition:all .2s}
+.enhance-card:hover{border-color:var(--gold)}
+.enhance-card.on{border-color:var(--gold);background:rgba(212,168,67,.06)}
+.enhance-icon{font-size:28px;margin-bottom:8px}
+.enhance-name{font-size:13px;font-weight:600;margin-bottom:4px}
+.enhance-desc{font-size:11px;color:var(--muted);line-height:1.5}
+.progress-wrap{margin-top:14px}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px}
+.progress-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;width:0%;transition:width .3s}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.voice-opt{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:12px;cursor:pointer;transition:all .2s;text-align:center}
+.voice-opt:hover,.voice-opt.on{border-color:var(--gold);background:rgba(212,168,67,.06)}
+.voice-icon{font-size:22px;margin-bottom:5px}
+.voice-name{font-size:12px;font-weight:600}
+.voice-lang{font-size:10px;color:var(--muted);margin-top:2px}
+.waveform{height:50px;background:var(--s2);border:1px solid var(--border);border-radius:8px;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:3px;padding:0 16px}
+.wave-bar{width:3px;background:var(--gold);border-radius:2px;animation:wave 1s ease-in-out infinite}
+.wave-bar:nth-child(1){height:20px;animation-delay:0s}
+.wave-bar:nth-child(2){height:35px;animation-delay:.1s}
+.wave-bar:nth-child(3){height:25px;animation-delay:.2s}
+.wave-bar:nth-child(4){height:40px;animation-delay:.3s}
+.wave-bar:nth-child(5){height:20px;animation-delay:.4s}
+.wave-bar:nth-child(6){height:30px;animation-delay:.5s}
+.wave-bar:nth-child(7){height:15px;animation-delay:.6s}
+.wave-bar:nth-child(8){height:35px;animation-delay:.7s}
+.wave-bar:nth-child(9){height:25px;animation-delay:.8s}
+.wave-bar:nth-child(10){height:18px;animation-delay:.9s}
+.waveform.idle .wave-bar{animation:none;height:4px;opacity:.3}
+@keyframes wave{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.8)}}
+.upload-zone{border:2px dashed var(--border);border-radius:10px;padding:30px;text-align:center;cursor:pointer;transition:all .2s}
+.upload-zone:hover{border-color:var(--gold);background:rgba(212,168,67,.03)}
+.upload-icon{font-size:32px;margin-bottom:8px}
+.upload-text{font-size:13px;color:var(--muted)}
+.upload-text strong{color:var(--gold)}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--s1);border:1px solid var(--border);border-radius:10px;padding:11px 16px;display:flex;align-items:center;gap:9px;font-size:13px;z-index:9999;transform:translateX(140%);transition:transform .3s;max-width:300px}
+.toast.show{transform:translateX(0)}
+.toast.ok{border-color:var(--green)}
+.toast.err{border-color:var(--red)}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+@media(max-width:768px){.app{grid-template-columns:1fr;grid-template-rows:52px 1fr}.sidebar{display:none}.scene-grid,.photo-result,.row2,.row3{grid-template-columns:1fr}.voice-grid{grid-template-columns:1fr 1fr}.bg-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div class="topbar">
+  <div class="tb-logo">Cine<span>AI</span> <small>STUDIO</small></div>
+  <div class="tb-sep"></div>
+  <span class="tb-tool" id="tb-tool">&#127916; &#1057;&#1090;&#1091;&#1076;&#1110;&#1103;</span>
+  <div class="tb-right">
+    <button class="btn btn-ghost btn-sm" onclick="window.history.back()">&#8592; &#1053;&#1072;&#1079;&#1072;&#1076;</button>
+    <button class="btn btn-gold btn-sm" id="btn-new-proj">+ &#1053;&#1086;&#1074;&#1080;&#1081; &#1087;&#1088;&#1086;&#1077;&#1082;&#1090;</button>
+  </div>
+</div>
+
+<div class="sidebar">
+  <div class="sb-project">
+    <div class="sb-proj-label">&#1055;&#1086;&#1090;&#1086;&#1095;&#1085;&#1080;&#1081; &#1087;&#1088;&#1086;&#1077;&#1082;&#1090;</div>
+    <div class="sb-proj-name" id="proj-name">&#1052;&#1110;&#1081; &#1087;&#1077;&#1088;&#1096;&#1080;&#1081; &#1092;&#1110;&#1083;&#1100;&#1084;</div>
+    <div class="sb-proj-bar"><div class="sb-proj-fill"></div></div>
+    <div class="sb-proj-stat">3 &#1079; 8 &#1089;&#1094;&#1077;&#1085; &#1075;&#1086;&#1090;&#1086;&#1074;&#1110;</div>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">&#1057;&#1090;&#1074;&#1086;&#1088;&#1077;&#1085;&#1085;&#1103;</div>
+    <button class="sb-item active" data-page="scenario"><span class="sb-item-icon">&#128221;</span>AI &#1057;&#1094;&#1077;&#1085;&#1072;&#1088;&#1080;&#1089;&#1090;</button>
+    <button class="sb-item" data-page="scenes"><span class="sb-item-icon">&#127912;</span>&#1043;&#1077;&#1085;&#1077;&#1088;&#1072;&#1094;&#1110;&#1103; &#1089;&#1094;&#1077;&#1085;</button>
+    <button class="sb-item" data-page="characters"><span class="sb-item-icon">&#128100;</span>&#1055;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1078;&#1110;</button>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">&#1052;&#1077;&#1076;&#1110;&#1072;</div>
+    <button class="sb-item" data-page="animate"><span class="sb-item-icon">&#127902;&#65039;</span>&#1054;&#1078;&#1080;&#1074;&#1083;&#1077;&#1085;&#1085;&#1103; &#1092;&#1086;&#1090;&#1086;<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="voice"><span class="sb-item-icon">&#127897;&#65039;</span>&#1043;&#1086;&#1083;&#1086;&#1089;&#1080; &amp; TTS<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="enhance"><span class="sb-item-icon">&#10024;</span>&#1055;&#1086;&#1082;&#1088;&#1072;&#1097;&#1077;&#1085;&#1085;&#1103; &#1103;&#1082;&#1086;&#1089;&#1090;&#1110;<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="editor"><span class="sb-item-icon">&#9986;&#65039;</span>&#1042;&#1110;&#1076;&#1077;&#1086; &#1056;&#1077;&#1076;&#1072;&#1082;&#1090;&#1086;&#1088;<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="dubbing"><span class="sb-item-icon">&#127917;</span>&#1040;&#1074;&#1090;&#1086; &#1044;&#1091;&#1073;&#1083;&#1103;&#1078;<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="cartoon3d"><span class="sb-item-icon">&#127912;</span>2D &#8594; 3D<span class="sb-badge badge-prem">Premium</span></button>
+  </div>
+  <div class="sb-section">
+    <div class="sb-label">&#1041;&#1110;&#1079;&#1085;&#1077;&#1089;</div>
+    <button class="sb-item" data-page="photo"><span class="sb-item-icon">&#128248;</span>AI &#1060;&#1086;&#1090;&#1086;&#1089;&#1077;&#1089;&#1110;&#1103;<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="ads"><span class="sb-item-icon">&#128241;</span>&#1042;&#1110;&#1076;&#1077;&#1086;&#1088;&#1077;&#1082;&#1083;&#1072;&#1084;&#1072;<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="export"><span class="sb-item-icon">&#128230;</span>&#1045;&#1082;&#1089;&#1087;&#1086;&#1088;&#1090;<span class="sb-badge badge-prem">Premium</span></button>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="page active" id="page-scenario">
+    <div class="pg-title">AI <span>&#1057;&#1094;&#1077;&#1085;&#1072;&#1088;&#1080;&#1089;&#1090;</span></div>
+    <div class="pg-sub">&#1054;&#1087;&#1080;&#1096;&#1110;&#1090;&#1100; &#1110;&#1076;&#1077;&#1102; &#8212; AI &#1085;&#1072;&#1087;&#1080;&#1096;&#1077; &#1087;&#1086;&#1074;&#1085;&#1086;&#1094;&#1110;&#1085;&#1085;&#1080;&#1081; &#1089;&#1094;&#1077;&#1085;&#1072;&#1088;&#1110;&#1081;</div>
+    <div class="card">
+      <div class="card-title"><span>&#128161;</span> &#1042;&#1072;&#1096;&#1072; &#1110;&#1076;&#1077;&#1103;</div>
+      <div class="field"><label>&#1054;&#1087;&#1080;&#1089; &#1092;&#1110;&#1083;&#1100;&#1084;&#1091;</label><textarea id="sc-idea" placeholder="&#1053;&#1072;&#1087;&#1088;&#1080;&#1082;&#1083;&#1072;&#1076;: &#1050;&#1086;&#1088;&#1086;&#1090;&#1082;&#1086;&#1084;&#1077;&#1090;&#1088;&#1072;&#1078;&#1085;&#1080;&#1081; &#1092;&#1110;&#1083;&#1100;&#1084; &#1087;&#1088;&#1086; &#1084;&#1086;&#1083;&#1086;&#1076;&#1091; &#1093;&#1091;&#1076;&#1086;&#1078;&#1085;&#1080;&#1094;&#1102; &#1103;&#1082;&#1072; &#1074;&#1110;&#1076;&#1082;&#1088;&#1080;&#1074;&#1072;&#1108; &#1090;&#1072;&#1108;&#1084;&#1085;&#1080;&#1095;&#1091; &#1082;&#1072;&#1088;&#1090;&#1080;&#1085;&#1091;..."></textarea></div>
+      <div class="row3">
+        <div class="field"><label>&#1046;&#1072;&#1085;&#1088;</label><select id="sc-genre"><option>&#1044;&#1088;&#1072;&#1084;&#1072;</option><option>&#1058;&#1088;&#1080;&#1083;&#1077;&#1088;</option><option>&#1050;&#1086;&#1084;&#1077;&#1076;&#1110;&#1103;</option><option>&#1060;&#1072;&#1085;&#1090;&#1072;&#1089;&#1090;&#1080;&#1082;&#1072;</option><option>&#1046;&#1072;&#1093;&#1080;</option><option>&#1056;&#1086;&#1084;&#1072;&#1085;&#1090;&#1080;&#1082;&#1072;</option></select></div>
+        <div class="field"><label>&#1058;&#1088;&#1080;&#1074;&#1072;&#1083;&#1110;&#1089;&#1090;&#1100;</label><select><option>1-3 &#1093;&#1074;&#1080;&#1083;&#1080;&#1085;&#1080;</option><option>5-10 &#1093;&#1074;&#1080;&#1083;&#1080;&#1085;</option><option>15-30 &#1093;&#1074;&#1080;&#1083;&#1080;&#1085;</option><option>&#1055;&#1086;&#1074;&#1085;&#1080;&#1081; &#1084;&#1077;&#1090;&#1088;</option></select></div>
+        <div class="field"><label>&#1052;&#1086;&#1074;&#1072;</label><select><option>&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;</option><option>&#1040;&#1085;&#1075;&#1083;&#1110;&#1081;&#1089;&#1100;&#1082;&#1072;</option><option>&#1055;&#1086;&#1083;&#1100;&#1089;&#1100;&#1082;&#1072;</option></select></div>
+      </div>
+      <div class="field"><label>&#1057;&#1090;&#1080;&#1083;&#1100;</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">&#1050;&#1110;&#1085;&#1077;&#1084;&#1072;&#1090;&#1086;&#1075;&#1088;&#1072;&#1092;&#1110;&#1095;&#1085;&#1080;&#1081;</div><div class="chip" onclick="toggleChip(this)">&#1040;&#1088;&#1090;-&#1093;&#1072;&#1091;&#1089;</div><div class="chip" onclick="toggleChip(this)">&#1043;&#1086;&#1083;&#1083;&#1110;&#1074;&#1091;&#1076;&#1089;&#1100;&#1082;&#1080;&#1081;</div><div class="chip" onclick="toggleChip(this)">&#1053;&#1091;&#1072;&#1088;</div><div class="chip" onclick="toggleChip(this)">&#1040;&#1085;&#1110;&#1084;&#1077;</div></div></div>
+      <div class="btns-row">
+        <button class="btn btn-gold" id="btn-gen-scenario">&#10024; &#1047;&#1075;&#1077;&#1085;&#1077;&#1088;&#1091;&#1074;&#1072;&#1090;&#1080; &#1089;&#1094;&#1077;&#1085;&#1072;&#1088;&#1110;&#1081;</button>
+        <button class="btn btn-ghost" id="btn-clear-scenario">&#128465;&#65039; &#1054;&#1095;&#1080;&#1089;&#1090;&#1080;&#1090;&#1080;</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span>&#128196;</span> &#1043;&#1086;&#1090;&#1086;&#1074;&#1080;&#1081; &#1089;&#1094;&#1077;&#1085;&#1072;&#1088;&#1110;&#1081;</div>
+      <div class="result-box" id="sc-result"><div class="result-empty"><div class="ei">&#128221;</div>&#1042;&#1074;&#1077;&#1076;&#1110;&#1090;&#1100; &#1110;&#1076;&#1077;&#1102; &#1110; &#1085;&#1072;&#1090;&#1080;&#1089;&#1085;&#1110;&#1090;&#1100; "&#1047;&#1075;&#1077;&#1085;&#1077;&#1088;&#1091;&#1074;&#1072;&#1090;&#1080;"</div></div>
+      <div class="btns-row" id="sc-actions" style="display:none">
+        <button class="btn btn-gold btn-sm" id="btn-to-scenes">&#8594; &#1043;&#1077;&#1085;&#1077;&#1088;&#1091;&#1074;&#1072;&#1090;&#1080; &#1089;&#1094;&#1077;&#1085;&#1080;</button>
+        <button class="btn btn-ghost btn-sm" id="btn-copy-scenario">&#128203; &#1050;&#1086;&#1087;&#1110;&#1102;&#1074;&#1072;&#1090;&#1080;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-scenes">
+    <div class="pg-title">&#1043;&#1077;&#1085;&#1077;&#1088;&#1072;&#1094;&#1110;&#1103; <span>&#1057;&#1094;&#1077;&#1085;</span></div>
+    <div class="pg-sub">AI &#1087;&#1077;&#1088;&#1077;&#1090;&#1074;&#1086;&#1088;&#1102;&#1108; &#1082;&#1086;&#1078;&#1085;&#1091; &#1089;&#1094;&#1077;&#1085;&#1091; &#1085;&#1072; &#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1085;&#1103;</div>
+    <div class="card">
+      <div class="card-title"><span>&#127912;</span> &#1053;&#1072;&#1083;&#1072;&#1096;&#1090;&#1091;&#1074;&#1072;&#1085;&#1085;&#1103;</div>
+      <div class="row2">
+        <div class="field"><label>&#1057;&#1090;&#1080;&#1083;&#1100; &#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1100;</label><select><option>&#1050;&#1110;&#1085;&#1086;&#1088;&#1077;&#1072;&#1083;&#1110;&#1079;&#1084;</option><option>&#1062;&#1080;&#1092;&#1088;&#1086;&#1074;&#1080;&#1081; &#1078;&#1080;&#1074;&#1086;&#1087;&#1080;&#1089;</option><option>&#1040;&#1085;&#1110;&#1084;&#1077;</option><option>&#1040;&#1082;&#1074;&#1072;&#1088;&#1077;&#1083;&#1100;</option><option>3D &#1088;&#1077;&#1085;&#1076;&#1077;&#1088;</option><option>&#1060;&#1086;&#1090;&#1086;&#1088;&#1077;&#1072;&#1083;&#1110;&#1079;&#1084;</option></select></div>
+        <div class="field"><label>&#1057;&#1087;&#1110;&#1074;&#1074;&#1110;&#1076;&#1085;&#1086;&#1096;&#1077;&#1085;&#1085;&#1103; &#1089;&#1090;&#1086;&#1088;&#1110;&#1085;</label><select><option>16:9 (&#1050;&#1110;&#1085;&#1086;)</option><option>4:3 (&#1050;&#1083;&#1072;&#1089;&#1080;&#1095;&#1085;&#1077;)</option><option>1:1 (&#1050;&#1074;&#1072;&#1076;&#1088;&#1072;&#1090;)</option><option>9:16 (&#1042;&#1077;&#1088;&#1090;&#1080;&#1082;&#1072;&#1083;&#1100;&#1085;&#1077;)</option></select></div>
+      </div>
+      <div class="field"><label>&#1054;&#1087;&#1080;&#1089; &#1089;&#1094;&#1077;&#1085;&#1080;</label><textarea id="scene-desc" placeholder="&#1054;&#1087;&#1080;&#1096;&#1110;&#1090;&#1100; &#1089;&#1094;&#1077;&#1085;&#1091;: &#1087;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1078;&#1110;, &#1086;&#1073;&#1089;&#1090;&#1072;&#1085;&#1086;&#1074;&#1082;&#1072;, &#1086;&#1089;&#1074;&#1110;&#1090;&#1083;&#1077;&#1085;&#1085;&#1103;, &#1085;&#1072;&#1089;&#1090;&#1088;&#1110;&#1081;..."></textarea></div>
+      <div class="btns-row">
+        <button class="btn btn-gold" id="btn-gen-scene">&#127912; &#1043;&#1077;&#1085;&#1077;&#1088;&#1091;&#1074;&#1072;&#1090;&#1080; &#1089;&#1094;&#1077;&#1085;&#1091;</button>
+        <button class="btn btn-ghost" id="btn-gen-all-scenes">&#9889; &#1042;&#1089;&#1110; &#1089;&#1094;&#1077;&#1085;&#1080; &#1079; &#1089;&#1094;&#1077;&#1085;&#1072;&#1088;&#1110;&#1102;</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span>&#128444;&#65039;</span> &#1047;&#1075;&#1077;&#1085;&#1077;&#1088;&#1086;&#1074;&#1072;&#1085;&#1110; &#1089;&#1094;&#1077;&#1085;&#1080;</div>
+      <div class="scene-grid" id="scenes-grid">
+        <div class="scene-card"><div class="scene-img">&#127750;</div><div class="scene-info"><div class="scene-num">&#1057;&#1094;&#1077;&#1085;&#1072; 1</div><div class="scene-title">&#1052;&#1110;&#1089;&#1090;&#1086; &#1074;&#1085;&#1086;&#1095;&#1110;</div></div></div>
+        <div class="scene-card"><div class="scene-img">&#127912;</div><div class="scene-info"><div class="scene-num">&#1057;&#1094;&#1077;&#1085;&#1072; 2</div><div class="scene-title">&#1052;&#1072;&#1081;&#1089;&#1090;&#1077;&#1088;&#1085;&#1103; &#1093;&#1091;&#1076;&#1086;&#1078;&#1085;&#1080;&#1094;&#1110;</div></div></div>
+        <div class="scene-card"><div class="scene-img">&#128444;&#65039;</div><div class="scene-info"><div class="scene-num">&#1057;&#1094;&#1077;&#1085;&#1072; 3</div><div class="scene-title">&#1058;&#1072;&#1108;&#1084;&#1085;&#1080;&#1095;&#1072; &#1082;&#1072;&#1088;&#1090;&#1080;&#1085;&#1072;</div></div></div>
+        <div class="scene-card" id="add-scene-btn" style="border:2px dashed var(--border);align-items:center;justify-content:center;display:flex;min-height:190px"><div style="text-align:center;color:var(--muted)"><div style="font-size:28px;margin-bottom:6px">+</div><div style="font-size:12px">&#1044;&#1086;&#1076;&#1072;&#1090;&#1080; &#1089;&#1094;&#1077;&#1085;&#1091;</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-characters">
+    <div class="pg-title">AI <span>&#1055;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1078;&#1110;</span></div>
+    <div class="pg-sub">&#1043;&#1077;&#1085;&#1077;&#1088;&#1091;&#1081;&#1090;&#1077; &#1087;&#1086;&#1088;&#1090;&#1088;&#1077;&#1090;&#1080; &#1075;&#1077;&#1088;&#1086;&#1111;&#1074; &#8212; &#1089;&#1090;&#1072;&#1073;&#1110;&#1083;&#1100;&#1085;&#1080;&#1081; &#1074;&#1080;&#1075;&#1083;&#1103;&#1076; &#1091; &#1074;&#1089;&#1110;&#1093; &#1089;&#1094;&#1077;&#1085;&#1072;&#1093;</div>
+    <div class="card">
+      <div class="card-title"><span>&#128100;</span> &#1053;&#1086;&#1074;&#1080;&#1081; &#1087;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1078;</div>
+      <div class="row2">
+        <div class="field"><label>&#1030;&#1084;'&#1103; &#1087;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1078;&#1072;</label><input type="text" id="char-name" placeholder="&#1054;&#1083;&#1077;&#1085;&#1072;"></div>
+        <div class="field"><label>&#1042;&#1110;&#1082;</label><input type="text" id="char-age" placeholder="25"></div>
+      </div>
+      <div class="field"><label>&#1047;&#1086;&#1074;&#1085;&#1110;&#1096;&#1085;&#1110;&#1089;&#1090;&#1100;</label><textarea id="char-look" placeholder="&#1052;&#1086;&#1083;&#1086;&#1076;&#1072; &#1078;&#1110;&#1085;&#1082;&#1072;, &#1090;&#1077;&#1084;&#1085;&#1077; &#1074;&#1086;&#1083;&#1086;&#1089;&#1089;&#1103;, &#1079;&#1077;&#1083;&#1077;&#1085;&#1110; &#1086;&#1095;&#1110;..." style="min-height:70px"></textarea></div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-gen-char">&#128100; &#1043;&#1077;&#1085;&#1077;&#1088;&#1091;&#1074;&#1072;&#1090;&#1080; &#1087;&#1086;&#1088;&#1090;&#1088;&#1077;&#1090;</button></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span>&#127917;</span> &#1055;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1078;&#1110; &#1087;&#1088;&#1086;&#1077;&#1082;&#1090;&#1091;</div>
+      <div class="scene-grid" id="chars-grid">
+        <div class="scene-card"><div class="scene-img">&#128105;&#8205;&#127912;</div><div class="scene-info"><div class="scene-num">&#1043;&#1086;&#1083;&#1086;&#1074;&#1085;&#1072; &#1088;&#1086;&#1083;&#1100;</div><div class="scene-title">&#1054;&#1083;&#1077;&#1085;&#1072; &#8212; &#1093;&#1091;&#1076;&#1086;&#1078;&#1085;&#1080;&#1094;&#1103;</div></div></div>
+        <div class="scene-card"><div class="scene-img">&#128104;&#8205;&#128188;</div><div class="scene-info"><div class="scene-num">&#1044;&#1088;&#1091;&#1075;&#1086;&#1088;&#1103;&#1076;&#1085;&#1072; &#1088;&#1086;&#1083;&#1100;</div><div class="scene-title">&#1052;&#1072;&#1082;&#1089;&#1080;&#1084; &#8212; &#1075;&#1072;&#1083;&#1077;&#1088;&#1080;&#1089;&#1090;</div></div></div>
+        <div class="scene-card" id="add-char-btn" style="border:2px dashed var(--border);align-items:center;justify-content:center;display:flex;min-height:190px"><div style="text-align:center;color:var(--muted)"><div style="font-size:28px;margin-bottom:6px">+</div><div style="font-size:12px">&#1044;&#1086;&#1076;&#1072;&#1090;&#1080; &#1087;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1078;&#1072;</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-animate">
+    <div class="pg-title">&#1054;&#1078;&#1080;&#1074;&#1083;&#1077;&#1085;&#1085;&#1103; <span>&#1060;&#1086;&#1090;&#1086;</span></div>
+    <div class="pg-sub">&#1055;&#1077;&#1088;&#1077;&#1090;&#1074;&#1086;&#1088;&#1110;&#1090;&#1100; &#1089;&#1090;&#1072;&#1090;&#1080;&#1095;&#1085;&#1110; &#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1085;&#1103; &#1085;&#1072; &#1078;&#1080;&#1074;&#1110; &#1089;&#1094;&#1077;&#1085;&#1080; &#1095;&#1077;&#1088;&#1077;&#1079; D-ID</div>
+    <div class="card">
+      <div class="card-title"><span>&#128228;</span> &#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1090;&#1077; &#1092;&#1086;&#1090;&#1086;</div>
+      <div class="upload-zone" id="upload-animate"><div class="upload-icon">&#128444;&#65039;</div><div class="upload-text"><strong>&#1053;&#1072;&#1090;&#1080;&#1089;&#1085;&#1110;&#1090;&#1100; &#1072;&#1073;&#1086; &#1087;&#1077;&#1088;&#1077;&#1090;&#1103;&#1075;&#1085;&#1110;&#1090;&#1100;</strong> &#1092;&#1086;&#1090;&#1086; &#1089;&#1102;&#1076;&#1080;<br>PNG, JPG &#1076;&#1086; 10MB</div></div>
+      <div class="row2" style="margin-top:14px">
+        <div class="field"><label>&#1058;&#1080;&#1087; &#1072;&#1085;&#1110;&#1084;&#1072;&#1094;&#1110;&#1111;</label><select><option>&#1050;&#1083;&#1110;&#1087; &#1086;&#1095;&#1080;&#1084;&#1072;</option><option>&#1056;&#1091;&#1093; &#1075;&#1086;&#1083;&#1086;&#1074;&#1080;</option><option>&#1052;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1103;</option><option>&#1045;&#1084;&#1086;&#1094;&#1110;&#1111;</option></select></div>
+        <div class="field"><label>&#1058;&#1088;&#1080;&#1074;&#1072;&#1083;&#1110;&#1089;&#1090;&#1100;</label><select><option>3 &#1089;&#1077;&#1082;&#1091;&#1085;&#1076;&#1080;</option><option>5 &#1089;&#1077;&#1082;&#1091;&#1085;&#1076;</option><option>10 &#1089;&#1077;&#1082;&#1091;&#1085;&#1076;</option></select></div>
+      </div>
+      <div class="field"><label>&#1058;&#1077;&#1082;&#1089;&#1090; &#1076;&#1083;&#1103; &#1086;&#1079;&#1074;&#1091;&#1095;&#1077;&#1085;&#1085;&#1103;</label><textarea placeholder="&#1042;&#1074;&#1077;&#1076;&#1110;&#1090;&#1100; &#1090;&#1077;&#1082;&#1089;&#1090; &#1103;&#1082;&#1080;&#1081; &#1073;&#1091;&#1076;&#1077; &#1074;&#1080;&#1084;&#1086;&#1074;&#1083;&#1103;&#1090;&#1080; &#1087;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1078;..." style="min-height:70px"></textarea></div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-animate">&#127902;&#65039; &#1054;&#1078;&#1080;&#1074;&#1080;&#1090;&#1080; &#1092;&#1086;&#1090;&#1086;</button></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span>&#127916;</span> &#1056;&#1077;&#1079;&#1091;&#1083;&#1100;&#1090;&#1072;&#1090;</div>
+      <div class="result-box" id="anim-result"><div class="result-empty"><div class="ei">&#127902;&#65039;</div>&#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1090;&#1077; &#1092;&#1086;&#1090;&#1086; &#1110; &#1085;&#1072;&#1090;&#1080;&#1089;&#1085;&#1110;&#1090;&#1100; "&#1054;&#1078;&#1080;&#1074;&#1080;&#1090;&#1080;"</div></div>
+    </div>
+  </div>
+
+  <div class="page" id="page-voice">
+    <div class="pg-title">&#1043;&#1086;&#1083;&#1086;&#1089;&#1080; <span>&amp; TTS</span></div>
+    <div class="pg-sub">&#1056;&#1077;&#1072;&#1083;&#1110;&#1089;&#1090;&#1080;&#1095;&#1085;&#1077; &#1086;&#1079;&#1074;&#1091;&#1095;&#1077;&#1085;&#1085;&#1103; &#1095;&#1077;&#1088;&#1077;&#1079; ElevenLabs &#8212; 29 &#1084;&#1086;&#1074;</div>
+    <div class="card">
+      <div class="card-title"><span>&#127897;&#65039;</span> &#1054;&#1073;&#1077;&#1088;&#1110;&#1090;&#1100; &#1075;&#1086;&#1083;&#1086;&#1089;</div>
+      <div class="voice-grid">
+        <div class="voice-opt on" data-voice="&#1054;&#1083;&#1077;&#1085;&#1072;"><div class="voice-icon">&#128105;</div><div class="voice-name">&#1054;&#1083;&#1077;&#1085;&#1072;</div><div class="voice-lang">&#127482;&#127462; &#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;</div></div>
+        <div class="voice-opt" data-voice="&#1054;&#1083;&#1077;&#1082;&#1089;&#1110;&#1081;"><div class="voice-icon">&#128104;</div><div class="voice-name">&#1054;&#1083;&#1077;&#1082;&#1089;&#1110;&#1081;</div><div class="voice-lang">&#127482;&#127462; &#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;</div></div>
+        <div class="voice-opt" data-voice="Sarah"><div class="voice-icon">&#128105;&#8205;&#129457;</div><div class="voice-name">Sarah</div><div class="voice-lang">&#127468;&#127463; English</div></div>
+        <div class="voice-opt" data-voice="James"><div class="voice-icon">&#128104;&#8205;&#129459;</div><div class="voice-name">James</div><div class="voice-lang">&#127468;&#127463; English</div></div>
+        <div class="voice-opt" data-voice="Anna"><div class="voice-icon">&#128105;&#8205;&#129456;</div><div class="voice-name">Anna</div><div class="voice-lang">&#127465;&#127466; Deutsch</div></div>
+        <div class="voice-opt" data-voice="AI"><div class="voice-icon">&#129302;</div><div class="voice-name">AI Voice</div><div class="voice-lang">&#127757; &#1040;&#1074;&#1090;&#1086;</div></div>
+      </div>
+      <div class="field"><label>&#1058;&#1077;&#1082;&#1089;&#1090; &#1076;&#1083;&#1103; &#1086;&#1079;&#1074;&#1091;&#1095;&#1077;&#1085;&#1085;&#1103;</label><textarea id="voice-text" placeholder="&#1042;&#1074;&#1077;&#1076;&#1110;&#1090;&#1100; &#1090;&#1077;&#1082;&#1089;&#1090;..."></textarea></div>
+      <div class="row2">
+        <div class="field"><label>&#1064;&#1074;&#1080;&#1076;&#1082;&#1110;&#1089;&#1090;&#1100;</label><select><option>&#1053;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072;</option><option>&#1055;&#1086;&#1074;&#1110;&#1083;&#1100;&#1085;&#1072;</option><option>&#1064;&#1074;&#1080;&#1076;&#1082;&#1072;</option></select></div>
+        <div class="field"><label>&#1045;&#1084;&#1086;&#1094;&#1110;&#1103;</label><select><option>&#1053;&#1077;&#1081;&#1090;&#1088;&#1072;&#1083;&#1100;&#1085;&#1072;</option><option>&#1056;&#1072;&#1076;&#1110;&#1089;&#1085;&#1072;</option><option>&#1057;&#1091;&#1084;&#1085;&#1072;</option><option>&#1057;&#1077;&#1088;&#1081;&#1086;&#1079;&#1085;&#1072;</option></select></div>
+      </div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-gen-voice">&#127897;&#65039; &#1047;&#1075;&#1077;&#1085;&#1077;&#1088;&#1091;&#1074;&#1072;&#1090;&#1080; &#1075;&#1086;&#1083;&#1086;&#1089;</button></div>
+      <div class="waveform idle" id="waveform">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-enhance">
+    <div class="pg-title">&#1055;&#1086;&#1082;&#1088;&#1072;&#1097;&#1077;&#1085;&#1085;&#1103; <span>&#1071;&#1082;&#1086;&#1089;&#1090;&#1110;</span></div>
+    <div class="pg-sub">AI &#1072;&#1087;&#1089;&#1082;&#1077;&#1081;&#1083;&#1110;&#1085;&#1075; &#1092;&#1086;&#1090;&#1086; &#1076;&#1086; 4K &#1090;&#1072; &#1087;&#1086;&#1082;&#1088;&#1072;&#1097;&#1077;&#1085;&#1085;&#1103; &#1074;&#1110;&#1076;&#1077;&#1086;</div>
+    <div class="card">
+      <div class="card-title"><span>&#10024;</span> &#1058;&#1080;&#1087; &#1087;&#1086;&#1082;&#1088;&#1072;&#1097;&#1077;&#1085;&#1085;&#1103;</div>
+      <div class="enhance-grid">
+        <div class="enhance-card on" data-enhance="photo"><div class="enhance-icon">&#128444;&#65039;</div><div class="enhance-name">&#1055;&#1086;&#1082;&#1088;&#1072;&#1097;&#1077;&#1085;&#1085;&#1103; &#1092;&#1086;&#1090;&#1086;</div><div class="enhance-desc">&#1040;&#1087;&#1089;&#1082;&#1077;&#1081;&#1083;&#1110;&#1085;&#1075; &#1076;&#1086; 4K, &#1088;&#1110;&#1079;&#1082;&#1110;&#1089;&#1090;&#1100;, &#1082;&#1086;&#1088;&#1077;&#1082;&#1094;&#1110;&#1103; &#1082;&#1086;&#1083;&#1100;&#1086;&#1088;&#1091;</div></div>
+        <div class="enhance-card" data-enhance="video"><div class="enhance-icon">&#127916;</div><div class="enhance-name">&#1055;&#1086;&#1082;&#1088;&#1072;&#1097;&#1077;&#1085;&#1085;&#1103; &#1074;&#1110;&#1076;&#1077;&#1086;</div><div class="enhance-desc">&#1040;&#1087;&#1089;&#1082;&#1077;&#1081;&#1083;&#1110;&#1085;&#1075; &#1074;&#1110;&#1076;&#1077;&#1086; &#1076;&#1086; 4K, &#1089;&#1090;&#1072;&#1073;&#1110;&#1083;&#1110;&#1079;&#1072;&#1094;&#1110;&#1103;</div></div>
+      </div>
+      <div style="margin-top:14px">
+        <div class="upload-zone" id="upload-enhance"><div class="upload-icon">&#128228;</div><div class="upload-text"><strong>&#1053;&#1072;&#1090;&#1080;&#1089;&#1085;&#1110;&#1090;&#1100; &#1072;&#1073;&#1086; &#1087;&#1077;&#1088;&#1077;&#1090;&#1103;&#1075;&#1085;&#1110;&#1090;&#1100;</strong> &#1092;&#1072;&#1081;&#1083; &#1089;&#1102;&#1076;&#1080;</div></div>
+      </div>
+      <div class="row3" style="margin-top:14px">
+        <div class="field"><label>&#1052;&#1072;&#1089;&#1096;&#1090;&#1072;&#1073;</label><select><option>2x</option><option>4x</option><option>8x</option></select></div>
+        <div class="field"><label>&#1056;&#1110;&#1079;&#1082;&#1110;&#1089;&#1090;&#1100;</label><select><option>&#1040;&#1074;&#1090;&#1086;</option><option>&#1042;&#1080;&#1089;&#1086;&#1082;&#1072;</option><option>&#1057;&#1077;&#1088;&#1077;&#1076;&#1085;&#1103;</option></select></div>
+        <div class="field"><label>&#1064;&#1091;&#1084;&#1086;&#1087;&#1086;&#1076;&#1072;&#1074;&#1083;&#1077;&#1085;&#1085;&#1103;</label><select><option>&#1040;&#1074;&#1090;&#1086;</option><option>&#1057;&#1080;&#1083;&#1100;&#1085;&#1077;</option><option>&#1042;&#1080;&#1084;&#1082;&#1085;&#1077;&#1085;&#1086;</option></select></div>
+      </div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-enhance">&#10024; &#1055;&#1086;&#1082;&#1088;&#1072;&#1097;&#1080;&#1090;&#1080;</button></div>
+      <div class="progress-wrap" id="enhance-progress" style="display:none">
+        <div class="progress-label"><span>&#1054;&#1073;&#1088;&#1086;&#1073;&#1082;&#1072;...</span><span id="enhance-pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="enhance-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-photo">
+    <div class="pg-title">AI <span>&#1060;&#1086;&#1090;&#1086;&#1089;&#1077;&#1089;&#1110;&#1103;</span></div>
+    <div class="pg-sub">&#1057;&#1090;&#1091;&#1076;&#1110;&#1081;&#1085;&#1110; &#1092;&#1086;&#1090;&#1086; &#1083;&#1102;&#1076;&#1077;&#1081;, &#1090;&#1086;&#1074;&#1072;&#1088;&#1110;&#1074; &#1110; &#1090;&#1074;&#1072;&#1088;&#1080;&#1085; &#1085;&#1072; &#1073;&#1091;&#1076;&#1100;-&#1103;&#1082;&#1086;&#1084;&#1091; &#1092;&#1086;&#1085;&#1110;</div>
+    <div class="card">
+      <div class="card-title"><span>&#128248;</span> &#1053;&#1072;&#1083;&#1072;&#1096;&#1090;&#1091;&#1074;&#1072;&#1085;&#1085;&#1103;</div>
+      <div class="field"><label>&#1058;&#1080;&#1087; &#1086;&#1073;'&#1108;&#1082;&#1090;&#1072;</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">&#128100; &#1051;&#1102;&#1076;&#1080;&#1085;&#1072;</div><div class="chip" onclick="toggleChip(this)">&#128230; &#1058;&#1086;&#1074;&#1072;&#1088;</div><div class="chip" onclick="toggleChip(this)">&#128062; &#1058;&#1074;&#1072;&#1088;&#1080;&#1085;&#1072;</div><div class="chip" onclick="toggleChip(this)">&#127800; &#1050;&#1074;&#1110;&#1090;&#1080;</div><div class="chip" onclick="toggleChip(this)">&#128142; &#1070;&#1074;&#1077;&#1083;&#1110;&#1088;&#1085;&#1110;</div></div></div>
+      <div class="field"><label>&#1060;&#1086;&#1085; / &#1051;&#1086;&#1082;&#1072;&#1094;&#1110;&#1103;</label>
+        <div class="bg-grid">
+          <div class="bg-opt bg-white on" data-bg="white">&#1041;&#1110;&#1083;&#1080;&#1081; &#1089;&#1090;&#1091;&#1076;&#1110;&#1081;&#1085;&#1080;&#1081;</div>
+          <div class="bg-opt bg-black" data-bg="black">&#1063;&#1086;&#1088;&#1085;&#1080;&#1081; &#1089;&#1090;&#1091;&#1076;&#1110;&#1081;&#1085;&#1080;&#1081;</div>
+          <div class="bg-opt bg-gradient" data-bg="gradient">&#1043;&#1088;&#1072;&#1076;&#1110;&#1108;&#1085;&#1090;</div>
+          <div class="bg-opt bg-nature" data-bg="nature">&#1055;&#1088;&#1080;&#1088;&#1086;&#1076;&#1072;</div>
+          <div class="bg-opt bg-studio" data-bg="studio">&#1057;&#1090;&#1091;&#1076;&#1110;&#1103;</div>
+          <div class="bg-opt bg-ocean" data-bg="ocean">&#1054;&#1082;&#1077;&#1072;&#1085;</div>
+          <div class="bg-opt bg-sunset" data-bg="sunset">&#1047;&#1072;&#1093;&#1110;&#1076; &#1089;&#1086;&#1085;&#1094;&#1103;</div>
+          <div class="bg-opt bg-urban" data-bg="urban">&#1052;&#1110;&#1089;&#1090;&#1086;</div>
+        </div>
+      </div>
+      <div class="field"><label>&#1054;&#1089;&#1074;&#1110;&#1090;&#1083;&#1077;&#1085;&#1085;&#1103;</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">&#1057;&#1090;&#1091;&#1076;&#1110;&#1081;&#1085;&#1077;</div><div class="chip" onclick="toggleChip(this)">&#1055;&#1088;&#1080;&#1088;&#1086;&#1076;&#1085;&#1108;</div><div class="chip" onclick="toggleChip(this)">&#1044;&#1088;&#1072;&#1084;&#1072;&#1090;&#1080;&#1095;&#1085;&#1077;</div><div class="chip" onclick="toggleChip(this)">&#1047;&#1086;&#1083;&#1086;&#1090;&#1072; &#1075;&#1086;&#1076;&#1080;&#1085;&#1072;</div></div></div>
+      <div class="field"><label>&#1054;&#1087;&#1080;&#1089; (&#1086;&#1087;&#1094;&#1110;&#1081;&#1085;&#1086;)</label><textarea placeholder="&#1053;&#1072;&#1087;&#1088;&#1080;&#1082;&#1083;&#1072;&#1076;: &#1078;&#1110;&#1085;&#1082;&#1072; &#1074; &#1076;&#1110;&#1083;&#1086;&#1074;&#1086;&#1084;&#1091; &#1082;&#1086;&#1089;&#1090;&#1102;&#1084;&#1110;, &#1074;&#1087;&#1077;&#1074;&#1085;&#1077;&#1085;&#1072; &#1087;&#1086;&#1079;&#1072;..." style="min-height:70px"></textarea></div>
+      <div class="row2">
+        <div class="field"><label>&#1050;&#1110;&#1083;&#1100;&#1082;&#1110;&#1089;&#1090;&#1100; &#1074;&#1072;&#1088;&#1110;&#1072;&#1085;&#1090;&#1110;&#1074;</label><select id="photo-count"><option value="3">3 &#1092;&#1086;&#1090;&#1086;</option><option value="6">6 &#1092;&#1086;&#1090;&#1086;</option><option value="9">9 &#1092;&#1086;&#1090;&#1086;</option></select></div>
+        <div class="field"><label>&#1056;&#1086;&#1079;&#1076;&#1110;&#1083;&#1100;&#1085;&#1072; &#1079;&#1076;&#1072;&#1090;&#1085;&#1110;&#1089;&#1090;&#1100;</label><select><option>1024x1024</option><option>2048x2048</option><option>4096x4096 (4K)</option></select></div>
+      </div>
+      <div class="btns-row">
+        <button class="btn btn-gold" id="btn-gen-photos">&#128248; &#1043;&#1077;&#1085;&#1077;&#1088;&#1091;&#1074;&#1072;&#1090;&#1080; &#1092;&#1086;&#1090;&#1086;&#1089;&#1077;&#1089;&#1110;&#1102;</button>
+        <button class="btn btn-ghost" id="btn-upload-photo">&#128228; &#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1080;&#1090;&#1080; &#1092;&#1086;&#1090;&#1086;</button>
+      </div>
+    </div>
+    <div class="card" id="photo-results-card" style="display:none">
+      <div class="card-title"><span>&#128444;&#65039;</span> &#1056;&#1077;&#1079;&#1091;&#1083;&#1100;&#1090;&#1072;&#1090;&#1080; &#1092;&#1086;&#1090;&#1086;&#1089;&#1077;&#1089;&#1110;&#1111;</div>
+      <div class="photo-result" id="photo-results"></div>
+      <div class="btns-row">
+        <button class="btn btn-gold btn-sm" id="btn-download-photos">&#11015;&#65039; &#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1080;&#1090;&#1080; &#1074;&#1089;&#1110;</button>
+        <button class="btn btn-ghost btn-sm" id="btn-regen-photos">&#128260; &#1043;&#1077;&#1085;&#1077;&#1088;&#1091;&#1074;&#1072;&#1090;&#1080; &#1097;&#1077;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-ads">
+    <div class="pg-title">&#1042;&#1110;&#1076;&#1077;&#1086;<span>&#1056;&#1077;&#1082;&#1083;&#1072;&#1084;&#1072;</span></div>
+    <div class="pg-sub">&#1042;&#1089;&#1090;&#1072;&#1074;&#1090;&#1077; &#1092;&#1086;&#1090;&#1086; &#1090;&#1086;&#1074;&#1072;&#1088;&#1091; &#8212; AI &#1089;&#1090;&#1074;&#1086;&#1088;&#1080;&#1090;&#1100; &#1088;&#1077;&#1082;&#1083;&#1072;&#1084;&#1085;&#1077; &#1074;&#1110;&#1076;&#1077;&#1086;</div>
+    <div class="card">
+      <div class="card-title"><span>&#128208;</span> &#1060;&#1086;&#1088;&#1084;&#1072;&#1090; &#1074;&#1110;&#1076;&#1077;&#1086;</div>
+      <div class="format-sel">
+        <div class="format-opt on" id="fmt-916"><div class="format-icon">&#128241;</div><div class="format-name">TikTok / Reels</div><div class="format-size">9:16 &#1074;&#1077;&#1088;&#1090;&#1080;&#1082;&#1072;&#1083;&#1100;&#1085;&#1077;</div></div>
+        <div class="format-opt" id="fmt-169"><div class="format-icon">&#128250;</div><div class="format-name">YouTube / Facebook</div><div class="format-size">16:9 &#1075;&#1086;&#1088;&#1080;&#1079;&#1086;&#1085;&#1090;&#1072;&#1083;&#1100;&#1085;&#1077;</div></div>
+      </div>
+      <div class="upload-zone" id="upload-ad" style="margin-bottom:14px"><div class="upload-icon">&#128230;</div><div class="upload-text"><strong>&#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1090;&#1077; &#1092;&#1086;&#1090;&#1086; &#1090;&#1086;&#1074;&#1072;&#1088;&#1091;</strong><br>AI &#1074;&#1080;&#1076;&#1072;&#1083;&#1080;&#1090;&#1100; &#1092;&#1086;&#1085; &#1110; &#1074;&#1089;&#1090;&#1072;&#1074;&#1080;&#1090;&#1100; &#1091; &#1088;&#1077;&#1082;&#1083;&#1072;&#1084;&#1091;</div></div>
+      <div class="row2">
+        <div class="field"><label>&#1053;&#1072;&#1079;&#1074;&#1072; &#1090;&#1086;&#1074;&#1072;&#1088;&#1091;</label><input type="text" id="ad-product" placeholder="&#1053;&#1072;&#1087;&#1088;&#1080;&#1082;&#1083;&#1072;&#1076;: &#1050;&#1088;&#1077;&#1084; &#1076;&#1083;&#1103; &#1086;&#1073;&#1083;&#1080;&#1095;&#1095;&#1103;"></div>
+        <div class="field"><label>&#1062;&#1110;&#1085;&#1072; (&#1086;&#1087;&#1094;&#1110;&#1081;&#1085;&#1086;)</label><input type="text" id="ad-price" placeholder="999 &#1075;&#1088;&#1085;"></div>
+      </div>
+      <div class="field"><label>&#1057;&#1083;&#1086;&#1075;&#1072;&#1085; / &#1058;&#1077;&#1082;&#1089;&#1090; &#1088;&#1077;&#1082;&#1083;&#1072;&#1084;&#1080;</label><textarea id="ad-slogan" placeholder="&#1055;&#1088;&#1080;&#1088;&#1086;&#1076;&#1085;&#1072; &#1082;&#1088;&#1072;&#1089;&#1072; &#1082;&#1086;&#1078;&#1085;&#1086;&#1075;&#1086; &#1076;&#1085;&#1103;!" style="min-height:70px"></textarea></div>
+      <div class="field"><label>&#1057;&#1090;&#1080;&#1083;&#1100;</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">&#1044;&#1080;&#1085;&#1072;&#1084;&#1110;&#1095;&#1085;&#1080;&#1081;</div><div class="chip" onclick="toggleChip(this)">&#1045;&#1083;&#1077;&#1075;&#1072;&#1085;&#1090;&#1085;&#1080;&#1081;</div><div class="chip" onclick="toggleChip(this)">&#1071;&#1089;&#1082;&#1088;&#1072;&#1074;&#1080;&#1081;</div><div class="chip" onclick="toggleChip(this)">&#1052;&#1110;&#1085;&#1110;&#1084;&#1072;&#1083;&#1110;&#1089;&#1090;&#1080;&#1095;&#1085;&#1080;&#1081;</div></div></div>
+      <div class="field"><label>&#1052;&#1091;&#1079;&#1080;&#1082;&#1072;</label><select><option>&#1045;&#1085;&#1077;&#1088;&#1075;&#1110;&#1081;&#1085;&#1072; (pop)</option><option>&#1057;&#1087;&#1086;&#1082;&#1110;&#1081;&#1085;&#1072; (ambient)</option><option>&#1058;&#1088;&#1077;&#1085;&#1076;&#1086;&#1074;&#1072; (trap)</option><option>&#1041;&#1077;&#1079; &#1084;&#1091;&#1079;&#1080;&#1082;&#1080;</option></select></div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-gen-ad">&#127916; &#1057;&#1090;&#1074;&#1086;&#1088;&#1080;&#1090;&#1080; &#1088;&#1077;&#1082;&#1083;&#1072;&#1084;&#1091;</button></div>
+      <div class="progress-wrap" id="ad-progress" style="display:none">
+        <div class="progress-label"><span>&#1057;&#1090;&#1074;&#1086;&#1088;&#1077;&#1085;&#1085;&#1103; &#1074;&#1110;&#1076;&#1077;&#1086;...</span><span id="ad-pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="ad-fill"></div></div>
+      </div>
+    </div>
+    <div class="card" id="ad-result-card" style="display:none">
+      <div class="card-title"><span>&#9654;&#65039;</span> &#1043;&#1086;&#1090;&#1086;&#1074;&#1072; &#1088;&#1077;&#1082;&#1083;&#1072;&#1084;&#1072;</div>
+      <div style="background:var(--s2);border:1px solid var(--border);border-radius:10px;min-height:160px;display:flex;align-items:center;justify-content:center;font-size:40px" id="ad-preview">&#127916;</div>
+      <div class="btns-row">
+        <button class="btn btn-gold btn-sm" id="btn-dl-ad">&#11015;&#65039; &#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1080;&#1090;&#1080; &#1074;&#1110;&#1076;&#1077;&#1086;</button>
+        <button class="btn btn-ghost btn-sm" id="btn-regen-ad">&#128260; &#1043;&#1077;&#1085;&#1077;&#1088;&#1091;&#1074;&#1072;&#1090;&#1080; &#1097;&#1077;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-editor">
+    <div class="pg-title">&#1042;&#1110;&#1076;&#1077;&#1086; <span>&#1056;&#1077;&#1076;&#1072;&#1082;&#1090;&#1086;&#1088;</span></div>
+    <div class="pg-sub">&#1052;&#1086;&#1085;&#1090;&#1072;&#1078;, &#1087;&#1077;&#1088;&#1077;&#1093;&#1086;&#1076;&#1080;, &#1089;&#1091;&#1073;&#1090;&#1080;&#1090;&#1088;&#1080;, &#1084;&#1091;&#1079;&#1080;&#1082;&#1072; &#8212; &#1077;&#1082;&#1089;&#1087;&#1086;&#1088;&#1090; &#1091; 4K MP4</div>
+
+    <div class="card">
+      <div class="card-title"><span>&#127916;</span> &#1058;&#1072;&#1081;&#1084;&#1083;&#1072;&#1081;&#1085; &#1087;&#1088;&#1086;&#1077;&#1082;&#1090;&#1091;</div>
+      <div style="background:var(--s2);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px">
+        <div style="padding:10px 14px;border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);display:flex;gap:20px">
+          <span>00:00</span><span>00:05</span><span>00:10</span><span>00:15</span><span>00:20</span><span>00:25</span><span>00:30</span>
+        </div>
+        <div style="padding:10px;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="font-size:11px;color:var(--muted);width:60px">&#128444;&#65039; &#1042;&#1110;&#1076;&#1077;&#1086;</div>
+            <div style="flex:1;height:32px;background:linear-gradient(90deg,rgba(212,168,67,.3),rgba(212,168,67,.2));border-radius:4px;border:1px solid rgba(212,168,67,.3);display:flex;align-items:center;padding:0 10px;font-size:11px;color:var(--gold)">&#1057;&#1094;&#1077;&#1085;&#1072; 1 &#8594; &#1057;&#1094;&#1077;&#1085;&#1072; 2 &#8594; &#1057;&#1094;&#1077;&#1085;&#1072; 3</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="font-size:11px;color:var(--muted);width:60px">&#127897;&#65039; &#1040;&#1091;&#1076;&#1110;&#1086;</div>
+            <div style="flex:1;height:32px;background:linear-gradient(90deg,rgba(74,158,255,.2),rgba(74,158,255,.15));border-radius:4px;border:1px solid rgba(74,158,255,.3);display:flex;align-items:center;padding:0 10px;font-size:11px;color:var(--blue)">&#1054;&#1079;&#1074;&#1091;&#1095;&#1077;&#1085;&#1085;&#1103; &#1087;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1078;&#1110;&#1074;</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="font-size:11px;color:var(--muted);width:60px">&#127925; &#1052;&#1091;&#1079;&#1080;&#1082;&#1072;</div>
+            <div style="width:60%;height:32px;background:linear-gradient(90deg,rgba(155,109,255,.2),rgba(155,109,255,.15));border-radius:4px;border:1px solid rgba(155,109,255,.3);display:flex;align-items:center;padding:0 10px;font-size:11px;color:#9b6dff">&#1060;&#1086;&#1085;&#1086;&#1074;&#1072; &#1084;&#1091;&#1079;&#1080;&#1082;&#1072;</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="font-size:11px;color:var(--muted);width:60px">&#128172; &#1057;&#1091;&#1073;&#1090;&#1080;&#1090;&#1088;&#1080;</div>
+            <div style="width:80%;height:32px;background:linear-gradient(90deg,rgba(61,186,110,.2),rgba(61,186,110,.15));border-radius:4px;border:1px solid rgba(61,186,110,.3);display:flex;align-items:center;padding:0 10px;font-size:11px;color:var(--green)">&#1057;&#1091;&#1073;&#1090;&#1080;&#1090;&#1088;&#1080; &#1072;&#1074;&#1090;&#1086;&#1084;&#1072;&#1090;&#1080;&#1095;&#1085;&#1086;</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" id="btn-ed-play">&#9654;&#65039; &#1042;&#1110;&#1076;&#1090;&#1074;&#1086;&#1088;&#1080;&#1090;&#1080;</button>
+        <button class="btn btn-ghost btn-sm" id="btn-ed-cut">&#9986;&#65039; &#1042;&#1080;&#1088;&#1110;&#1079;&#1072;&#1090;&#1080;</button>
+        <button class="btn btn-ghost btn-sm" id="btn-ed-transition">&#127917; &#1055;&#1077;&#1088;&#1077;&#1093;&#1110;&#1076;</button>
+        <button class="btn btn-ghost btn-sm" id="btn-ed-music">&#127925; &#1052;&#1091;&#1079;&#1080;&#1082;&#1072;</button>
+        <button class="btn btn-ghost btn-sm" id="btn-ed-sub">&#128172; &#1057;&#1091;&#1073;&#1090;&#1080;&#1090;&#1088;&#1080;</button>
+        <button class="btn btn-ghost btn-sm" id="btn-ed-effect">&#10024; &#1045;&#1092;&#1077;&#1082;&#1090;</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>&#127917;</span> &#1055;&#1077;&#1088;&#1077;&#1093;&#1086;&#1076;&#1080; &#1084;&#1110;&#1078; &#1089;&#1094;&#1077;&#1085;&#1072;&#1084;&#1080;</div>
+      <div class="chips">
+        <div class="chip on" onclick="toggleChip(this)">&#1055;&#1083;&#1072;&#1074;&#1085;&#1077;</div>
+        <div class="chip" onclick="toggleChip(this)">&#1047;&#1072;&#1090;&#1077;&#1084;&#1085;&#1077;&#1085;&#1085;&#1103;</div>
+        <div class="chip" onclick="toggleChip(this)">&#1047;&#1089;&#1091;&#1074;</div>
+        <div class="chip" onclick="toggleChip(this)">&#1047;&#1073;&#1110;&#1083;&#1100;&#1096;&#1077;&#1085;&#1085;&#1103;</div>
+        <div class="chip" onclick="toggleChip(this)">&#1054;&#1073;&#1077;&#1088;&#1090;&#1072;&#1085;&#1085;&#1103;</div>
+        <div class="chip" onclick="toggleChip(this)">&#1057;&#1087;&#1072;&#1083;&#1072;&#1093;</div>
+        <div class="chip" onclick="toggleChip(this)">&#1056;&#1086;&#1079;&#1095;&#1080;&#1085;&#1077;&#1085;&#1085;&#1103;</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>&#127925;</span> &#1060;&#1086;&#1085;&#1086;&#1074;&#1072; &#1084;&#1091;&#1079;&#1080;&#1082;&#1072;</div>
+      <div class="field"><label>&#1057;&#1090;&#1080;&#1083;&#1100; &#1084;&#1091;&#1079;&#1080;&#1082;&#1080;</label>
+        <div class="chips">
+          <div class="chip on" onclick="toggleChip(this)">&#1050;&#1110;&#1085;&#1077;&#1084;&#1072;&#1090;&#1086;&#1075;&#1088;&#1072;&#1092;&#1110;&#1095;&#1085;&#1072;</div>
+          <div class="chip" onclick="toggleChip(this)">&#1045;&#1087;&#1110;&#1095;&#1085;&#1072;</div>
+          <div class="chip" onclick="toggleChip(this)">&#1053;&#1110;&#1078;&#1085;&#1072;</div>
+          <div class="chip" onclick="toggleChip(this)">&#1053;&#1072;&#1087;&#1088;&#1091;&#1078;&#1077;&#1085;&#1072;</div>
+          <div class="chip" onclick="toggleChip(this)">&#1042;&#1077;&#1089;&#1077;&#1083;&#1072;</div>
+          <div class="chip" onclick="toggleChip(this)">&#1041;&#1077;&#1079; &#1084;&#1091;&#1079;&#1080;&#1082;&#1080;</div>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>&#1043;&#1091;&#1095;&#1085;&#1110;&#1089;&#1090;&#1100; &#1084;&#1091;&#1079;&#1080;&#1082;&#1080;</label><select><option>50%</option><option>30%</option><option>70%</option><option>100%</option></select></div>
+        <div class="field"><label>&#1043;&#1091;&#1095;&#1085;&#1110;&#1089;&#1090;&#1100; &#1075;&#1086;&#1083;&#1086;&#1089;&#1091;</label><select><option>100%</option><option>80%</option><option>60%</option></select></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>&#128172;</span> &#1057;&#1091;&#1073;&#1090;&#1080;&#1090;&#1088;&#1080;</div>
+      <div class="row2">
+        <div class="field"><label>&#1052;&#1086;&#1074;&#1072; &#1089;&#1091;&#1073;&#1090;&#1080;&#1090;&#1088;&#1110;&#1074;</label><select><option>&#1041;&#1077;&#1079; &#1089;&#1091;&#1073;&#1090;&#1080;&#1090;&#1088;&#1110;&#1074;</option><option>&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;</option><option>&#1040;&#1085;&#1075;&#1083;&#1110;&#1081;&#1089;&#1100;&#1082;&#1072;</option><option>&#1054;&#1073;&#1080;&#1076;&#1074;&#1110; &#1084;&#1086;&#1074;&#1080;</option></select></div>
+        <div class="field"><label>&#1057;&#1090;&#1080;&#1083;&#1100; &#1096;&#1088;&#1080;&#1092;&#1090;&#1091;</label><select><option>&#1050;&#1083;&#1072;&#1089;&#1080;&#1095;&#1085;&#1080;&#1081;</option><option>&#1050;&#1110;&#1085;&#1077;&#1084;&#1072;&#1090;&#1086;&#1075;&#1088;&#1072;&#1092;&#1110;&#1095;&#1085;&#1080;&#1081;</option><option>&#1057;&#1091;&#1095;&#1072;&#1089;&#1085;&#1080;&#1081;</option></select></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>&#1056;&#1086;&#1079;&#1084;&#1110;&#1088; &#1096;&#1088;&#1080;&#1092;&#1090;&#1091;</label><select><option>&#1057;&#1077;&#1088;&#1077;&#1076;&#1085;&#1110;&#1081;</option><option>&#1052;&#1072;&#1083;&#1080;&#1081;</option><option>&#1042;&#1077;&#1083;&#1080;&#1082;&#1080;&#1081;</option></select></div>
+        <div class="field"><label>&#1055;&#1086;&#1079;&#1080;&#1094;&#1110;&#1103;</label><select><option>&#1042;&#1085;&#1080;&#1079;&#1091;</option><option>&#1042;&#1075;&#1086;&#1088;&#1110;</option><option>&#1055;&#1086; &#1094;&#1077;&#1085;&#1090;&#1088;&#1091;</option></select></div>
+      </div>
+      <div class="btns-row">
+        <button class="btn btn-gold" id="btn-ed-render">&#127916; &#1056;&#1077;&#1085;&#1076;&#1077;&#1088;&#1080;&#1090;&#1080; &#1074;&#1110;&#1076;&#1077;&#1086;</button>
+      </div>
+      <div class="progress-wrap" id="editor-progress" style="display:none">
+        <div class="progress-label"><span>&#1056;&#1077;&#1085;&#1076;&#1077;&#1088;&#1080;&#1085;&#1075;...</span><span id="editor-pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="editor-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-dubbing">
+    <div class="pg-title">&#1040;&#1074;&#1090;&#1086; <span>&#1044;&#1091;&#1073;&#1083;&#1103;&#1078;</span></div>
+    <div class="pg-sub">&#1057;&#1080;&#1085;&#1093;&#1088;&#1086;&#1085;&#1110;&#1079;&#1072;&#1094;&#1110;&#1103; &#1075;&#1091;&#1073;, &#1077;&#1084;&#1086;&#1094;&#1110;&#1081; &#1110; &#1075;&#1086;&#1083;&#1086;&#1089;&#1091; &#1085;&#1072; &#1073;&#1091;&#1076;&#1100;-&#1103;&#1082;&#1091; &#1084;&#1086;&#1074;&#1091; &#1072;&#1074;&#1090;&#1086;&#1084;&#1072;&#1090;&#1080;&#1095;&#1085;&#1086;</div>
+
+    <div class="card">
+      <div class="card-title"><span>&#128228;</span> &#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1090;&#1077; &#1074;&#1110;&#1076;&#1077;&#1086; &#1076;&#1083;&#1103; &#1076;&#1091;&#1073;&#1083;&#1103;&#1078;&#1091;</div>
+      <div class="upload-zone" id="upload-dub"><div class="upload-icon">&#127916;</div><div class="upload-text"><strong>&#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1090;&#1077; &#1074;&#1110;&#1076;&#1077;&#1086;</strong> &#1079; &#1086;&#1088;&#1080;&#1075;&#1110;&#1085;&#1072;&#1083;&#1100;&#1085;&#1080;&#1084; &#1075;&#1086;&#1083;&#1086;&#1089;&#1086;&#1084;<br>MP4, MOV, AVI &#1076;&#1086; 500MB</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>&#127757;</span> &#1052;&#1086;&#1074;&#1072; &#1076;&#1091;&#1073;&#1083;&#1103;&#1078;&#1091;</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px" id="lang-grid">
+        <div class="voice-opt on" data-lang="uk"><div class="voice-icon">&#127482;&#127462;</div><div class="voice-name">&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;</div></div>
+        <div class="voice-opt" data-lang="en"><div class="voice-icon">&#127468;&#127463;</div><div class="voice-name">English</div></div>
+        <div class="voice-opt" data-lang="de"><div class="voice-icon">&#127465;&#127466;</div><div class="voice-name">Deutsch</div></div>
+        <div class="voice-opt" data-lang="fr"><div class="voice-icon">&#127467;&#127479;</div><div class="voice-name">Fran&#231;ais</div></div>
+        <div class="voice-opt" data-lang="es"><div class="voice-icon">&#127466;&#127480;</div><div class="voice-name">Espa&#241;ol</div></div>
+        <div class="voice-opt" data-lang="it"><div class="voice-icon">&#127470;&#127481;</div><div class="voice-name">Italiano</div></div>
+        <div class="voice-opt" data-lang="pl"><div class="voice-icon">&#127477;&#127473;</div><div class="voice-name">Polski</div></div>
+        <div class="voice-opt" data-lang="ja"><div class="voice-icon">&#127471;&#127477;</div><div class="voice-name">&#26085;&#26412;&#35486;</div></div>
+        <div class="voice-opt" data-lang="zh"><div class="voice-icon">&#127464;&#127475;</div><div class="voice-name">&#20013;&#25991;</div></div>
+        <div class="voice-opt" data-lang="ko"><div class="voice-icon">&#127472;&#127479;</div><div class="voice-name">&#54620;&#44397;&#50612;</div></div>
+        <div class="voice-opt" data-lang="ar"><div class="voice-icon">&#127480;&#127462;</div><div class="voice-name">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</div></div>
+        <div class="voice-opt" data-lang="hi"><div class="voice-icon">&#127470;&#127475;</div><div class="voice-name">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>&#127917;</span> &#1053;&#1072;&#1083;&#1072;&#1096;&#1090;&#1091;&#1074;&#1072;&#1085;&#1085;&#1103; &#1089;&#1080;&#1085;&#1093;&#1088;&#1086;&#1085;&#1110;&#1079;&#1072;&#1094;&#1110;&#1111;</div>
+      <div class="enhance-grid">
+        <div class="enhance-card on" data-dub="lips"><div class="enhance-icon">&#128068;</div><div class="enhance-name">&#1057;&#1080;&#1085;&#1093;&#1088;&#1086;&#1085;&#1110;&#1079;&#1072;&#1094;&#1110;&#1103; &#1075;&#1091;&#1073;</div><div class="enhance-desc">AI &#1088;&#1091;&#1093;&#1072;&#1108; &#1075;&#1091;&#1073;&#1072;&#1084;&#1080; &#1087;&#1077;&#1088;&#1089;&#1086;&#1085;&#1072;&#1078;&#1110;&#1074; &#1090;&#1086;&#1095;&#1085;&#1086; &#1087;&#1110;&#1076; &#1085;&#1086;&#1074;&#1091; &#1084;&#1086;&#1074;&#1091;</div></div>
+        <div class="enhance-card on" data-dub="emotion"><div class="enhance-icon">&#128522;</div><div class="enhance-name">&#1055;&#1077;&#1088;&#1077;&#1076;&#1072;&#1095;&#1072; &#1077;&#1084;&#1086;&#1094;&#1110;&#1081;</div><div class="enhance-desc">&#1056;&#1072;&#1076;&#1110;&#1089;&#1090;&#1100;, &#1089;&#1084;&#1091;&#1090;&#1086;&#1082;, &#1075;&#1085;&#1110;&#1074; &#8212; &#1079;&#1073;&#1077;&#1088;&#1110;&#1075;&#1072;&#1102;&#1090;&#1100;&#1089;&#1103; &#1087;&#1088;&#1080; &#1087;&#1077;&#1088;&#1077;&#1082;&#1083;&#1072;&#1076;&#1110;</div></div>
+        <div class="enhance-card on" data-dub="voice"><div class="enhance-icon">&#127897;&#65039;</div><div class="enhance-name">&#1050;&#1083;&#1086;&#1085;&#1091;&#1074;&#1072;&#1085;&#1085;&#1103; &#1075;&#1086;&#1083;&#1086;&#1089;&#1091;</div><div class="enhance-desc">&#1047;&#1073;&#1077;&#1088;&#1110;&#1075;&#1072;&#1108; &#1090;&#1077;&#1084;&#1073;&#1088; &#1110; &#1093;&#1072;&#1088;&#1072;&#1082;&#1090;&#1077;&#1088; &#1086;&#1088;&#1080;&#1075;&#1110;&#1085;&#1072;&#1083;&#1100;&#1085;&#1086;&#1075;&#1086; &#1075;&#1086;&#1083;&#1086;&#1089;&#1091;</div></div>
+        <div class="enhance-card on" data-dub="tempo"><div class="enhance-icon">&#9201;&#65039;</div><div class="enhance-name">&#1040;&#1074;&#1090;&#1086; &#1090;&#1072;&#1081;&#1084;&#1080;&#1085;&#1075;</div><div class="enhance-desc">&#1055;&#1110;&#1076;&#1075;&#1072;&#1085;&#1103;&#1108; &#1090;&#1077;&#1084;&#1087; &#1084;&#1086;&#1074;&#1083;&#1077;&#1085;&#1085;&#1103; &#1087;&#1110;&#1076; &#1090;&#1088;&#1080;&#1074;&#1072;&#1083;&#1110;&#1089;&#1090;&#1100; &#1089;&#1094;&#1077;&#1085;&#1080;</div></div>
+      </div>
+      <div class="row2" style="margin-top:14px">
+        <div class="field"><label>&#1071;&#1082;&#1110;&#1089;&#1090;&#1100; &#1076;&#1091;&#1073;&#1083;&#1103;&#1078;&#1091;</label><select><option>&#1052;&#1072;&#1082;&#1089;&#1080;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072; (&#1087;&#1086;&#1074;&#1110;&#1083;&#1100;&#1085;&#1110;&#1096;&#1077;)</option><option>&#1042;&#1080;&#1089;&#1086;&#1082;&#1072;</option><option>&#1057;&#1090;&#1072;&#1085;&#1076;&#1072;&#1088;&#1090;&#1085;&#1072; (&#1096;&#1074;&#1080;&#1076;&#1096;&#1077;)</option></select></div>
+        <div class="field"><label>&#1054;&#1088;&#1080;&#1075;&#1110;&#1085;&#1072;&#1083;&#1100;&#1085;&#1080;&#1081; &#1079;&#1074;&#1091;&#1082;</label><select><option>&#1047;&#1072;&#1084;&#1110;&#1085;&#1080;&#1090;&#1080; &#1087;&#1086;&#1074;&#1085;&#1110;&#1089;&#1090;&#1102;</option><option>&#1047;&#1072;&#1083;&#1080;&#1096;&#1080;&#1090;&#1080; &#1092;&#1086;&#1085;&#1086;&#1074;&#1110; &#1079;&#1074;&#1091;&#1082;&#1080;</option><option>&#1052;&#1110;&#1082;&#1089; (30% &#1086;&#1088;&#1080;&#1075;&#1110;&#1085;&#1072;&#1083;)</option></select></div>
+      </div>
+      <div class="btns-row">
+        <button class="btn btn-gold" id="btn-start-dub">&#127917; &#1055;&#1086;&#1095;&#1072;&#1090;&#1080; &#1076;&#1091;&#1073;&#1083;&#1103;&#1078;</button>
+      </div>
+      <div class="progress-wrap" id="dub-progress" style="display:none">
+        <div class="progress-label"><span id="dub-status">&#1040;&#1085;&#1072;&#1083;&#1110;&#1079; &#1074;&#1110;&#1076;&#1077;&#1086;...</span><span id="dub-pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="dub-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="card" id="dub-result-card" style="display:none">
+      <div class="card-title"><span>&#9989;</span> &#1044;&#1091;&#1073;&#1083;&#1103;&#1078; &#1075;&#1086;&#1090;&#1086;&#1074;&#1080;&#1081;</div>
+      <div style="background:var(--s2);border:1px solid var(--green);border-radius:10px;padding:20px;text-align:center">
+        <div style="font-size:40px;margin-bottom:10px">&#127916;</div>
+        <div style="color:var(--green);font-weight:600;margin-bottom:6px">&#1044;&#1091;&#1073;&#1083;&#1103;&#1078; &#1079;&#1072;&#1074;&#1077;&#1088;&#1096;&#1077;&#1085;&#1086;!</div>
+        <div style="font-size:12px;color:var(--muted)" id="dub-result-info">&#1042;&#1110;&#1076;&#1077;&#1086; &#1087;&#1088;&#1086;&#1076;&#1091;&#1073;&#1083;&#1100;&#1086;&#1074;&#1072;&#1085;&#1086; &#1085;&#1072; &#1086;&#1073;&#1088;&#1072;&#1085;&#1091; &#1084;&#1086;&#1074;&#1091;</div>
+      </div>
+      <div class="btns-row">
+        <button class="btn btn-gold btn-sm" id="btn-dl-dub">&#11015;&#65039; &#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1080;&#1090;&#1080; &#1074;&#1110;&#1076;&#1077;&#1086;</button>
+        <button class="btn btn-ghost btn-sm" id="btn-regen-dub">&#128260; &#1047;&#1084;&#1110;&#1085;&#1080;&#1090;&#1080; &#1084;&#1086;&#1074;&#1091;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-cartoon3d">
+    <div class="pg-title">2D &#1052;&#1091;&#1083;&#1100;&#1090;&#1092;&#1110;&#1083;&#1100;&#1084; &#8594; <span>3D</span></div>
+    <div class="pg-sub">&#1055;&#1077;&#1088;&#1077;&#1090;&#1074;&#1086;&#1088;&#1077;&#1085;&#1085;&#1103; &#1084;&#1072;&#1083;&#1100;&#1086;&#1074;&#1072;&#1085;&#1080;&#1093; &#1084;&#1091;&#1083;&#1100;&#1090;&#1092;&#1110;&#1083;&#1100;&#1084;&#1110;&#1074; &#1091; &#1087;&#1086;&#1074;&#1085;&#1086;&#1094;&#1110;&#1085;&#1085;&#1077; 3D</div>
+
+    <div class="card">
+      <div class="card-title"><span>&#128228;</span> &#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1090;&#1077; &#1084;&#1091;&#1083;&#1100;&#1090;&#1092;&#1110;&#1083;&#1100;&#1084;</div>
+      <div class="upload-zone" id="upload-cartoon"><div class="upload-icon">&#127912;</div><div class="upload-text"><strong>&#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1090;&#1077; 2D &#1084;&#1091;&#1083;&#1100;&#1090;&#1092;&#1110;&#1083;&#1100;&#1084; &#1072;&#1073;&#1086; &#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1085;&#1103;</strong><br>MP4, PNG, JPG, GIF &#1076;&#1086; 200MB</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>&#127912;</span> &#1057;&#1090;&#1080;&#1083;&#1100; 3D &#1087;&#1077;&#1088;&#1077;&#1090;&#1074;&#1086;&#1088;&#1077;&#1085;&#1085;&#1103;</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px">
+        <div class="enhance-card on" data-style3d="pixar"><div class="enhance-icon">&#127942;</div><div class="enhance-name">Pixar / Disney</div><div class="enhance-desc">&#1052;'&#1103;&#1082;&#1080;&#1081; 3D &#1089;&#1090;&#1080;&#1083;&#1100; &#1074;&#1077;&#1083;&#1080;&#1082;&#1080;&#1093; &#1089;&#1090;&#1091;&#1076;&#1110;&#1081;</div></div>
+        <div class="enhance-card" data-style3d="anime3d"><div class="enhance-icon">&#9961;&#65039;</div><div class="enhance-name">&#1040;&#1085;&#1110;&#1084;&#1077; 3D</div><div class="enhance-desc">&#1071;&#1087;&#1086;&#1085;&#1089;&#1100;&#1082;&#1080;&#1081; &#1089;&#1090;&#1080;&#1083;&#1100; &#1091; &#1090;&#1088;&#1080;&#1074;&#1080;&#1084;&#1110;&#1088;&#1085;&#1086;&#1084;&#1091; &#1087;&#1088;&#1086;&#1089;&#1090;&#1086;&#1088;&#1110;</div></div>
+        <div class="enhance-card" data-style3d="realistic"><div class="enhance-icon">&#127916;</div><div class="enhance-name">&#1056;&#1077;&#1072;&#1083;&#1110;&#1089;&#1090;&#1080;&#1095;&#1085;&#1080;&#1081;</div><div class="enhance-desc">&#1052;&#1072;&#1082;&#1089;&#1080;&#1084;&#1072;&#1083;&#1100;&#1085;&#1086; &#1088;&#1077;&#1072;&#1083;&#1110;&#1089;&#1090;&#1080;&#1095;&#1085;&#1077; 3D</div></div>
+        <div class="enhance-card" data-style3d="claymation"><div class="enhance-icon">&#129528;</div><div class="enhance-name">&#1050;&#1083;&#1077;&#1081;&#1084;&#1077;&#1081;&#1096;&#1085;</div><div class="enhance-desc">&#1057;&#1090;&#1080;&#1083;&#1100; &#1087;&#1083;&#1072;&#1089;&#1090;&#1080;&#1083;&#1110;&#1085;&#1086;&#1074;&#1086;&#1111; &#1072;&#1085;&#1110;&#1084;&#1072;&#1094;&#1110;&#1111;</div></div>
+        <div class="enhance-card" data-style3d="stylized"><div class="enhance-icon">&#10024;</div><div class="enhance-name">&#1057;&#1090;&#1080;&#1083;&#1110;&#1079;&#1086;&#1074;&#1072;&#1085;&#1080;&#1081;</div><div class="enhance-desc">&#1061;&#1091;&#1076;&#1086;&#1078;&#1085;&#1110;&#1081; 3D &#1079; &#1079;&#1073;&#1077;&#1088;&#1077;&#1078;&#1077;&#1085;&#1085;&#1103;&#1084; &#1089;&#1090;&#1080;&#1083;&#1102;</div></div>
+        <div class="enhance-card" data-style3d="game"><div class="enhance-icon">&#127918;</div><div class="enhance-name">&#1030;&#1075;&#1088;&#1086;&#1074;&#1080;&#1081;</div><div class="enhance-desc">3D &#1091; &#1089;&#1090;&#1080;&#1083;&#1110; &#1074;&#1110;&#1076;&#1077;&#1086;&#1110;&#1075;&#1086;&#1088;</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>&#9881;&#65039;</span> &#1055;&#1072;&#1088;&#1072;&#1084;&#1077;&#1090;&#1088;&#1080; &#1082;&#1086;&#1085;&#1074;&#1077;&#1088;&#1090;&#1072;&#1094;&#1110;&#1111;</div>
+      <div class="row3">
+        <div class="field"><label>&#1043;&#1083;&#1080;&#1073;&#1080;&#1085;&#1072; 3D</label><select><option>&#1057;&#1077;&#1088;&#1077;&#1076;&#1085;&#1103;</option><option>&#1057;&#1083;&#1072;&#1073;&#1082;&#1072;</option><option>&#1057;&#1080;&#1083;&#1100;&#1085;&#1072;</option><option>&#1052;&#1072;&#1082;&#1089;&#1080;&#1084;&#1072;&#1083;&#1100;&#1085;&#1072;</option></select></div>
+        <div class="field"><label>&#1054;&#1089;&#1074;&#1110;&#1090;&#1083;&#1077;&#1085;&#1085;&#1103;</label><select><option>&#1040;&#1074;&#1090;&#1086;</option><option>&#1057;&#1090;&#1091;&#1076;&#1110;&#1081;&#1085;&#1077;</option><option>&#1050;&#1110;&#1085;&#1077;&#1084;&#1072;&#1090;&#1086;&#1075;&#1088;&#1072;&#1092;&#1110;&#1095;&#1085;&#1077;</option><option>&#1055;&#1088;&#1080;&#1088;&#1086;&#1076;&#1085;&#1108;</option></select></div>
+        <div class="field"><label>&#1056;&#1086;&#1079;&#1076;&#1110;&#1083;&#1100;&#1085;&#1072; &#1079;&#1076;&#1072;&#1090;&#1085;&#1110;&#1089;&#1090;&#1100;</label><select><option>1080p</option><option>4K</option><option>720p</option></select></div>
+      </div>
+      <div class="field"><label>&#1044;&#1086;&#1076;&#1072;&#1090;&#1082;&#1086;&#1074;&#1110; &#1077;&#1092;&#1077;&#1082;&#1090;&#1080;</label>
+        <div class="chips">
+          <div class="chip on" onclick="toggleChip(this)">&#1054;&#1073;'&#1108;&#1084;&#1085;&#1110; &#1090;&#1110;&#1085;&#1110;</div>
+          <div class="chip on" onclick="toggleChip(this)">&#1042;&#1110;&#1076;&#1073;&#1083;&#1080;&#1089;&#1082;&#1080;</div>
+          <div class="chip" onclick="toggleChip(this)">&#1043;&#1083;&#1080;&#1073;&#1080;&#1085;&#1072; &#1088;&#1110;&#1079;&#1082;&#1086;&#1089;&#1090;&#1110;</div>
+          <div class="chip" onclick="toggleChip(this)">&#1058;&#1091;&#1084;&#1072;&#1085;</div>
+          <div class="chip" onclick="toggleChip(this)">&#1063;&#1072;&#1089;&#1090;&#1080;&#1085;&#1082;&#1080;</div>
+          <div class="chip" onclick="toggleChip(this)">Motion blur</div>
+        </div>
+      </div>
+      <div class="btns-row">
+        <button class="btn btn-gold" id="btn-start-3d">&#127912; &#1050;&#1086;&#1085;&#1074;&#1077;&#1088;&#1090;&#1091;&#1074;&#1072;&#1090;&#1080; &#1074; 3D</button>
+        <button class="btn btn-ghost" id="btn-preview-3d">&#128065;&#65039; &#1055;&#1086;&#1087;&#1077;&#1088;&#1077;&#1076;&#1085;&#1110;&#1081; &#1087;&#1077;&#1088;&#1077;&#1075;&#1083;&#1103;&#1076;</button>
+      </div>
+      <div class="progress-wrap" id="c3d-progress" style="display:none">
+        <div class="progress-label"><span id="c3d-status">&#1040;&#1085;&#1072;&#1083;&#1110;&#1079; &#1079;&#1086;&#1073;&#1088;&#1072;&#1078;&#1077;&#1085;&#1100;...</span><span id="c3d-pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="c3d-fill"></div></div>
+      </div>
+    </div>
+
+    <div class="card" id="c3d-result-card" style="display:none">
+      <div class="card-title"><span>&#9989;</span> 3D &#1082;&#1086;&#1085;&#1074;&#1077;&#1088;&#1090;&#1072;&#1094;&#1110;&#1103; &#1075;&#1086;&#1090;&#1086;&#1074;&#1072;</div>
+      <div style="background:var(--s2);border:1px solid var(--green);border-radius:10px;padding:20px;text-align:center">
+        <div style="font-size:40px;margin-bottom:10px">&#127916;</div>
+        <div style="color:var(--green);font-weight:600;margin-bottom:6px">3D &#1082;&#1086;&#1085;&#1074;&#1077;&#1088;&#1090;&#1072;&#1094;&#1110;&#1102; &#1079;&#1072;&#1074;&#1077;&#1088;&#1096;&#1077;&#1085;&#1086;!</div>
+        <div style="font-size:12px;color:var(--muted)">&#1052;&#1091;&#1083;&#1100;&#1090;&#1092;&#1110;&#1083;&#1100;&#1084; &#1087;&#1077;&#1088;&#1077;&#1090;&#1074;&#1086;&#1088;&#1077;&#1085;&#1086; &#1091; 3D</div>
+      </div>
+      <div class="btns-row">
+        <button class="btn btn-gold btn-sm" id="btn-dl-3d">&#11015;&#65039; &#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1080;&#1090;&#1080; 3D &#1074;&#1110;&#1076;&#1077;&#1086;</button>
+        <button class="btn btn-ghost btn-sm" id="btn-regen-3d">&#128260; &#1047;&#1084;&#1110;&#1085;&#1080;&#1090;&#1080; &#1089;&#1090;&#1080;&#1083;&#1100;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-export">
+    <div class="pg-title">&#1045;&#1082;&#1089;&#1087;&#1086;&#1088;&#1090; <span>&#1055;&#1088;&#1086;&#1077;&#1082;&#1090;&#1091;</span></div>
+    <div class="pg-sub">&#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1090;&#1077; &#1075;&#1086;&#1090;&#1086;&#1074;&#1080;&#1081; &#1092;&#1110;&#1083;&#1100;&#1084; &#1091; &#1087;&#1086;&#1090;&#1088;&#1110;&#1073;&#1085;&#1086;&#1084;&#1091; &#1092;&#1086;&#1088;&#1084;&#1072;&#1090;&#1110;</div>
+    <div class="card">
+      <div class="card-title"><span>&#9881;&#65039;</span> &#1053;&#1072;&#1083;&#1072;&#1096;&#1090;&#1091;&#1074;&#1072;&#1085;&#1085;&#1103; &#1077;&#1082;&#1089;&#1087;&#1086;&#1088;&#1090;&#1091;</div>
+      <div class="row2">
+        <div class="field"><label>&#1056;&#1086;&#1079;&#1076;&#1110;&#1083;&#1100;&#1085;&#1072; &#1079;&#1076;&#1072;&#1090;&#1085;&#1110;&#1089;&#1090;&#1100;</label><select><option>1080p HD</option><option>4K Ultra HD</option><option>720p</option></select></div>
+        <div class="field"><label>&#1060;&#1086;&#1088;&#1084;&#1072;&#1090;</label><select><option>MP4 (H.264)</option><option>MP4 (H.265)</option><option>MOV</option></select></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>&#1063;&#1072;&#1089;&#1090;&#1086;&#1090;&#1072; &#1082;&#1072;&#1076;&#1088;&#1110;&#1074;</label><select><option>24 fps (&#1050;&#1110;&#1085;&#1086;)</option><option>30 fps</option><option>60 fps</option></select></div>
+        <div class="field"><label>&#1071;&#1082;&#1110;&#1089;&#1090;&#1100; &#1079;&#1074;&#1091;&#1082;&#1091;</label><select><option>320 kbps</option><option>192 kbps</option><option>128 kbps</option></select></div>
+      </div>
+      <div class="field"><label>&#1057;&#1091;&#1073;&#1090;&#1080;&#1090;&#1088;&#1080;</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">&#1041;&#1077;&#1079; &#1089;&#1091;&#1073;&#1090;&#1080;&#1090;&#1088;&#1110;&#1074;</div><div class="chip" onclick="toggleChip(this)">&#1059;&#1082;&#1088;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1110;</div><div class="chip" onclick="toggleChip(this)">&#1040;&#1085;&#1075;&#1083;&#1110;&#1081;&#1089;&#1100;&#1082;&#1110;</div></div></div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-export">&#128230; &#1055;&#1086;&#1095;&#1072;&#1090;&#1080; &#1077;&#1082;&#1089;&#1087;&#1086;&#1088;&#1090;</button></div>
+      <div class="progress-wrap" id="export-progress" style="display:none">
+        <div class="progress-label"><span>&#1056;&#1077;&#1085;&#1076;&#1077;&#1088;&#1080;&#1085;&#1075;...</span><span id="export-pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="export-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="toast" id="toast"><span id="t-icon">&#9989;</span> <span id="t-msg"></span></div>
+
+<script>
+function showToast(icon, msg, type) {
+  var el = document.getElementById('toast');
+  document.getElementById('t-icon').textContent = icon;
+  document.getElementById('t-msg').textContent = msg;
+  el.className = 'toast ' + (type || 'ok') + ' show';
+  clearTimeout(el._t);
+  el._t = setTimeout(function() { el.classList.remove('show'); }, 3000);
+}
+
+function toggleChip(el) { el.classList.toggle('on'); }
+
+function animateProgress(fillId, pctId, progressId, onDone) {
+  document.getElementById(progressId).style.display = 'block';
+  var val = 0;
+  var iv = setInterval(function() {
+    val += Math.random() * 12;
+    if (val >= 100) {
+      val = 100;
+      clearInterval(iv);
+      setTimeout(function() {
+        document.getElementById(progressId).style.display = 'none';
+        document.getElementById(fillId).style.width = '0%';
+        if (onDone) onDone();
+      }, 400);
+    }
+    document.getElementById(fillId).style.width = val + '%';
+    document.getElementById(pctId).textContent = Math.round(val) + '%';
+  }, 250);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Navigation
+  document.querySelectorAll('.sb-item[data-page]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var page = this.getAttribute('data-page');
+      document.querySelectorAll('.sb-item').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+      document.getElementById('page-' + page).classList.add('active');
+      var names = { scenario:'\u1f4dd AI \u0421\u0446\u0435\u043d\u0430\u0440\u0438\u0441\u0442', scenes:'\u1f3a8 \u0413\u0435\u043d\u0435\u0440\u0430\u0446\u0456\u044f \u0441\u0446\u0435\u043d', characters:'\u1f464 \u041f\u0435\u0440\u0441\u043e\u043d\u0430\u0436\u0456', animate:'\u1f39e\ufe0f \u041e\u0436\u0438\u0432\u043b\u0435\u043d\u043d\u044f \u0444\u043e\u0442\u043e', voice:'\u1f399\ufe0f \u0413\u043e\u043b\u043e\u0441\u0438 & TTS', enhance:'\u2728 \u041f\u043e\u043a\u0440\u0430\u0449\u0435\u043d\u043d\u044f', editor:'\u2702\ufe0f \u0412\u0456\u0434\u0435\u043e \u0420\u0435\u0434\u0430\u043a\u0442\u043e\u0440', dubbing:'\u1f3ad \u0410\u0432\u0442\u043e \u0414\u0443\u0431\u043b\u044f\u0436', cartoon3d:'\u1f3a8 2D \u2192 3D', photo:'\u1f4f8 AI \u0424\u043e\u0442\u043e\u0441\u0435\u0441\u0456\u044f', ads:'\u1f4f1 \u0412\u0456\u0434\u0435\u043e\u0440\u0435\u043a\u043b\u0430\u043c\u0430', export:'\u1f4e6 \u0415\u043a\u0441\u043f\u043e\u0440\u0442' };
+      document.getElementById('tb-tool').textContent = names[page] || '\u1f3ac \u0421\u0442\u0443\u0434\u0456\u044f';
+    });
+  });
+
+  // New project
+  document.getElementById('btn-new-proj').addEventListener('click', function() {
+    var name = prompt('\u041d\u0430\u0437\u0432\u0430 \u043d\u043e\u0432\u043e\u0433\u043e \u043f\u0440\u043e\u0435\u043a\u0442\u0443:');
+    if (name) { document.getElementById('proj-name').textContent = name; showToast('\u2705', '\u041f\u0440\u043e\u0435\u043a\u0442 "' + name + '" \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043e!', 'ok'); }
+  });
+
+  // Scenario
+  document.getElementById('btn-gen-scenario').addEventListener('click', function() {
+    var idea = document.getElementById('sc-idea').value.trim();
+    if (!idea) { showToast('\u26a0\ufe0f', '\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0456\u0434\u0435\u044e \u0444\u0456\u043b\u044c\u043c\u0443', 'err'); return; }
+    var result = document.getElementById('sc-result');
+    result.textContent = '';
+    result.classList.add('loading');
+    showToast('\u23f3', '\u0413\u0435\u043d\u0435\u0440\u0443\u044e \u0441\u0446\u0435\u043d\u0430\u0440\u0456\u0439...', 'ok');
+    setTimeout(function() {
+      result.classList.remove('loading');
+      var text = 'FADE IN:\n\nINT. \u041c\u0410\u0419\u0421\u0422\u0415\u0420\u041d\u042f - \u041d\u0406\u0427\n\n\u041f\u043e\u0445\u043c\u0443\u0440\u0430 \u043a\u0456\u043c\u043d\u0430\u0442\u0430 \u043e\u0441\u0432\u0456\u0442\u043b\u0435\u043d\u0430 \u043c\u0456\u0441\u044f\u0447\u043d\u0438\u043c \u0441\u044f\u0439\u0432\u043e\u043c. \u041e\u041b\u0415\u041d\u0410 (25), \u043c\u043e\u043b\u043e\u0434\u0430 \u0445\u0443\u0434\u043e\u0436\u043d\u0438\u0446\u044f, \u0441\u0442\u043e\u0457\u0442\u044c \u043f\u0435\u0440\u0435\u0434 \u0441\u0442\u0430\u0440\u043e\u0432\u0438\u043d\u043d\u043e\u044e \u043a\u0430\u0440\u0442\u0438\u043d\u043e\u044e.\n\n\u041e\u041b\u0415\u041d\u0410\n(\u043f\u043e\u0448\u0435\u043f\u043a\u0438)\n\u0429\u043e \u0442\u0438 \u043f\u0440\u0438\u0445\u043e\u0432\u0443\u0454\u0448?\n\n\u0420\u0430\u043f\u0442\u043e\u043c \u043a\u0430\u0440\u0442\u0438\u043d\u0430 \u043f\u043e\u0447\u0438\u043d\u0430\u0454 \u043c\u0435\u0440\u0435\u0445\u0442\u0456\u0442\u0438...\n\nINT. \u0413\u0410\u041b\u0415\u0420\u0415\u042f - \u041d\u0410\u0421\u0422\u0423\u041f\u041d\u0418\u0419 \u0414\u0415\u041d\u042c\n\n\u041c\u0410\u041a\u0421\u0418\u041c (40), \u0435\u043b\u0435\u0433\u0430\u043d\u0442\u043d\u0438\u0439 \u0433\u0430\u043b\u0435\u0440\u0438\u0441\u0442, \u0432\u0438\u0432\u0447\u0430\u0454 \u043a\u0430\u0440\u0442\u0438\u043d\u0443 \u043a\u0440\u0456\u0437\u044c \u043e\u043a\u0443\u043b\u044f\u0440\u0438.\n\n\u041c\u0410\u041a\u0421\u0418\u041c\n\u0426\u044f \u043a\u0430\u0440\u0442\u0438\u043d\u0430 \u043d\u0435 \u043f\u0440\u043e\u0434\u0430\u0454\u0442\u044c\u0441\u044f.\n\n\u041e\u041b\u0415\u041d\u0410\n(\u0440\u0456\u0448\u0443\u0447\u0435)\n\u042f \u043c\u0443\u0448\u0443 \u0437\u043d\u0430\u0442\u0438 \u043f\u0440\u0430\u0432\u0434\u0443.\n\nFADE OUT.';
+      var i = 0;
+      function type() {
+        if (i < text.length) { result.textContent = text.slice(0, ++i); setTimeout(type, 10); }
+        else { document.getElementById('sc-actions').style.display = 'flex'; showToast('\u2705', '\u0421\u0446\u0435\u043d\u0430\u0440\u0456\u0439 \u0433\u043e\u0442\u043e\u0432\u0438\u0439!', 'ok'); }
+      }
+      type();
+    }, 1800);
+  });
+
+  document.getElementById('btn-clear-scenario').addEventListener('click', function() {
+    document.getElementById('sc-result').innerHTML = '<div class="result-empty"><div class="ei">\u1f4dd</div>\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0456\u0434\u0435\u044e \u0456 \u043d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c "\u0417\u0433\u0435\u043d\u0435\u0440\u0443\u0432\u0430\u0442\u0438"</div>';
+    document.getElementById('sc-actions').style.display = 'none';
+  });
+
+  document.getElementById('btn-to-scenes').addEventListener('click', function() {
+    document.querySelector('[data-page="scenes"]').click();
+  });
+
+  document.getElementById('btn-copy-scenario').addEventListener('click', function() {
+    var txt = document.getElementById('sc-result').textContent;
+    if (navigator.clipboard) navigator.clipboard.writeText(txt);
+    showToast('\u1f4cb', '\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e!', 'ok');
+  });
+
+  // Scenes
+  var SCENE_EMOJIS = ['\u1f306','\u1f303','\u1f3a8','\u1f5bc\ufe0f','\u1f332','\u1f3db\ufe0f','\u1f30a','\u1f3d9\ufe0f','\u1f319','\u2600\ufe0f','\u1f3ad'];
+  document.getElementById('btn-gen-scene').addEventListener('click', function() {
+    var desc = document.getElementById('scene-desc').value.trim();
+    if (!desc) { showToast('\u26a0\ufe0f', '\u041e\u043f\u0438\u0448\u0456\u0442\u044c \u0441\u0446\u0435\u043d\u0443', 'err'); return; }
+    showToast('\u23f3', '\u0413\u0435\u043d\u0435\u0440\u0443\u044e \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f...', 'ok');
+    setTimeout(function() {
+      var grid = document.getElementById('scenes-grid');
+      var addBtn = document.getElementById('add-scene-btn');
+      var newCard = document.createElement('div');
+      newCard.className = 'scene-card';
+      var emoji = SCENE_EMOJIS[Math.floor(Math.random() * SCENE_EMOJIS.length)];
+      var num = grid.querySelectorAll('.scene-card').length;
+      newCard.innerHTML = '<div class="scene-img">' + emoji + '</div><div class="scene-info"><div class="scene-num">\u0421\u0446\u0435\u043d\u0430 ' + num + '</div><div class="scene-title">' + desc.slice(0, 35) + '...</div></div>';
+      grid.insertBefore(newCard, addBtn);
+      document.getElementById('scene-desc').value = '';
+      showToast('\u2705', '\u0421\u0446\u0435\u043d\u0443 \u0437\u0433\u0435\u043d\u0435\u0440\u043e\u0432\u0430\u043d\u043e!', 'ok');
+    }, 2000);
+  });
+
+  document.getElementById('btn-gen-all-scenes').addEventListener('click', function() {
+    showToast('\u23f3', '\u0413\u0435\u043d\u0435\u0440\u0443\u044e \u0432\u0441\u0456 \u0441\u0446\u0435\u043d\u0438...', 'ok');
+    setTimeout(function() { showToast('\u2705', '\u0412\u0441\u0456 \u0441\u0446\u0435\u043d\u0438 \u0433\u043e\u0442\u043e\u0432\u0456!', 'ok'); }, 3000);
+  });
+
+  // Characters
+  var CHAR_EMOJIS = ['\u1f469\u200d\u1f3a8','\u1f468\u200d\u1f4bc','\u1f469\u200d\u1f52c','\u1f468\u200d\u1f373','\u1f478','\u1f934','\u1f469\u200d\u1f680','\u1f468\u200d\u1f3a4','\u1f9d9'];
+  document.getElementById('btn-gen-char').addEventListener('click', function() {
+    var name = document.getElementById('char-name').value.trim();
+    if (!name) { showToast('\u26a0\ufe0f', '\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0456\u043c\'\u044f \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u0436\u0430', 'err'); return; }
+    showToast('\u23f3', '\u0413\u0435\u043d\u0435\u0440\u0443\u044e \u043f\u043e\u0440\u0442\u0440\u0435\u0442...', 'ok');
+    setTimeout(function() {
+      var grid = document.getElementById('chars-grid');
+      var addBtn = document.getElementById('add-char-btn');
+      var newCard = document.createElement('div');
+      newCard.className = 'scene-card';
+      var emoji = CHAR_EMOJIS[Math.floor(Math.random() * CHAR_EMOJIS.length)];
+      newCard.innerHTML = '<div class="scene-img">' + emoji + '</div><div class="scene-info"><div class="scene-num">\u041f\u0435\u0440\u0441\u043e\u043d\u0430\u0436</div><div class="scene-title">' + name + '</div></div>';
+      grid.insertBefore(newCard, addBtn);
+      document.getElementById('char-name').value = '';
+      showToast('\u2705', '\u041f\u043e\u0440\u0442\u0440\u0435\u0442 \u0433\u043e\u0442\u043e\u0432\u0438\u0439!', 'ok');
+    }, 2000);
+  });
+
+  // Animate
+  document.getElementById('upload-animate').addEventListener('click', function() { showToast('\u1f4c1', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c D-ID API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f', 'ok'); });
+  document.getElementById('btn-animate').addEventListener('click', function() {
+    showToast('\u23f3', '\u041e\u0436\u0438\u0432\u043b\u0435\u043d\u043d\u044f \u0444\u043e\u0442\u043e...', 'ok');
+    var result = document.getElementById('anim-result');
+    result.classList.add('loading');
+    setTimeout(function() {
+      result.classList.remove('loading');
+      result.innerHTML = '<div style="text-align:center;padding:20px"><div style="font-size:40px;margin-bottom:10px">\u1f39e\ufe0f</div><div style="color:var(--green);font-weight:600">\u2705 \u0410\u043d\u0456\u043c\u0430\u0446\u0456\u044e \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043e!</div><div style="font-size:12px;color:var(--muted);margin-top:6px">\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c D-ID API \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443</div></div>';
+      showToast('\u2705', '\u0424\u043e\u0442\u043e \u043e\u0436\u0438\u0432\u043b\u0435\u043d\u043e!', 'ok');
+    }, 3000);
+  });
+
+  // Voice
+  document.querySelectorAll('.voice-opt').forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      document.querySelectorAll('.voice-opt').forEach(function(o) { o.classList.remove('on'); });
+      this.classList.add('on');
+    });
+  });
+
+  document.getElementById('btn-gen-voice').addEventListener('click', function() {
+    var text = document.getElementById('voice-text').value.trim();
+    if (!text) { showToast('\u26a0\ufe0f', '\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0442\u0435\u043a\u0441\u0442', 'err'); return; }
+    var wf = document.getElementById('waveform');
+    wf.classList.remove('idle');
+    showToast('\u23f3', '\u0413\u0435\u043d\u0435\u0440\u0443\u044e \u0433\u043e\u043b\u043e\u0441...', 'ok');
+    setTimeout(function() { wf.classList.add('idle'); showToast('\u2705', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c ElevenLabs API \u0434\u043b\u044f \u043f\u0440\u043e\u0441\u043b\u0443\u0445\u043e\u0432\u0443\u0432\u0430\u043d\u043d\u044f', 'ok'); }, 3000);
+  });
+
+  // Enhance
+  document.querySelectorAll('.enhance-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      document.querySelectorAll('.enhance-card').forEach(function(c) { c.classList.remove('on'); });
+      this.classList.add('on');
+    });
+  });
+
+  document.getElementById('upload-enhance').addEventListener('click', function() { showToast('\u1f4c1', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f', 'ok'); });
+  document.getElementById('btn-enhance').addEventListener('click', function() {
+    animateProgress('enhance-fill', 'enhance-pct', 'enhance-progress', function() {
+      showToast('\u2705', '\u042f\u043a\u0456\u0441\u0442\u044c \u043f\u043e\u043a\u0440\u0430\u0449\u0435\u043d\u043e \u0434\u043e 4K!', 'ok');
+    });
+  });
+
+  // Photo session
+  document.querySelectorAll('.bg-opt').forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      document.querySelectorAll('.bg-opt').forEach(function(o) { o.classList.remove('on'); });
+      this.classList.add('on');
+    });
+  });
+
+  document.getElementById('btn-upload-photo').addEventListener('click', function() { showToast('\u1f4c1', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f', 'ok'); });
+
+  var PHOTO_EMOJIS = ['\u1f469','\u1f468','\u1f4e6','\u1f415','\u1f338','\u1f48e','\u1f370','\u1f4f1','\u1f45f','\u1f9f4','\u1f381','\u1f457'];
+  document.getElementById('btn-gen-photos').addEventListener('click', function() {
+    showToast('\u23f3', '\u0413\u0435\u043d\u0435\u0440\u0443\u044e \u0444\u043e\u0442\u043e\u0441\u0435\u0441\u0456\u044e...', 'ok');
+    setTimeout(function() {
+      var count = parseInt(document.getElementById('photo-count').value) || 3;
+      var results = document.getElementById('photo-results');
+      results.innerHTML = '';
+      for (var i = 0; i < count; i++) {
+        var emoji = PHOTO_EMOJIS[Math.floor(Math.random() * PHOTO_EMOJIS.length)];
+        var card = document.createElement('div');
+        card.className = 'photo-card';
+        card.innerHTML = emoji + '<div class="photo-label">\u0412\u0430\u0440\u0456\u0430\u043d\u0442 ' + (i + 1) + '</div>';
+        results.appendChild(card);
+      }
+      document.getElementById('photo-results-card').style.display = 'block';
+      showToast('\u2705', '\u0424\u043e\u0442\u043e\u0441\u0435\u0441\u0456\u044f \u0433\u043e\u0442\u043e\u0432\u0430!', 'ok');
+    }, 2500);
+  });
+
+  document.getElementById('btn-download-photos').addEventListener('click', function() { showToast('\u2b07\ufe0f', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f', 'ok'); });
+  document.getElementById('btn-regen-photos').addEventListener('click', function() { document.getElementById('btn-gen-photos').click(); });
+
+  // Ads
+  document.getElementById('fmt-916').addEventListener('click', function() { document.getElementById('fmt-916').classList.add('on'); document.getElementById('fmt-169').classList.remove('on'); });
+  document.getElementById('fmt-169').addEventListener('click', function() { document.getElementById('fmt-169').classList.add('on'); document.getElementById('fmt-916').classList.remove('on'); });
+  document.getElementById('upload-ad').addEventListener('click', function() { showToast('\u1f4c1', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f', 'ok'); });
+
+  document.getElementById('btn-gen-ad').addEventListener('click', function() {
+    var product = document.getElementById('ad-product').value.trim();
+    if (!product) { showToast('\u26a0\ufe0f', '\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u043d\u0430\u0437\u0432\u0443 \u0442\u043e\u0432\u0430\u0440\u0443', 'err'); return; }
+    animateProgress('ad-fill', 'ad-pct', 'ad-progress', function() {
+      document.getElementById('ad-result-card').style.display = 'block';
+      showToast('\u1f389', '\u0420\u0435\u043a\u043b\u0430\u043c\u0430 \u0433\u043e\u0442\u043e\u0432\u0430!', 'ok');
+    });
+  });
+
+  document.getElementById('btn-dl-ad').addEventListener('click', function() { showToast('\u2b07\ufe0f', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f', 'ok'); });
+  document.getElementById('btn-regen-ad').addEventListener('click', function() { document.getElementById('btn-gen-ad').click(); });
+
+  // Editor
+  ['btn-ed-play','btn-ed-cut','btn-ed-transition','btn-ed-music','btn-ed-sub','btn-ed-effect'].forEach(function(id) {
+    document.getElementById(id).addEventListener('click', function() {
+      showToast('\u1f3ac', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c API \u0434\u043b\u044f \u043f\u043e\u0432\u043d\u043e\u0433\u043e \u0440\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u043d\u043d\u044f', 'ok');
+    });
+  });
+  document.getElementById('btn-ed-render').addEventListener('click', function() {
+    animateProgress('editor-fill', 'editor-pct', 'editor-progress', function() {
+      showToast('\u1f389', '\u0412\u0456\u0434\u0435\u043e \u0432\u0456\u0434\u0440\u0435\u043d\u0434\u0435\u0440\u0435\u043d\u043e! \u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f', 'ok');
+    });
+  });
+
+
+  // Dubbing language select
+  document.querySelectorAll('#lang-grid .voice-opt').forEach(function(opt) {
+    opt.addEventListener('click', function() {
+      document.querySelectorAll('#lang-grid .voice-opt').forEach(function(o) { o.classList.remove('on'); });
+      this.classList.add('on');
+    });
+  });
+
+  // Dubbing enhance cards
+  document.querySelectorAll('[data-dub]').forEach(function(card) {
+    card.addEventListener('click', function() { this.classList.toggle('on'); });
+  });
+
+  // Upload dubbing
+  document.getElementById('upload-dub').addEventListener('click', function() { showToast('\u1f4c1', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u0432\u0456\u0434\u0435\u043e', 'ok'); });
+
+  // Start dubbing
+  document.getElementById('btn-start-dub').addEventListener('click', function() {
+    var lang = document.querySelector('#lang-grid .voice-opt.on');
+    if (!lang) { showToast('\u26a0\ufe0f', '\u041e\u0431\u0435\u0440\u0456\u0442\u044c \u043c\u043e\u0432\u0443 \u0434\u0443\u0431\u043b\u044f\u0436\u0443', 'err'); return; }
+    var langName = lang.querySelector('.voice-name').textContent;
+    var statuses = ['\u0410\u043d\u0430\u043b\u0456\u0437 \u0432\u0456\u0434\u0435\u043e...', '\u0420\u043e\u0437\u043f\u0456\u0437\u043d\u0430\u0432\u0430\u043d\u043d\u044f \u043c\u043e\u0432\u043b\u0435\u043d\u043d\u044f...', '\u041f\u0435\u0440\u0435\u043a\u043b\u0430\u0434 \u0442\u0435\u043a\u0441\u0442\u0443...', '\u041a\u043b\u043e\u043d\u0443\u0432\u0430\u043d\u043d\u044f \u0433\u043e\u043b\u043e\u0441\u0443...', '\u0421\u0438\u043d\u0445\u0440\u043e\u043d\u0456\u0437\u0430\u0446\u0456\u044f \u0433\u0443\u0431...', '\u041e\u0431\u0440\u043e\u0431\u043a\u0430 \u0435\u043c\u043e\u0446\u0456\u0439...', '\u0424\u0456\u043d\u0430\u043b\u044c\u043d\u0438\u0439 \u0440\u0435\u043d\u0434\u0435\u0440...'];
+    var si = 0;
+    document.getElementById('dub-progress').style.display = 'block';
+    var val = 0;
+    var iv = setInterval(function() {
+      val += Math.random() * 8;
+      if (val >= 100) { val = 100; clearInterval(iv);
+        setTimeout(function() {
+          document.getElementById('dub-progress').style.display = 'none';
+          document.getElementById('dub-fill').style.width = '0%';
+          document.getElementById('dub-result-card').style.display = 'block';
+          document.getElementById('dub-result-info').textContent = '\u0412\u0456\u0434\u0435\u043e \u043f\u0440\u043e\u0434\u0443\u0431\u043b\u044c\u043e\u0432\u0430\u043d\u043e \u043d\u0430 ' + langName;
+          showToast('\u1f389', '\u0414\u0443\u0431\u043b\u044f\u0436 \u043d\u0430 ' + langName + ' \u0433\u043e\u0442\u043e\u0432\u0438\u0439!', 'ok');
+        }, 400);
+      }
+      if (Math.floor(val / 15) > si && si < statuses.length - 1) {
+        si++;
+        document.getElementById('dub-status').textContent = statuses[si];
+      }
+      document.getElementById('dub-fill').style.width = val + '%';
+      document.getElementById('dub-pct').textContent = Math.round(val) + '%';
+    }, 300);
+  });
+
+  document.getElementById('btn-dl-dub').addEventListener('click', function() { showToast('\u2b07\ufe0f', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c D-ID/ElevenLabs API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f', 'ok'); });
+  document.getElementById('btn-regen-dub').addEventListener('click', function() { document.getElementById('dub-result-card').style.display = 'none'; });
+
+  // Cartoon 3D
+  document.querySelectorAll('[data-style3d]').forEach(function(card) {
+    card.addEventListener('click', function() {
+      document.querySelectorAll('[data-style3d]').forEach(function(c) { c.classList.remove('on'); });
+      this.classList.add('on');
+    });
+  });
+
+  document.getElementById('upload-cartoon').addEventListener('click', function() { showToast('\u1f4c1', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f', 'ok'); });
+
+  document.getElementById('btn-preview-3d').addEventListener('click', function() { showToast('\u1f441\ufe0f', '\u041f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0431\u0443\u0434\u0435 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0439 \u043f\u0456\u0441\u043b\u044f \u043f\u0456\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u043d\u044f API', 'ok'); });
+
+  document.getElementById('btn-start-3d').addEventListener('click', function() {
+    var style = document.querySelector('[data-style3d].on');
+    var styleName = style ? style.querySelector('.enhance-name').textContent : '3D';
+    var statuses = ['\u0410\u043d\u0430\u043b\u0456\u0437 \u043a\u0430\u0434\u0440\u0456\u0432...', '\u0412\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0433\u043b\u0438\u0431\u0438\u043d\u0438...', '\u041f\u043e\u0431\u0443\u0434\u043e\u0432\u0430 3D \u043c\u043e\u0434\u0435\u043b\u0435\u0439...', '\u0422\u0435\u043a\u0441\u0442\u0443\u0440\u0443\u0432\u0430\u043d\u043d\u044f...', '\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043e\u0441\u0432\u0456\u0442\u043b\u0435\u043d\u043d\u044f...', '\u0420\u0435\u043d\u0434\u0435\u0440\u0438\u043d\u0433...'];
+    var si = 0;
+    document.getElementById('c3d-progress').style.display = 'block';
+    var val = 0;
+    var iv = setInterval(function() {
+      val += Math.random() * 6;
+      if (val >= 100) { val = 100; clearInterval(iv);
+        setTimeout(function() {
+          document.getElementById('c3d-progress').style.display = 'none';
+          document.getElementById('c3d-fill').style.width = '0%';
+          document.getElementById('c3d-result-card').style.display = 'block';
+          showToast('\u1f389', styleName + ' 3D \u043a\u043e\u043d\u0432\u0435\u0440\u0442\u0430\u0446\u0456\u044f \u0433\u043e\u0442\u043e\u0432\u0430!', 'ok');
+        }, 400);
+      }
+      if (Math.floor(val / 18) > si && si < statuses.length - 1) {
+        si++;
+        document.getElementById('c3d-status').textContent = statuses[si];
+      }
+      document.getElementById('c3d-fill').style.width = val + '%';
+      document.getElementById('c3d-pct').textContent = Math.round(val) + '%';
+    }, 350);
+  });
+
+  document.getElementById('btn-dl-3d').addEventListener('click', function() { showToast('\u2b07\ufe0f', '\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c 3D API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f', 'ok'); });
+  document.getElementById('btn-regen-3d').addEventListener('click', function() { document.getElementById('c3d-result-card').style.display = 'none'; });
+
+  // Export
+  document.getElementById('btn-export').addEventListener('click', function() {
+    animateProgress('export-fill', 'export-pct', 'export-progress', function() {
+      showToast('\u1f389', '\u0424\u0456\u043b\u044c\u043c \u0435\u043a\u0441\u043f\u043e\u0440\u0442\u043e\u0432\u0430\u043d\u043e! \u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0456\u0442\u044c API \u0434\u043b\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f', 'ok');
+    });
+  });
+
+});
+</script>
+</body>
+</html>
