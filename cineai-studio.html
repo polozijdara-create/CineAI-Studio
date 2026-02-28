@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CineAI Studio — Творча Студія</title>
+<title>CineAI Studio вЂ” РўРІРѕСЂС‡Р° РЎС‚СѓРґС–СЏ</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#07070d;--s1:#0f0f18;--s2:#141420;--s3:#1a1a28;--border:#252535;--gold:#d4a843;--gold2:#f0c060;--red:#e84040;--green:#3dba6e;--blue:#4a9eff;--text:#eeeef5;--muted:#68688a;--silver:#a0a0c0}
@@ -142,155 +142,156 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif}
 <div class="topbar">
   <div class="tb-logo">Cine<span>AI</span> <small>STUDIO</small></div>
   <div class="tb-sep"></div>
-  <span class="tb-tool" id="tb-tool">🎬 Студія</span>
+  <span class="tb-tool" id="tb-tool">рџЋ¬ РЎС‚СѓРґС–СЏ</span>
   <div class="tb-right">
-    <button class="btn btn-ghost btn-sm" onclick="window.history.back()">← Назад</button>
-    <button class="btn btn-gold btn-sm" id="btn-new-proj">+ Новий проект</button>
+    <button class="btn btn-ghost btn-sm" onclick="window.history.back()">в†ђ РќР°Р·Р°Рґ</button>
+    <button class="btn btn-gold btn-sm" id="btn-new-proj">+ РќРѕРІРёР№ РїСЂРѕРµРєС‚</button>
   </div>
 </div>
 
 <div class="sidebar">
   <div class="sb-project">
-    <div class="sb-proj-label">Поточний проект</div>
-    <div class="sb-proj-name" id="proj-name">Мій перший фільм</div>
+    <div class="sb-proj-label">РџРѕС‚РѕС‡РЅРёР№ РїСЂРѕРµРєС‚</div>
+    <div class="sb-proj-name" id="proj-name">РњС–Р№ РїРµСЂС€РёР№ С„С–Р»СЊРј</div>
     <div class="sb-proj-bar"><div class="sb-proj-fill"></div></div>
-    <div class="sb-proj-stat">3 з 8 сцен готові</div>
+    <div class="sb-proj-stat">3 Р· 8 СЃС†РµРЅ РіРѕС‚РѕРІС–</div>
   </div>
   <div class="sb-section">
-    <div class="sb-label">Створення</div>
-    <button class="sb-item active" data-page="scenario"><span class="sb-item-icon">📝</span>AI Сценарист</button>
-    <button class="sb-item" data-page="scenes"><span class="sb-item-icon">🎨</span>Генерація сцен</button>
-    <button class="sb-item" data-page="characters"><span class="sb-item-icon">👤</span>Персонажі</button>
+    <div class="sb-label">РЎС‚РІРѕСЂРµРЅРЅСЏ</div>
+    <button class="sb-item active" data-page="scenario"><span class="sb-item-icon">рџ“ќ</span>AI РЎС†РµРЅР°СЂРёСЃС‚</button>
+    <button class="sb-item" data-page="scenes"><span class="sb-item-icon">рџЋЁ</span>Р“РµРЅРµСЂР°С†С–СЏ СЃС†РµРЅ</button>
+    <button class="sb-item" data-page="characters"><span class="sb-item-icon">рџ‘¤</span>РџРµСЂСЃРѕРЅР°Р¶С–</button>
   </div>
   <div class="sb-section">
-    <div class="sb-label">Медіа</div>
-    <button class="sb-item" data-page="animate"><span class="sb-item-icon">🎞️</span>Оживлення фото<span class="sb-badge badge-pro">Pro</span></button>
-    <button class="sb-item" data-page="voice"><span class="sb-item-icon">🎙️</span>Голоси &amp; TTS<span class="sb-badge badge-pro">Pro</span></button>
-    <button class="sb-item" data-page="enhance"><span class="sb-item-icon">✨</span>Покращення якості<span class="sb-badge badge-pro">Pro</span></button>
+    <div class="sb-label">РњРµРґС–Р°</div>
+    <button class="sb-item" data-page="animate"><span class="sb-item-icon">рџЋћпёЏ</span>РћР¶РёРІР»РµРЅРЅСЏ С„РѕС‚Рѕ<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="voice"><span class="sb-item-icon">рџЋ™пёЏ</span>Р“РѕР»РѕСЃРё &amp; TTS<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="enhance"><span class="sb-item-icon">вњЁ</span>РџРѕРєСЂР°С‰РµРЅРЅСЏ СЏРєРѕСЃС‚С–<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="editor"><span class="sb-item-icon">вњ‚пёЏ</span>Р’С–РґРµРѕ Р РµРґР°РєС‚РѕСЂ<span class="sb-badge badge-pro">Pro</span></button>
   </div>
   <div class="sb-section">
-    <div class="sb-label">Бізнес</div>
-    <button class="sb-item" data-page="photo"><span class="sb-item-icon">📸</span>AI Фотосесія<span class="sb-badge badge-pro">Pro</span></button>
-    <button class="sb-item" data-page="ads"><span class="sb-item-icon">📱</span>Відеореклама<span class="sb-badge badge-pro">Pro</span></button>
-    <button class="sb-item" data-page="export"><span class="sb-item-icon">📦</span>Експорт<span class="sb-badge badge-prem">Premium</span></button>
+    <div class="sb-label">Р‘С–Р·РЅРµСЃ</div>
+    <button class="sb-item" data-page="photo"><span class="sb-item-icon">рџ“ё</span>AI Р¤РѕС‚РѕСЃРµСЃС–СЏ<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="ads"><span class="sb-item-icon">рџ“±</span>Р’С–РґРµРѕСЂРµРєР»Р°РјР°<span class="sb-badge badge-pro">Pro</span></button>
+    <button class="sb-item" data-page="export"><span class="sb-item-icon">рџ“¦</span>Р•РєСЃРїРѕСЂС‚<span class="sb-badge badge-prem">Premium</span></button>
   </div>
 </div>
 
 <div class="main">
 
   <div class="page active" id="page-scenario">
-    <div class="pg-title">AI <span>Сценарист</span></div>
-    <div class="pg-sub">Опишіть ідею — AI напише повноцінний сценарій</div>
+    <div class="pg-title">AI <span>РЎС†РµРЅР°СЂРёСЃС‚</span></div>
+    <div class="pg-sub">РћРїРёС€С–С‚СЊ С–РґРµСЋ вЂ” AI РЅР°РїРёС€Рµ РїРѕРІРЅРѕС†С–РЅРЅРёР№ СЃС†РµРЅР°СЂС–Р№</div>
     <div class="card">
-      <div class="card-title"><span>💡</span> Ваша ідея</div>
-      <div class="field"><label>Опис фільму</label><textarea id="sc-idea" placeholder="Наприклад: Короткометражний фільм про молоду художницю яка відкриває таємничу картину..."></textarea></div>
+      <div class="card-title"><span>рџ’Ў</span> Р’Р°С€Р° С–РґРµСЏ</div>
+      <div class="field"><label>РћРїРёСЃ С„С–Р»СЊРјСѓ</label><textarea id="sc-idea" placeholder="РќР°РїСЂРёРєР»Р°Рґ: РљРѕСЂРѕС‚РєРѕРјРµС‚СЂР°Р¶РЅРёР№ С„С–Р»СЊРј РїСЂРѕ РјРѕР»РѕРґСѓ С…СѓРґРѕР¶РЅРёС†СЋ СЏРєР° РІС–РґРєСЂРёРІР°С” С‚Р°С”РјРЅРёС‡Сѓ РєР°СЂС‚РёРЅСѓ..."></textarea></div>
       <div class="row3">
-        <div class="field"><label>Жанр</label><select id="sc-genre"><option>Драма</option><option>Трилер</option><option>Комедія</option><option>Фантастика</option><option>Жахи</option><option>Романтика</option></select></div>
-        <div class="field"><label>Тривалість</label><select><option>1-3 хвилини</option><option>5-10 хвилин</option><option>15-30 хвилин</option><option>Повний метр</option></select></div>
-        <div class="field"><label>Мова</label><select><option>Українська</option><option>Англійська</option><option>Польська</option></select></div>
+        <div class="field"><label>Р–Р°РЅСЂ</label><select id="sc-genre"><option>Р”СЂР°РјР°</option><option>РўСЂРёР»РµСЂ</option><option>РљРѕРјРµРґС–СЏ</option><option>Р¤Р°РЅС‚Р°СЃС‚РёРєР°</option><option>Р–Р°С…Рё</option><option>Р РѕРјР°РЅС‚РёРєР°</option></select></div>
+        <div class="field"><label>РўСЂРёРІР°Р»С–СЃС‚СЊ</label><select><option>1-3 С…РІРёР»РёРЅРё</option><option>5-10 С…РІРёР»РёРЅ</option><option>15-30 С…РІРёР»РёРЅ</option><option>РџРѕРІРЅРёР№ РјРµС‚СЂ</option></select></div>
+        <div class="field"><label>РњРѕРІР°</label><select><option>РЈРєСЂР°С—РЅСЃСЊРєР°</option><option>РђРЅРіР»С–Р№СЃСЊРєР°</option><option>РџРѕР»СЊСЃСЊРєР°</option></select></div>
       </div>
-      <div class="field"><label>Стиль</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">Кінематографічний</div><div class="chip" onclick="toggleChip(this)">Арт-хаус</div><div class="chip" onclick="toggleChip(this)">Голлівудський</div><div class="chip" onclick="toggleChip(this)">Нуар</div><div class="chip" onclick="toggleChip(this)">Аніме</div></div></div>
+      <div class="field"><label>РЎС‚РёР»СЊ</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">РљС–РЅРµРјР°С‚РѕРіСЂР°С„С–С‡РЅРёР№</div><div class="chip" onclick="toggleChip(this)">РђСЂС‚-С…Р°СѓСЃ</div><div class="chip" onclick="toggleChip(this)">Р“РѕР»Р»С–РІСѓРґСЃСЊРєРёР№</div><div class="chip" onclick="toggleChip(this)">РќСѓР°СЂ</div><div class="chip" onclick="toggleChip(this)">РђРЅС–РјРµ</div></div></div>
       <div class="btns-row">
-        <button class="btn btn-gold" id="btn-gen-scenario">✨ Згенерувати сценарій</button>
-        <button class="btn btn-ghost" id="btn-clear-scenario">🗑️ Очистити</button>
+        <button class="btn btn-gold" id="btn-gen-scenario">вњЁ Р—РіРµРЅРµСЂСѓРІР°С‚Рё СЃС†РµРЅР°СЂС–Р№</button>
+        <button class="btn btn-ghost" id="btn-clear-scenario">рџ—‘пёЏ РћС‡РёСЃС‚РёС‚Рё</button>
       </div>
     </div>
     <div class="card">
-      <div class="card-title"><span>📄</span> Готовий сценарій</div>
-      <div class="result-box" id="sc-result"><div class="result-empty"><div class="ei">📝</div>Введіть ідею і натисніть "Згенерувати"</div></div>
+      <div class="card-title"><span>рџ“„</span> Р“РѕС‚РѕРІРёР№ СЃС†РµРЅР°СЂС–Р№</div>
+      <div class="result-box" id="sc-result"><div class="result-empty"><div class="ei">рџ“ќ</div>Р’РІРµРґС–С‚СЊ С–РґРµСЋ С– РЅР°С‚РёСЃРЅС–С‚СЊ "Р—РіРµРЅРµСЂСѓРІР°С‚Рё"</div></div>
       <div class="btns-row" id="sc-actions" style="display:none">
-        <button class="btn btn-gold btn-sm" id="btn-to-scenes">→ Генерувати сцени</button>
-        <button class="btn btn-ghost btn-sm" id="btn-copy-scenario">📋 Копіювати</button>
+        <button class="btn btn-gold btn-sm" id="btn-to-scenes">в†’ Р“РµРЅРµСЂСѓРІР°С‚Рё СЃС†РµРЅРё</button>
+        <button class="btn btn-ghost btn-sm" id="btn-copy-scenario">рџ“‹ РљРѕРїС–СЋРІР°С‚Рё</button>
       </div>
     </div>
   </div>
 
   <div class="page" id="page-scenes">
-    <div class="pg-title">Генерація <span>Сцен</span></div>
-    <div class="pg-sub">AI перетворює кожну сцену на зображення</div>
+    <div class="pg-title">Р“РµРЅРµСЂР°С†С–СЏ <span>РЎС†РµРЅ</span></div>
+    <div class="pg-sub">AI РїРµСЂРµС‚РІРѕСЂСЋС” РєРѕР¶РЅСѓ СЃС†РµРЅСѓ РЅР° Р·РѕР±СЂР°Р¶РµРЅРЅСЏ</div>
     <div class="card">
-      <div class="card-title"><span>🎨</span> Налаштування</div>
+      <div class="card-title"><span>рџЋЁ</span> РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ</div>
       <div class="row2">
-        <div class="field"><label>Стиль зображень</label><select><option>Кінореалізм</option><option>Цифровий живопис</option><option>Аніме</option><option>Акварель</option><option>3D рендер</option><option>Фотореалізм</option></select></div>
-        <div class="field"><label>Співвідношення сторін</label><select><option>16:9 (Кіно)</option><option>4:3 (Класичне)</option><option>1:1 (Квадрат)</option><option>9:16 (Вертикальне)</option></select></div>
+        <div class="field"><label>РЎС‚РёР»СЊ Р·РѕР±СЂР°Р¶РµРЅСЊ</label><select><option>РљС–РЅРѕСЂРµР°Р»С–Р·Рј</option><option>Р¦РёС„СЂРѕРІРёР№ Р¶РёРІРѕРїРёСЃ</option><option>РђРЅС–РјРµ</option><option>РђРєРІР°СЂРµР»СЊ</option><option>3D СЂРµРЅРґРµСЂ</option><option>Р¤РѕС‚РѕСЂРµР°Р»С–Р·Рј</option></select></div>
+        <div class="field"><label>РЎРїС–РІРІС–РґРЅРѕС€РµРЅРЅСЏ СЃС‚РѕСЂС–РЅ</label><select><option>16:9 (РљС–РЅРѕ)</option><option>4:3 (РљР»Р°СЃРёС‡РЅРµ)</option><option>1:1 (РљРІР°РґСЂР°С‚)</option><option>9:16 (Р’РµСЂС‚РёРєР°Р»СЊРЅРµ)</option></select></div>
       </div>
-      <div class="field"><label>Опис сцени</label><textarea id="scene-desc" placeholder="Опишіть сцену: персонажі, обстановка, освітлення, настрій..."></textarea></div>
+      <div class="field"><label>РћРїРёСЃ СЃС†РµРЅРё</label><textarea id="scene-desc" placeholder="РћРїРёС€С–С‚СЊ СЃС†РµРЅСѓ: РїРµСЂСЃРѕРЅР°Р¶С–, РѕР±СЃС‚Р°РЅРѕРІРєР°, РѕСЃРІС–С‚Р»РµРЅРЅСЏ, РЅР°СЃС‚СЂС–Р№..."></textarea></div>
       <div class="btns-row">
-        <button class="btn btn-gold" id="btn-gen-scene">🎨 Генерувати сцену</button>
-        <button class="btn btn-ghost" id="btn-gen-all-scenes">⚡ Всі сцени з сценарію</button>
+        <button class="btn btn-gold" id="btn-gen-scene">рџЋЁ Р“РµРЅРµСЂСѓРІР°С‚Рё СЃС†РµРЅСѓ</button>
+        <button class="btn btn-ghost" id="btn-gen-all-scenes">вљЎ Р’СЃС– СЃС†РµРЅРё Р· СЃС†РµРЅР°СЂС–СЋ</button>
       </div>
     </div>
     <div class="card">
-      <div class="card-title"><span>🖼️</span> Згенеровані сцени</div>
+      <div class="card-title"><span>рџ–јпёЏ</span> Р—РіРµРЅРµСЂРѕРІР°РЅС– СЃС†РµРЅРё</div>
       <div class="scene-grid" id="scenes-grid">
-        <div class="scene-card"><div class="scene-img">🌆</div><div class="scene-info"><div class="scene-num">Сцена 1</div><div class="scene-title">Місто вночі</div></div></div>
-        <div class="scene-card"><div class="scene-img">🎨</div><div class="scene-info"><div class="scene-num">Сцена 2</div><div class="scene-title">Майстерня художниці</div></div></div>
-        <div class="scene-card"><div class="scene-img">🖼️</div><div class="scene-info"><div class="scene-num">Сцена 3</div><div class="scene-title">Таємнича картина</div></div></div>
-        <div class="scene-card" id="add-scene-btn" style="border:2px dashed var(--border);align-items:center;justify-content:center;display:flex;min-height:190px"><div style="text-align:center;color:var(--muted)"><div style="font-size:28px;margin-bottom:6px">+</div><div style="font-size:12px">Додати сцену</div></div></div>
+        <div class="scene-card"><div class="scene-img">рџЊ†</div><div class="scene-info"><div class="scene-num">РЎС†РµРЅР° 1</div><div class="scene-title">РњС–СЃС‚Рѕ РІРЅРѕС‡С–</div></div></div>
+        <div class="scene-card"><div class="scene-img">рџЋЁ</div><div class="scene-info"><div class="scene-num">РЎС†РµРЅР° 2</div><div class="scene-title">РњР°Р№СЃС‚РµСЂРЅСЏ С…СѓРґРѕР¶РЅРёС†С–</div></div></div>
+        <div class="scene-card"><div class="scene-img">рџ–јпёЏ</div><div class="scene-info"><div class="scene-num">РЎС†РµРЅР° 3</div><div class="scene-title">РўР°С”РјРЅРёС‡Р° РєР°СЂС‚РёРЅР°</div></div></div>
+        <div class="scene-card" id="add-scene-btn" style="border:2px dashed var(--border);align-items:center;justify-content:center;display:flex;min-height:190px"><div style="text-align:center;color:var(--muted)"><div style="font-size:28px;margin-bottom:6px">+</div><div style="font-size:12px">Р”РѕРґР°С‚Рё СЃС†РµРЅСѓ</div></div></div>
       </div>
     </div>
   </div>
 
   <div class="page" id="page-characters">
-    <div class="pg-title">AI <span>Персонажі</span></div>
-    <div class="pg-sub">Генеруйте портрети героїв — стабільний вигляд у всіх сценах</div>
+    <div class="pg-title">AI <span>РџРµСЂСЃРѕРЅР°Р¶С–</span></div>
+    <div class="pg-sub">Р“РµРЅРµСЂСѓР№С‚Рµ РїРѕСЂС‚СЂРµС‚Рё РіРµСЂРѕС—РІ вЂ” СЃС‚Р°Р±С–Р»СЊРЅРёР№ РІРёРіР»СЏРґ Сѓ РІСЃС–С… СЃС†РµРЅР°С…</div>
     <div class="card">
-      <div class="card-title"><span>👤</span> Новий персонаж</div>
+      <div class="card-title"><span>рџ‘¤</span> РќРѕРІРёР№ РїРµСЂСЃРѕРЅР°Р¶</div>
       <div class="row2">
-        <div class="field"><label>Ім'я персонажа</label><input type="text" id="char-name" placeholder="Олена"></div>
-        <div class="field"><label>Вік</label><input type="text" id="char-age" placeholder="25"></div>
+        <div class="field"><label>Р†Рј'СЏ РїРµСЂСЃРѕРЅР°Р¶Р°</label><input type="text" id="char-name" placeholder="РћР»РµРЅР°"></div>
+        <div class="field"><label>Р’С–Рє</label><input type="text" id="char-age" placeholder="25"></div>
       </div>
-      <div class="field"><label>Зовнішність</label><textarea id="char-look" placeholder="Молода жінка, темне волосся, зелені очі..." style="min-height:70px"></textarea></div>
-      <div class="btns-row"><button class="btn btn-gold" id="btn-gen-char">👤 Генерувати портрет</button></div>
+      <div class="field"><label>Р—РѕРІРЅС–С€РЅС–СЃС‚СЊ</label><textarea id="char-look" placeholder="РњРѕР»РѕРґР° Р¶С–РЅРєР°, С‚РµРјРЅРµ РІРѕР»РѕСЃСЃСЏ, Р·РµР»РµРЅС– РѕС‡С–..." style="min-height:70px"></textarea></div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-gen-char">рџ‘¤ Р“РµРЅРµСЂСѓРІР°С‚Рё РїРѕСЂС‚СЂРµС‚</button></div>
     </div>
     <div class="card">
-      <div class="card-title"><span>🎭</span> Персонажі проекту</div>
+      <div class="card-title"><span>рџЋ­</span> РџРµСЂСЃРѕРЅР°Р¶С– РїСЂРѕРµРєС‚Сѓ</div>
       <div class="scene-grid" id="chars-grid">
-        <div class="scene-card"><div class="scene-img">👩‍🎨</div><div class="scene-info"><div class="scene-num">Головна роль</div><div class="scene-title">Олена — художниця</div></div></div>
-        <div class="scene-card"><div class="scene-img">👨‍💼</div><div class="scene-info"><div class="scene-num">Другорядна роль</div><div class="scene-title">Максим — галерист</div></div></div>
-        <div class="scene-card" id="add-char-btn" style="border:2px dashed var(--border);align-items:center;justify-content:center;display:flex;min-height:190px"><div style="text-align:center;color:var(--muted)"><div style="font-size:28px;margin-bottom:6px">+</div><div style="font-size:12px">Додати персонажа</div></div></div>
+        <div class="scene-card"><div class="scene-img">рџ‘©вЂЌрџЋЁ</div><div class="scene-info"><div class="scene-num">Р“РѕР»РѕРІРЅР° СЂРѕР»СЊ</div><div class="scene-title">РћР»РµРЅР° вЂ” С…СѓРґРѕР¶РЅРёС†СЏ</div></div></div>
+        <div class="scene-card"><div class="scene-img">рџ‘ЁвЂЌрџ’ј</div><div class="scene-info"><div class="scene-num">Р”СЂСѓРіРѕСЂСЏРґРЅР° СЂРѕР»СЊ</div><div class="scene-title">РњР°РєСЃРёРј вЂ” РіР°Р»РµСЂРёСЃС‚</div></div></div>
+        <div class="scene-card" id="add-char-btn" style="border:2px dashed var(--border);align-items:center;justify-content:center;display:flex;min-height:190px"><div style="text-align:center;color:var(--muted)"><div style="font-size:28px;margin-bottom:6px">+</div><div style="font-size:12px">Р”РѕРґР°С‚Рё РїРµСЂСЃРѕРЅР°Р¶Р°</div></div></div>
       </div>
     </div>
   </div>
 
   <div class="page" id="page-animate">
-    <div class="pg-title">Оживлення <span>Фото</span></div>
-    <div class="pg-sub">Перетворіть статичні зображення на живі сцени через D-ID</div>
+    <div class="pg-title">РћР¶РёРІР»РµРЅРЅСЏ <span>Р¤РѕС‚Рѕ</span></div>
+    <div class="pg-sub">РџРµСЂРµС‚РІРѕСЂС–С‚СЊ СЃС‚Р°С‚РёС‡РЅС– Р·РѕР±СЂР°Р¶РµРЅРЅСЏ РЅР° Р¶РёРІС– СЃС†РµРЅРё С‡РµСЂРµР· D-ID</div>
     <div class="card">
-      <div class="card-title"><span>📤</span> Завантажте фото</div>
-      <div class="upload-zone" id="upload-animate"><div class="upload-icon">🖼️</div><div class="upload-text"><strong>Натисніть або перетягніть</strong> фото сюди<br>PNG, JPG до 10MB</div></div>
+      <div class="card-title"><span>рџ“¤</span> Р—Р°РІР°РЅС‚Р°Р¶С‚Рµ С„РѕС‚Рѕ</div>
+      <div class="upload-zone" id="upload-animate"><div class="upload-icon">рџ–јпёЏ</div><div class="upload-text"><strong>РќР°С‚РёСЃРЅС–С‚СЊ Р°Р±Рѕ РїРµСЂРµС‚СЏРіРЅС–С‚СЊ</strong> С„РѕС‚Рѕ СЃСЋРґРё<br>PNG, JPG РґРѕ 10MB</div></div>
       <div class="row2" style="margin-top:14px">
-        <div class="field"><label>Тип анімації</label><select><option>Кліп очима</option><option>Рух голови</option><option>Мовлення</option><option>Емоції</option></select></div>
-        <div class="field"><label>Тривалість</label><select><option>3 секунди</option><option>5 секунд</option><option>10 секунд</option></select></div>
+        <div class="field"><label>РўРёРї Р°РЅС–РјР°С†С–С—</label><select><option>РљР»С–Рї РѕС‡РёРјР°</option><option>Р СѓС… РіРѕР»РѕРІРё</option><option>РњРѕРІР»РµРЅРЅСЏ</option><option>Р•РјРѕС†С–С—</option></select></div>
+        <div class="field"><label>РўСЂРёРІР°Р»С–СЃС‚СЊ</label><select><option>3 СЃРµРєСѓРЅРґРё</option><option>5 СЃРµРєСѓРЅРґ</option><option>10 СЃРµРєСѓРЅРґ</option></select></div>
       </div>
-      <div class="field"><label>Текст для озвучення</label><textarea placeholder="Введіть текст який буде вимовляти персонаж..." style="min-height:70px"></textarea></div>
-      <div class="btns-row"><button class="btn btn-gold" id="btn-animate">🎞️ Оживити фото</button></div>
+      <div class="field"><label>РўРµРєСЃС‚ РґР»СЏ РѕР·РІСѓС‡РµРЅРЅСЏ</label><textarea placeholder="Р’РІРµРґС–С‚СЊ С‚РµРєСЃС‚ СЏРєРёР№ Р±СѓРґРµ РІРёРјРѕРІР»СЏС‚Рё РїРµСЂСЃРѕРЅР°Р¶..." style="min-height:70px"></textarea></div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-animate">рџЋћпёЏ РћР¶РёРІРёС‚Рё С„РѕС‚Рѕ</button></div>
     </div>
     <div class="card">
-      <div class="card-title"><span>🎬</span> Результат</div>
-      <div class="result-box" id="anim-result"><div class="result-empty"><div class="ei">🎞️</div>Завантажте фото і натисніть "Оживити"</div></div>
+      <div class="card-title"><span>рџЋ¬</span> Р РµР·СѓР»СЊС‚Р°С‚</div>
+      <div class="result-box" id="anim-result"><div class="result-empty"><div class="ei">рџЋћпёЏ</div>Р—Р°РІР°РЅС‚Р°Р¶С‚Рµ С„РѕС‚Рѕ С– РЅР°С‚РёСЃРЅС–С‚СЊ "РћР¶РёРІРёС‚Рё"</div></div>
     </div>
   </div>
 
   <div class="page" id="page-voice">
-    <div class="pg-title">Голоси <span>&amp; TTS</span></div>
-    <div class="pg-sub">Реалістичне озвучення через ElevenLabs — 29 мов</div>
+    <div class="pg-title">Р“РѕР»РѕСЃРё <span>&amp; TTS</span></div>
+    <div class="pg-sub">Р РµР°Р»С–СЃС‚РёС‡РЅРµ РѕР·РІСѓС‡РµРЅРЅСЏ С‡РµСЂРµР· ElevenLabs вЂ” 29 РјРѕРІ</div>
     <div class="card">
-      <div class="card-title"><span>🎙️</span> Оберіть голос</div>
+      <div class="card-title"><span>рџЋ™пёЏ</span> РћР±РµСЂС–С‚СЊ РіРѕР»РѕСЃ</div>
       <div class="voice-grid">
-        <div class="voice-opt on" data-voice="Олена"><div class="voice-icon">👩</div><div class="voice-name">Олена</div><div class="voice-lang">🇺🇦 Українська</div></div>
-        <div class="voice-opt" data-voice="Олексій"><div class="voice-icon">👨</div><div class="voice-name">Олексій</div><div class="voice-lang">🇺🇦 Українська</div></div>
-        <div class="voice-opt" data-voice="Sarah"><div class="voice-icon">👩‍🦱</div><div class="voice-name">Sarah</div><div class="voice-lang">🇬🇧 English</div></div>
-        <div class="voice-opt" data-voice="James"><div class="voice-icon">👨‍🦳</div><div class="voice-name">James</div><div class="voice-lang">🇬🇧 English</div></div>
-        <div class="voice-opt" data-voice="Anna"><div class="voice-icon">👩‍🦰</div><div class="voice-name">Anna</div><div class="voice-lang">🇩🇪 Deutsch</div></div>
-        <div class="voice-opt" data-voice="AI"><div class="voice-icon">🤖</div><div class="voice-name">AI Voice</div><div class="voice-lang">🌍 Авто</div></div>
+        <div class="voice-opt on" data-voice="РћР»РµРЅР°"><div class="voice-icon">рџ‘©</div><div class="voice-name">РћР»РµРЅР°</div><div class="voice-lang">рџ‡єрџ‡¦ РЈРєСЂР°С—РЅСЃСЊРєР°</div></div>
+        <div class="voice-opt" data-voice="РћР»РµРєСЃС–Р№"><div class="voice-icon">рџ‘Ё</div><div class="voice-name">РћР»РµРєСЃС–Р№</div><div class="voice-lang">рџ‡єрџ‡¦ РЈРєСЂР°С—РЅСЃСЊРєР°</div></div>
+        <div class="voice-opt" data-voice="Sarah"><div class="voice-icon">рџ‘©вЂЌрџ¦±</div><div class="voice-name">Sarah</div><div class="voice-lang">рџ‡¬рџ‡§ English</div></div>
+        <div class="voice-opt" data-voice="James"><div class="voice-icon">рџ‘ЁвЂЌрџ¦і</div><div class="voice-name">James</div><div class="voice-lang">рџ‡¬рџ‡§ English</div></div>
+        <div class="voice-opt" data-voice="Anna"><div class="voice-icon">рџ‘©вЂЌрџ¦°</div><div class="voice-name">Anna</div><div class="voice-lang">рџ‡©рџ‡Є Deutsch</div></div>
+        <div class="voice-opt" data-voice="AI"><div class="voice-icon">рџ¤–</div><div class="voice-name">AI Voice</div><div class="voice-lang">рџЊЌ РђРІС‚Рѕ</div></div>
       </div>
-      <div class="field"><label>Текст для озвучення</label><textarea id="voice-text" placeholder="Введіть текст..."></textarea></div>
+      <div class="field"><label>РўРµРєСЃС‚ РґР»СЏ РѕР·РІСѓС‡РµРЅРЅСЏ</label><textarea id="voice-text" placeholder="Р’РІРµРґС–С‚СЊ С‚РµРєСЃС‚..."></textarea></div>
       <div class="row2">
-        <div class="field"><label>Швидкість</label><select><option>Нормальна</option><option>Повільна</option><option>Швидка</option></select></div>
-        <div class="field"><label>Емоція</label><select><option>Нейтральна</option><option>Радісна</option><option>Сумна</option><option>Серйозна</option></select></div>
+        <div class="field"><label>РЁРІРёРґРєС–СЃС‚СЊ</label><select><option>РќРѕСЂРјР°Р»СЊРЅР°</option><option>РџРѕРІС–Р»СЊРЅР°</option><option>РЁРІРёРґРєР°</option></select></div>
+        <div class="field"><label>Р•РјРѕС†С–СЏ</label><select><option>РќРµР№С‚СЂР°Р»СЊРЅР°</option><option>Р Р°РґС–СЃРЅР°</option><option>РЎСѓРјРЅР°</option><option>РЎРµСЂР№РѕР·РЅР°</option></select></div>
       </div>
-      <div class="btns-row"><button class="btn btn-gold" id="btn-gen-voice">🎙️ Згенерувати голос</button></div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-gen-voice">рџЋ™пёЏ Р—РіРµРЅРµСЂСѓРІР°С‚Рё РіРѕР»РѕСЃ</button></div>
       <div class="waveform idle" id="waveform">
         <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
         <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
@@ -299,119 +300,209 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif}
   </div>
 
   <div class="page" id="page-enhance">
-    <div class="pg-title">Покращення <span>Якості</span></div>
-    <div class="pg-sub">AI апскейлінг фото до 4K та покращення відео</div>
+    <div class="pg-title">РџРѕРєСЂР°С‰РµРЅРЅСЏ <span>РЇРєРѕСЃС‚С–</span></div>
+    <div class="pg-sub">AI Р°РїСЃРєРµР№Р»С–РЅРі С„РѕС‚Рѕ РґРѕ 4K С‚Р° РїРѕРєСЂР°С‰РµРЅРЅСЏ РІС–РґРµРѕ</div>
     <div class="card">
-      <div class="card-title"><span>✨</span> Тип покращення</div>
+      <div class="card-title"><span>вњЁ</span> РўРёРї РїРѕРєСЂР°С‰РµРЅРЅСЏ</div>
       <div class="enhance-grid">
-        <div class="enhance-card on" data-enhance="photo"><div class="enhance-icon">🖼️</div><div class="enhance-name">Покращення фото</div><div class="enhance-desc">Апскейлінг до 4K, різкість, корекція кольору</div></div>
-        <div class="enhance-card" data-enhance="video"><div class="enhance-icon">🎬</div><div class="enhance-name">Покращення відео</div><div class="enhance-desc">Апскейлінг відео до 4K, стабілізація</div></div>
+        <div class="enhance-card on" data-enhance="photo"><div class="enhance-icon">рџ–јпёЏ</div><div class="enhance-name">РџРѕРєСЂР°С‰РµРЅРЅСЏ С„РѕС‚Рѕ</div><div class="enhance-desc">РђРїСЃРєРµР№Р»С–РЅРі РґРѕ 4K, СЂС–Р·РєС–СЃС‚СЊ, РєРѕСЂРµРєС†С–СЏ РєРѕР»СЊРѕСЂСѓ</div></div>
+        <div class="enhance-card" data-enhance="video"><div class="enhance-icon">рџЋ¬</div><div class="enhance-name">РџРѕРєСЂР°С‰РµРЅРЅСЏ РІС–РґРµРѕ</div><div class="enhance-desc">РђРїСЃРєРµР№Р»С–РЅРі РІС–РґРµРѕ РґРѕ 4K, СЃС‚Р°Р±С–Р»С–Р·Р°С†С–СЏ</div></div>
       </div>
       <div style="margin-top:14px">
-        <div class="upload-zone" id="upload-enhance"><div class="upload-icon">📤</div><div class="upload-text"><strong>Натисніть або перетягніть</strong> файл сюди</div></div>
+        <div class="upload-zone" id="upload-enhance"><div class="upload-icon">рџ“¤</div><div class="upload-text"><strong>РќР°С‚РёСЃРЅС–С‚СЊ Р°Р±Рѕ РїРµСЂРµС‚СЏРіРЅС–С‚СЊ</strong> С„Р°Р№Р» СЃСЋРґРё</div></div>
       </div>
       <div class="row3" style="margin-top:14px">
-        <div class="field"><label>Масштаб</label><select><option>2x</option><option>4x</option><option>8x</option></select></div>
-        <div class="field"><label>Різкість</label><select><option>Авто</option><option>Висока</option><option>Середня</option></select></div>
-        <div class="field"><label>Шумоподавлення</label><select><option>Авто</option><option>Сильне</option><option>Вимкнено</option></select></div>
+        <div class="field"><label>РњР°СЃС€С‚Р°Р±</label><select><option>2x</option><option>4x</option><option>8x</option></select></div>
+        <div class="field"><label>Р С–Р·РєС–СЃС‚СЊ</label><select><option>РђРІС‚Рѕ</option><option>Р’РёСЃРѕРєР°</option><option>РЎРµСЂРµРґРЅСЏ</option></select></div>
+        <div class="field"><label>РЁСѓРјРѕРїРѕРґР°РІР»РµРЅРЅСЏ</label><select><option>РђРІС‚Рѕ</option><option>РЎРёР»СЊРЅРµ</option><option>Р’РёРјРєРЅРµРЅРѕ</option></select></div>
       </div>
-      <div class="btns-row"><button class="btn btn-gold" id="btn-enhance">✨ Покращити</button></div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-enhance">вњЁ РџРѕРєСЂР°С‰РёС‚Рё</button></div>
       <div class="progress-wrap" id="enhance-progress" style="display:none">
-        <div class="progress-label"><span>Обробка...</span><span id="enhance-pct">0%</span></div>
+        <div class="progress-label"><span>РћР±СЂРѕР±РєР°...</span><span id="enhance-pct">0%</span></div>
         <div class="progress-bar"><div class="progress-fill" id="enhance-fill"></div></div>
       </div>
     </div>
   </div>
 
   <div class="page" id="page-photo">
-    <div class="pg-title">AI <span>Фотосесія</span></div>
-    <div class="pg-sub">Студійні фото людей, товарів і тварин на будь-якому фоні</div>
+    <div class="pg-title">AI <span>Р¤РѕС‚РѕСЃРµСЃС–СЏ</span></div>
+    <div class="pg-sub">РЎС‚СѓРґС–Р№РЅС– С„РѕС‚Рѕ Р»СЋРґРµР№, С‚РѕРІР°СЂС–РІ С– С‚РІР°СЂРёРЅ РЅР° Р±СѓРґСЊ-СЏРєРѕРјСѓ С„РѕРЅС–</div>
     <div class="card">
-      <div class="card-title"><span>📸</span> Налаштування</div>
-      <div class="field"><label>Тип об'єкта</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">👤 Людина</div><div class="chip" onclick="toggleChip(this)">📦 Товар</div><div class="chip" onclick="toggleChip(this)">🐾 Тварина</div><div class="chip" onclick="toggleChip(this)">🌸 Квіти</div><div class="chip" onclick="toggleChip(this)">💎 Ювелірні</div></div></div>
-      <div class="field"><label>Фон / Локація</label>
+      <div class="card-title"><span>рџ“ё</span> РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ</div>
+      <div class="field"><label>РўРёРї РѕР±'С”РєС‚Р°</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">рџ‘¤ Р›СЋРґРёРЅР°</div><div class="chip" onclick="toggleChip(this)">рџ“¦ РўРѕРІР°СЂ</div><div class="chip" onclick="toggleChip(this)">рџђѕ РўРІР°СЂРёРЅР°</div><div class="chip" onclick="toggleChip(this)">рџЊё РљРІС–С‚Рё</div><div class="chip" onclick="toggleChip(this)">рџ’Ћ Р®РІРµР»С–СЂРЅС–</div></div></div>
+      <div class="field"><label>Р¤РѕРЅ / Р›РѕРєР°С†С–СЏ</label>
         <div class="bg-grid">
-          <div class="bg-opt bg-white on" data-bg="white">Білий студійний</div>
-          <div class="bg-opt bg-black" data-bg="black">Чорний студійний</div>
-          <div class="bg-opt bg-gradient" data-bg="gradient">Градієнт</div>
-          <div class="bg-opt bg-nature" data-bg="nature">Природа</div>
-          <div class="bg-opt bg-studio" data-bg="studio">Студія</div>
-          <div class="bg-opt bg-ocean" data-bg="ocean">Океан</div>
-          <div class="bg-opt bg-sunset" data-bg="sunset">Захід сонця</div>
-          <div class="bg-opt bg-urban" data-bg="urban">Місто</div>
+          <div class="bg-opt bg-white on" data-bg="white">Р‘С–Р»РёР№ СЃС‚СѓРґС–Р№РЅРёР№</div>
+          <div class="bg-opt bg-black" data-bg="black">Р§РѕСЂРЅРёР№ СЃС‚СѓРґС–Р№РЅРёР№</div>
+          <div class="bg-opt bg-gradient" data-bg="gradient">Р“СЂР°РґС–С”РЅС‚</div>
+          <div class="bg-opt bg-nature" data-bg="nature">РџСЂРёСЂРѕРґР°</div>
+          <div class="bg-opt bg-studio" data-bg="studio">РЎС‚СѓРґС–СЏ</div>
+          <div class="bg-opt bg-ocean" data-bg="ocean">РћРєРµР°РЅ</div>
+          <div class="bg-opt bg-sunset" data-bg="sunset">Р—Р°С…С–Рґ СЃРѕРЅС†СЏ</div>
+          <div class="bg-opt bg-urban" data-bg="urban">РњС–СЃС‚Рѕ</div>
         </div>
       </div>
-      <div class="field"><label>Освітлення</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">Студійне</div><div class="chip" onclick="toggleChip(this)">Природнє</div><div class="chip" onclick="toggleChip(this)">Драматичне</div><div class="chip" onclick="toggleChip(this)">Золота година</div></div></div>
-      <div class="field"><label>Опис (опційно)</label><textarea placeholder="Наприклад: жінка в діловому костюмі, впевнена поза..." style="min-height:70px"></textarea></div>
+      <div class="field"><label>РћСЃРІС–С‚Р»РµРЅРЅСЏ</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">РЎС‚СѓРґС–Р№РЅРµ</div><div class="chip" onclick="toggleChip(this)">РџСЂРёСЂРѕРґРЅС”</div><div class="chip" onclick="toggleChip(this)">Р”СЂР°РјР°С‚РёС‡РЅРµ</div><div class="chip" onclick="toggleChip(this)">Р—РѕР»РѕС‚Р° РіРѕРґРёРЅР°</div></div></div>
+      <div class="field"><label>РћРїРёСЃ (РѕРїС†С–Р№РЅРѕ)</label><textarea placeholder="РќР°РїСЂРёРєР»Р°Рґ: Р¶С–РЅРєР° РІ РґС–Р»РѕРІРѕРјСѓ РєРѕСЃС‚СЋРјС–, РІРїРµРІРЅРµРЅР° РїРѕР·Р°..." style="min-height:70px"></textarea></div>
       <div class="row2">
-        <div class="field"><label>Кількість варіантів</label><select id="photo-count"><option value="3">3 фото</option><option value="6">6 фото</option><option value="9">9 фото</option></select></div>
-        <div class="field"><label>Роздільна здатність</label><select><option>1024x1024</option><option>2048x2048</option><option>4096x4096 (4K)</option></select></div>
+        <div class="field"><label>РљС–Р»СЊРєС–СЃС‚СЊ РІР°СЂС–Р°РЅС‚С–РІ</label><select id="photo-count"><option value="3">3 С„РѕС‚Рѕ</option><option value="6">6 С„РѕС‚Рѕ</option><option value="9">9 С„РѕС‚Рѕ</option></select></div>
+        <div class="field"><label>Р РѕР·РґС–Р»СЊРЅР° Р·РґР°С‚РЅС–СЃС‚СЊ</label><select><option>1024x1024</option><option>2048x2048</option><option>4096x4096 (4K)</option></select></div>
       </div>
       <div class="btns-row">
-        <button class="btn btn-gold" id="btn-gen-photos">📸 Генерувати фотосесію</button>
-        <button class="btn btn-ghost" id="btn-upload-photo">📤 Завантажити фото</button>
+        <button class="btn btn-gold" id="btn-gen-photos">рџ“ё Р“РµРЅРµСЂСѓРІР°С‚Рё С„РѕС‚РѕСЃРµСЃС–СЋ</button>
+        <button class="btn btn-ghost" id="btn-upload-photo">рџ“¤ Р—Р°РІР°РЅС‚Р°Р¶РёС‚Рё С„РѕС‚Рѕ</button>
       </div>
     </div>
     <div class="card" id="photo-results-card" style="display:none">
-      <div class="card-title"><span>🖼️</span> Результати фотосесії</div>
+      <div class="card-title"><span>рџ–јпёЏ</span> Р РµР·СѓР»СЊС‚Р°С‚Рё С„РѕС‚РѕСЃРµСЃС–С—</div>
       <div class="photo-result" id="photo-results"></div>
       <div class="btns-row">
-        <button class="btn btn-gold btn-sm" id="btn-download-photos">⬇️ Завантажити всі</button>
-        <button class="btn btn-ghost btn-sm" id="btn-regen-photos">🔄 Генерувати ще</button>
+        <button class="btn btn-gold btn-sm" id="btn-download-photos">в¬‡пёЏ Р—Р°РІР°РЅС‚Р°Р¶РёС‚Рё РІСЃС–</button>
+        <button class="btn btn-ghost btn-sm" id="btn-regen-photos">рџ”„ Р“РµРЅРµСЂСѓРІР°С‚Рё С‰Рµ</button>
       </div>
     </div>
   </div>
 
   <div class="page" id="page-ads">
-    <div class="pg-title">Відео<span>Реклама</span></div>
-    <div class="pg-sub">Вставте фото товару — AI створить рекламне відео</div>
+    <div class="pg-title">Р’С–РґРµРѕ<span>Р РµРєР»Р°РјР°</span></div>
+    <div class="pg-sub">Р’СЃС‚Р°РІС‚Рµ С„РѕС‚Рѕ С‚РѕРІР°СЂСѓ вЂ” AI СЃС‚РІРѕСЂРёС‚СЊ СЂРµРєР»Р°РјРЅРµ РІС–РґРµРѕ</div>
     <div class="card">
-      <div class="card-title"><span>📐</span> Формат відео</div>
+      <div class="card-title"><span>рџ“ђ</span> Р¤РѕСЂРјР°С‚ РІС–РґРµРѕ</div>
       <div class="format-sel">
-        <div class="format-opt on" id="fmt-916"><div class="format-icon">📱</div><div class="format-name">TikTok / Reels</div><div class="format-size">9:16 вертикальне</div></div>
-        <div class="format-opt" id="fmt-169"><div class="format-icon">📺</div><div class="format-name">YouTube / Facebook</div><div class="format-size">16:9 горизонтальне</div></div>
+        <div class="format-opt on" id="fmt-916"><div class="format-icon">рџ“±</div><div class="format-name">TikTok / Reels</div><div class="format-size">9:16 РІРµСЂС‚РёРєР°Р»СЊРЅРµ</div></div>
+        <div class="format-opt" id="fmt-169"><div class="format-icon">рџ“є</div><div class="format-name">YouTube / Facebook</div><div class="format-size">16:9 РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРµ</div></div>
       </div>
-      <div class="upload-zone" id="upload-ad" style="margin-bottom:14px"><div class="upload-icon">📦</div><div class="upload-text"><strong>Завантажте фото товару</strong><br>AI видалить фон і вставить у рекламу</div></div>
+      <div class="upload-zone" id="upload-ad" style="margin-bottom:14px"><div class="upload-icon">рџ“¦</div><div class="upload-text"><strong>Р—Р°РІР°РЅС‚Р°Р¶С‚Рµ С„РѕС‚Рѕ С‚РѕРІР°СЂСѓ</strong><br>AI РІРёРґР°Р»РёС‚СЊ С„РѕРЅ С– РІСЃС‚Р°РІРёС‚СЊ Сѓ СЂРµРєР»Р°РјСѓ</div></div>
       <div class="row2">
-        <div class="field"><label>Назва товару</label><input type="text" id="ad-product" placeholder="Наприклад: Крем для обличчя"></div>
-        <div class="field"><label>Ціна (опційно)</label><input type="text" id="ad-price" placeholder="999 грн"></div>
+        <div class="field"><label>РќР°Р·РІР° С‚РѕРІР°СЂСѓ</label><input type="text" id="ad-product" placeholder="РќР°РїСЂРёРєР»Р°Рґ: РљСЂРµРј РґР»СЏ РѕР±Р»РёС‡С‡СЏ"></div>
+        <div class="field"><label>Р¦С–РЅР° (РѕРїС†С–Р№РЅРѕ)</label><input type="text" id="ad-price" placeholder="999 РіСЂРЅ"></div>
       </div>
-      <div class="field"><label>Слоган / Текст реклами</label><textarea id="ad-slogan" placeholder="Природна краса кожного дня!" style="min-height:70px"></textarea></div>
-      <div class="field"><label>Стиль</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">Динамічний</div><div class="chip" onclick="toggleChip(this)">Елегантний</div><div class="chip" onclick="toggleChip(this)">Яскравий</div><div class="chip" onclick="toggleChip(this)">Мінімалістичний</div></div></div>
-      <div class="field"><label>Музика</label><select><option>Енергійна (pop)</option><option>Спокійна (ambient)</option><option>Трендова (trap)</option><option>Без музики</option></select></div>
-      <div class="btns-row"><button class="btn btn-gold" id="btn-gen-ad">🎬 Створити рекламу</button></div>
+      <div class="field"><label>РЎР»РѕРіР°РЅ / РўРµРєСЃС‚ СЂРµРєР»Р°РјРё</label><textarea id="ad-slogan" placeholder="РџСЂРёСЂРѕРґРЅР° РєСЂР°СЃР° РєРѕР¶РЅРѕРіРѕ РґРЅСЏ!" style="min-height:70px"></textarea></div>
+      <div class="field"><label>РЎС‚РёР»СЊ</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">Р”РёРЅР°РјС–С‡РЅРёР№</div><div class="chip" onclick="toggleChip(this)">Р•Р»РµРіР°РЅС‚РЅРёР№</div><div class="chip" onclick="toggleChip(this)">РЇСЃРєСЂР°РІРёР№</div><div class="chip" onclick="toggleChip(this)">РњС–РЅС–РјР°Р»С–СЃС‚РёС‡РЅРёР№</div></div></div>
+      <div class="field"><label>РњСѓР·РёРєР°</label><select><option>Р•РЅРµСЂРіС–Р№РЅР° (pop)</option><option>РЎРїРѕРєС–Р№РЅР° (ambient)</option><option>РўСЂРµРЅРґРѕРІР° (trap)</option><option>Р‘РµР· РјСѓР·РёРєРё</option></select></div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-gen-ad">рџЋ¬ РЎС‚РІРѕСЂРёС‚Рё СЂРµРєР»Р°РјСѓ</button></div>
       <div class="progress-wrap" id="ad-progress" style="display:none">
-        <div class="progress-label"><span>Створення відео...</span><span id="ad-pct">0%</span></div>
+        <div class="progress-label"><span>РЎС‚РІРѕСЂРµРЅРЅСЏ РІС–РґРµРѕ...</span><span id="ad-pct">0%</span></div>
         <div class="progress-bar"><div class="progress-fill" id="ad-fill"></div></div>
       </div>
     </div>
     <div class="card" id="ad-result-card" style="display:none">
-      <div class="card-title"><span>▶️</span> Готова реклама</div>
-      <div style="background:var(--s2);border:1px solid var(--border);border-radius:10px;min-height:160px;display:flex;align-items:center;justify-content:center;font-size:40px" id="ad-preview">🎬</div>
+      <div class="card-title"><span>в–¶пёЏ</span> Р“РѕС‚РѕРІР° СЂРµРєР»Р°РјР°</div>
+      <div style="background:var(--s2);border:1px solid var(--border);border-radius:10px;min-height:160px;display:flex;align-items:center;justify-content:center;font-size:40px" id="ad-preview">рџЋ¬</div>
       <div class="btns-row">
-        <button class="btn btn-gold btn-sm" id="btn-dl-ad">⬇️ Завантажити відео</button>
-        <button class="btn btn-ghost btn-sm" id="btn-regen-ad">🔄 Генерувати ще</button>
+        <button class="btn btn-gold btn-sm" id="btn-dl-ad">в¬‡пёЏ Р—Р°РІР°РЅС‚Р°Р¶РёС‚Рё РІС–РґРµРѕ</button>
+        <button class="btn btn-ghost btn-sm" id="btn-regen-ad">рџ”„ Р“РµРЅРµСЂСѓРІР°С‚Рё С‰Рµ</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-editor">
+    <div class="pg-title">Р’С–РґРµРѕ <span>Р РµРґР°РєС‚РѕСЂ</span></div>
+    <div class="pg-sub">РњРѕРЅС‚Р°Р¶, РїРµСЂРµС…РѕРґРё, СЃСѓР±С‚РёС‚СЂРё, РјСѓР·РёРєР° вЂ” РµРєСЃРїРѕСЂС‚ Сѓ 4K MP4</div>
+
+    <div class="card">
+      <div class="card-title"><span>рџЋ¬</span> РўР°Р№РјР»Р°Р№РЅ РїСЂРѕРµРєС‚Сѓ</div>
+      <div style="background:var(--s2);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px">
+        <div style="padding:10px 14px;border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);display:flex;gap:20px">
+          <span>00:00</span><span>00:05</span><span>00:10</span><span>00:15</span><span>00:20</span><span>00:25</span><span>00:30</span>
+        </div>
+        <div style="padding:10px;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="font-size:11px;color:var(--muted);width:60px">рџ–јпёЏ Р’С–РґРµРѕ</div>
+            <div style="flex:1;height:32px;background:linear-gradient(90deg,rgba(212,168,67,.3),rgba(212,168,67,.2));border-radius:4px;border:1px solid rgba(212,168,67,.3);display:flex;align-items:center;padding:0 10px;font-size:11px;color:var(--gold)">РЎС†РµРЅР° 1 в†’ РЎС†РµРЅР° 2 в†’ РЎС†РµРЅР° 3</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="font-size:11px;color:var(--muted);width:60px">рџЋ™пёЏ РђСѓРґС–Рѕ</div>
+            <div style="flex:1;height:32px;background:linear-gradient(90deg,rgba(74,158,255,.2),rgba(74,158,255,.15));border-radius:4px;border:1px solid rgba(74,158,255,.3);display:flex;align-items:center;padding:0 10px;font-size:11px;color:var(--blue)">РћР·РІСѓС‡РµРЅРЅСЏ РїРµСЂСЃРѕРЅР°Р¶С–РІ</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="font-size:11px;color:var(--muted);width:60px">рџЋµ РњСѓР·РёРєР°</div>
+            <div style="width:60%;height:32px;background:linear-gradient(90deg,rgba(155,109,255,.2),rgba(155,109,255,.15));border-radius:4px;border:1px solid rgba(155,109,255,.3);display:flex;align-items:center;padding:0 10px;font-size:11px;color:#9b6dff">Р¤РѕРЅРѕРІР° РјСѓР·РёРєР°</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="font-size:11px;color:var(--muted);width:60px">рџ’¬ РЎСѓР±С‚РёС‚СЂРё</div>
+            <div style="width:80%;height:32px;background:linear-gradient(90deg,rgba(61,186,110,.2),rgba(61,186,110,.15));border-radius:4px;border:1px solid rgba(61,186,110,.3);display:flex;align-items:center;padding:0 10px;font-size:11px;color:var(--green)">РЎСѓР±С‚РёС‚СЂРё Р°РІС‚РѕРјР°С‚РёС‡РЅРѕ</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-ghost btn-sm" id="btn-ed-play">в–¶пёЏ Р’С–РґС‚РІРѕСЂРёС‚Рё</button>
+        <button class="btn btn-ghost btn-sm" id="btn-ed-cut">вњ‚пёЏ Р’РёСЂС–Р·Р°С‚Рё</button>
+        <button class="btn btn-ghost btn-sm" id="btn-ed-transition">рџЋ­ РџРµСЂРµС…С–Рґ</button>
+        <button class="btn btn-ghost btn-sm" id="btn-ed-music">рџЋµ РњСѓР·РёРєР°</button>
+        <button class="btn btn-ghost btn-sm" id="btn-ed-sub">рџ’¬ РЎСѓР±С‚РёС‚СЂРё</button>
+        <button class="btn btn-ghost btn-sm" id="btn-ed-effect">вњЁ Р•С„РµРєС‚</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>рџЋ­</span> РџРµСЂРµС…РѕРґРё РјС–Р¶ СЃС†РµРЅР°РјРё</div>
+      <div class="chips">
+        <div class="chip on" onclick="toggleChip(this)">РџР»Р°РІРЅРµ</div>
+        <div class="chip" onclick="toggleChip(this)">Р—Р°С‚РµРјРЅРµРЅРЅСЏ</div>
+        <div class="chip" onclick="toggleChip(this)">Р—СЃСѓРІ</div>
+        <div class="chip" onclick="toggleChip(this)">Р—Р±С–Р»СЊС€РµРЅРЅСЏ</div>
+        <div class="chip" onclick="toggleChip(this)">РћР±РµСЂС‚Р°РЅРЅСЏ</div>
+        <div class="chip" onclick="toggleChip(this)">РЎРїР°Р»Р°С…</div>
+        <div class="chip" onclick="toggleChip(this)">Р РѕР·С‡РёРЅРµРЅРЅСЏ</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>рџЋµ</span> Р¤РѕРЅРѕРІР° РјСѓР·РёРєР°</div>
+      <div class="field"><label>РЎС‚РёР»СЊ РјСѓР·РёРєРё</label>
+        <div class="chips">
+          <div class="chip on" onclick="toggleChip(this)">РљС–РЅРµРјР°С‚РѕРіСЂР°С„С–С‡РЅР°</div>
+          <div class="chip" onclick="toggleChip(this)">Р•РїС–С‡РЅР°</div>
+          <div class="chip" onclick="toggleChip(this)">РќС–Р¶РЅР°</div>
+          <div class="chip" onclick="toggleChip(this)">РќР°РїСЂСѓР¶РµРЅР°</div>
+          <div class="chip" onclick="toggleChip(this)">Р’РµСЃРµР»Р°</div>
+          <div class="chip" onclick="toggleChip(this)">Р‘РµР· РјСѓР·РёРєРё</div>
+        </div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Р“СѓС‡РЅС–СЃС‚СЊ РјСѓР·РёРєРё</label><select><option>50%</option><option>30%</option><option>70%</option><option>100%</option></select></div>
+        <div class="field"><label>Р“СѓС‡РЅС–СЃС‚СЊ РіРѕР»РѕСЃСѓ</label><select><option>100%</option><option>80%</option><option>60%</option></select></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span>рџ’¬</span> РЎСѓР±С‚РёС‚СЂРё</div>
+      <div class="row2">
+        <div class="field"><label>РњРѕРІР° СЃСѓР±С‚РёС‚СЂС–РІ</label><select><option>Р‘РµР· СЃСѓР±С‚РёС‚СЂС–РІ</option><option>РЈРєСЂР°С—РЅСЃСЊРєР°</option><option>РђРЅРіР»С–Р№СЃСЊРєР°</option><option>РћР±РёРґРІС– РјРѕРІРё</option></select></div>
+        <div class="field"><label>РЎС‚РёР»СЊ С€СЂРёС„С‚Сѓ</label><select><option>РљР»Р°СЃРёС‡РЅРёР№</option><option>РљС–РЅРµРјР°С‚РѕРіСЂР°С„С–С‡РЅРёР№</option><option>РЎСѓС‡Р°СЃРЅРёР№</option></select></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Р РѕР·РјС–СЂ С€СЂРёС„С‚Сѓ</label><select><option>РЎРµСЂРµРґРЅС–Р№</option><option>РњР°Р»РёР№</option><option>Р’РµР»РёРєРёР№</option></select></div>
+        <div class="field"><label>РџРѕР·РёС†С–СЏ</label><select><option>Р’РЅРёР·Сѓ</option><option>Р’РіРѕСЂС–</option><option>РџРѕ С†РµРЅС‚СЂСѓ</option></select></div>
+      </div>
+      <div class="btns-row">
+        <button class="btn btn-gold" id="btn-ed-render">рџЋ¬ Р РµРЅРґРµСЂРёС‚Рё РІС–РґРµРѕ</button>
+      </div>
+      <div class="progress-wrap" id="editor-progress" style="display:none">
+        <div class="progress-label"><span>Р РµРЅРґРµСЂРёРЅРі...</span><span id="editor-pct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="editor-fill"></div></div>
       </div>
     </div>
   </div>
 
   <div class="page" id="page-export">
-    <div class="pg-title">Експорт <span>Проекту</span></div>
-    <div class="pg-sub">Завантажте готовий фільм у потрібному форматі</div>
+    <div class="pg-title">Р•РєСЃРїРѕСЂС‚ <span>РџСЂРѕРµРєС‚Сѓ</span></div>
+    <div class="pg-sub">Р—Р°РІР°РЅС‚Р°Р¶С‚Рµ РіРѕС‚РѕРІРёР№ С„С–Р»СЊРј Сѓ РїРѕС‚СЂС–Р±РЅРѕРјСѓ С„РѕСЂРјР°С‚С–</div>
     <div class="card">
-      <div class="card-title"><span>⚙️</span> Налаштування експорту</div>
+      <div class="card-title"><span>вљ™пёЏ</span> РќР°Р»Р°С€С‚СѓРІР°РЅРЅСЏ РµРєСЃРїРѕСЂС‚Сѓ</div>
       <div class="row2">
-        <div class="field"><label>Роздільна здатність</label><select><option>1080p HD</option><option>4K Ultra HD</option><option>720p</option></select></div>
-        <div class="field"><label>Формат</label><select><option>MP4 (H.264)</option><option>MP4 (H.265)</option><option>MOV</option></select></div>
+        <div class="field"><label>Р РѕР·РґС–Р»СЊРЅР° Р·РґР°С‚РЅС–СЃС‚СЊ</label><select><option>1080p HD</option><option>4K Ultra HD</option><option>720p</option></select></div>
+        <div class="field"><label>Р¤РѕСЂРјР°С‚</label><select><option>MP4 (H.264)</option><option>MP4 (H.265)</option><option>MOV</option></select></div>
       </div>
       <div class="row2">
-        <div class="field"><label>Частота кадрів</label><select><option>24 fps (Кіно)</option><option>30 fps</option><option>60 fps</option></select></div>
-        <div class="field"><label>Якість звуку</label><select><option>320 kbps</option><option>192 kbps</option><option>128 kbps</option></select></div>
+        <div class="field"><label>Р§Р°СЃС‚РѕС‚Р° РєР°РґСЂС–РІ</label><select><option>24 fps (РљС–РЅРѕ)</option><option>30 fps</option><option>60 fps</option></select></div>
+        <div class="field"><label>РЇРєС–СЃС‚СЊ Р·РІСѓРєСѓ</label><select><option>320 kbps</option><option>192 kbps</option><option>128 kbps</option></select></div>
       </div>
-      <div class="field"><label>Субтитри</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">Без субтитрів</div><div class="chip" onclick="toggleChip(this)">Українські</div><div class="chip" onclick="toggleChip(this)">Англійські</div></div></div>
-      <div class="btns-row"><button class="btn btn-gold" id="btn-export">📦 Почати експорт</button></div>
+      <div class="field"><label>РЎСѓР±С‚РёС‚СЂРё</label><div class="chips"><div class="chip on" onclick="toggleChip(this)">Р‘РµР· СЃСѓР±С‚РёС‚СЂС–РІ</div><div class="chip" onclick="toggleChip(this)">РЈРєСЂР°С—РЅСЃСЊРєС–</div><div class="chip" onclick="toggleChip(this)">РђРЅРіР»С–Р№СЃСЊРєС–</div></div></div>
+      <div class="btns-row"><button class="btn btn-gold" id="btn-export">рџ“¦ РџРѕС‡Р°С‚Рё РµРєСЃРїРѕСЂС‚</button></div>
       <div class="progress-wrap" id="export-progress" style="display:none">
-        <div class="progress-label"><span>Рендеринг...</span><span id="export-pct">0%</span></div>
+        <div class="progress-label"><span>Р РµРЅРґРµСЂРёРЅРі...</span><span id="export-pct">0%</span></div>
         <div class="progress-bar"><div class="progress-fill" id="export-fill"></div></div>
       </div>
     </div>
@@ -420,7 +511,7 @@ button{cursor:pointer;font-family:'DM Sans',sans-serif}
 </div>
 </div>
 
-<div class="toast" id="toast"><span id="t-icon">✅</span> <span id="t-msg"></span></div>
+<div class="toast" id="toast"><span id="t-icon">вњ…</span> <span id="t-msg"></span></div>
 
 <script>
 function showToast(icon, msg, type) {
@@ -463,39 +554,39 @@ document.addEventListener('DOMContentLoaded', function() {
       this.classList.add('active');
       document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
       document.getElementById('page-' + page).classList.add('active');
-      var names = { scenario:'📝 AI Сценарист', scenes:'🎨 Генерація сцен', characters:'👤 Персонажі', animate:'🎞️ Оживлення фото', voice:'🎙️ Голоси & TTS', enhance:'✨ Покращення', photo:'📸 AI Фотосесія', ads:'📱 Відеореклама', export:'📦 Експорт' };
-      document.getElementById('tb-tool').textContent = names[page] || '🎬 Студія';
+      var names = { scenario:'рџ“ќ AI РЎС†РµРЅР°СЂРёСЃС‚', scenes:'рџЋЁ Р“РµРЅРµСЂР°С†С–СЏ СЃС†РµРЅ', characters:'рџ‘¤ РџРµСЂСЃРѕРЅР°Р¶С–', animate:'рџЋћпёЏ РћР¶РёРІР»РµРЅРЅСЏ С„РѕС‚Рѕ', voice:'рџЋ™пёЏ Р“РѕР»РѕСЃРё & TTS', enhance:'вњЁ РџРѕРєСЂР°С‰РµРЅРЅСЏ', editor:'вњ‚пёЏ Р’С–РґРµРѕ Р РµРґР°РєС‚РѕСЂ', photo:'рџ“ё AI Р¤РѕС‚РѕСЃРµСЃС–СЏ', ads:'рџ“± Р’С–РґРµРѕСЂРµРєР»Р°РјР°', export:'рџ“¦ Р•РєСЃРїРѕСЂС‚' };
+      document.getElementById('tb-tool').textContent = names[page] || 'рџЋ¬ РЎС‚СѓРґС–СЏ';
     });
   });
 
   // New project
   document.getElementById('btn-new-proj').addEventListener('click', function() {
-    var name = prompt('Назва нового проекту:');
-    if (name) { document.getElementById('proj-name').textContent = name; showToast('✅', 'Проект "' + name + '" створено!', 'ok'); }
+    var name = prompt('РќР°Р·РІР° РЅРѕРІРѕРіРѕ РїСЂРѕРµРєС‚Сѓ:');
+    if (name) { document.getElementById('proj-name').textContent = name; showToast('вњ…', 'РџСЂРѕРµРєС‚ "' + name + '" СЃС‚РІРѕСЂРµРЅРѕ!', 'ok'); }
   });
 
   // Scenario
   document.getElementById('btn-gen-scenario').addEventListener('click', function() {
     var idea = document.getElementById('sc-idea').value.trim();
-    if (!idea) { showToast('⚠️', 'Введіть ідею фільму', 'err'); return; }
+    if (!idea) { showToast('вљ пёЏ', 'Р’РІРµРґС–С‚СЊ С–РґРµСЋ С„С–Р»СЊРјСѓ', 'err'); return; }
     var result = document.getElementById('sc-result');
     result.textContent = '';
     result.classList.add('loading');
-    showToast('⏳', 'Генерую сценарій...', 'ok');
+    showToast('вЏі', 'Р“РµРЅРµСЂСѓСЋ СЃС†РµРЅР°СЂС–Р№...', 'ok');
     setTimeout(function() {
       result.classList.remove('loading');
-      var text = 'FADE IN:\n\nINT. МАЙСТЕРНЯ - НІЧ\n\nПохмура кімната освітлена місячним сяйвом. ОЛЕНА (25), молода художниця, стоїть перед старовинною картиною.\n\nОЛЕНА\n(пошепки)\nЩо ти приховуєш?\n\nРаптом картина починає мерехтіти...\n\nINT. ГАЛЕРЕЯ - НАСТУПНИЙ ДЕНЬ\n\nМАКСИМ (40), елегантний галерист, вивчає картину крізь окуляри.\n\nМАКСИМ\nЦя картина не продається.\n\nОЛЕНА\n(рішуче)\nЯ мушу знати правду.\n\nFADE OUT.';
+      var text = 'FADE IN:\n\nINT. РњРђР™РЎРўР•Р РќРЇ - РќР†Р§\n\nРџРѕС…РјСѓСЂР° РєС–РјРЅР°С‚Р° РѕСЃРІС–С‚Р»РµРЅР° РјС–СЃСЏС‡РЅРёРј СЃСЏР№РІРѕРј. РћР›Р•РќРђ (25), РјРѕР»РѕРґР° С…СѓРґРѕР¶РЅРёС†СЏ, СЃС‚РѕС—С‚СЊ РїРµСЂРµРґ СЃС‚Р°СЂРѕРІРёРЅРЅРѕСЋ РєР°СЂС‚РёРЅРѕСЋ.\n\nРћР›Р•РќРђ\n(РїРѕС€РµРїРєРё)\nР©Рѕ С‚Рё РїСЂРёС…РѕРІСѓС”С€?\n\nР Р°РїС‚РѕРј РєР°СЂС‚РёРЅР° РїРѕС‡РёРЅР°С” РјРµСЂРµС…С‚С–С‚Рё...\n\nINT. Р“РђР›Р•Р Р•РЇ - РќРђРЎРўРЈРџРќРР™ Р”Р•РќР¬\n\nРњРђРљРЎРРњ (40), РµР»РµРіР°РЅС‚РЅРёР№ РіР°Р»РµСЂРёСЃС‚, РІРёРІС‡Р°С” РєР°СЂС‚РёРЅСѓ РєСЂС–Р·СЊ РѕРєСѓР»СЏСЂРё.\n\nРњРђРљРЎРРњ\nР¦СЏ РєР°СЂС‚РёРЅР° РЅРµ РїСЂРѕРґР°С”С‚СЊСЃСЏ.\n\nРћР›Р•РќРђ\n(СЂС–С€СѓС‡Рµ)\nРЇ РјСѓС€Сѓ Р·РЅР°С‚Рё РїСЂР°РІРґСѓ.\n\nFADE OUT.';
       var i = 0;
       function type() {
         if (i < text.length) { result.textContent = text.slice(0, ++i); setTimeout(type, 10); }
-        else { document.getElementById('sc-actions').style.display = 'flex'; showToast('✅', 'Сценарій готовий!', 'ok'); }
+        else { document.getElementById('sc-actions').style.display = 'flex'; showToast('вњ…', 'РЎС†РµРЅР°СЂС–Р№ РіРѕС‚РѕРІРёР№!', 'ok'); }
       }
       type();
     }, 1800);
   });
 
   document.getElementById('btn-clear-scenario').addEventListener('click', function() {
-    document.getElementById('sc-result').innerHTML = '<div class="result-empty"><div class="ei">📝</div>Введіть ідею і натисніть "Згенерувати"</div>';
+    document.getElementById('sc-result').innerHTML = '<div class="result-empty"><div class="ei">рџ“ќ</div>Р’РІРµРґС–С‚СЊ С–РґРµСЋ С– РЅР°С‚РёСЃРЅС–С‚СЊ "Р—РіРµРЅРµСЂСѓРІР°С‚Рё"</div>';
     document.getElementById('sc-actions').style.display = 'none';
   });
 
@@ -506,15 +597,15 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('btn-copy-scenario').addEventListener('click', function() {
     var txt = document.getElementById('sc-result').textContent;
     if (navigator.clipboard) navigator.clipboard.writeText(txt);
-    showToast('📋', 'Скопійовано!', 'ok');
+    showToast('рџ“‹', 'РЎРєРѕРїС–Р№РѕРІР°РЅРѕ!', 'ok');
   });
 
   // Scenes
-  var SCENE_EMOJIS = ['🌆','🌃','🎨','🖼️','🌲','🏛️','🌊','🏙️','🌙','☀️','🎭'];
+  var SCENE_EMOJIS = ['рџЊ†','рџЊѓ','рџЋЁ','рџ–јпёЏ','рџЊІ','рџЏ›пёЏ','рџЊЉ','рџЏ™пёЏ','рџЊ™','вЂпёЏ','рџЋ­'];
   document.getElementById('btn-gen-scene').addEventListener('click', function() {
     var desc = document.getElementById('scene-desc').value.trim();
-    if (!desc) { showToast('⚠️', 'Опишіть сцену', 'err'); return; }
-    showToast('⏳', 'Генерую зображення...', 'ok');
+    if (!desc) { showToast('вљ пёЏ', 'РћРїРёС€С–С‚СЊ СЃС†РµРЅСѓ', 'err'); return; }
+    showToast('вЏі', 'Р“РµРЅРµСЂСѓСЋ Р·РѕР±СЂР°Р¶РµРЅРЅСЏ...', 'ok');
     setTimeout(function() {
       var grid = document.getElementById('scenes-grid');
       var addBtn = document.getElementById('add-scene-btn');
@@ -522,47 +613,47 @@ document.addEventListener('DOMContentLoaded', function() {
       newCard.className = 'scene-card';
       var emoji = SCENE_EMOJIS[Math.floor(Math.random() * SCENE_EMOJIS.length)];
       var num = grid.querySelectorAll('.scene-card').length;
-      newCard.innerHTML = '<div class="scene-img">' + emoji + '</div><div class="scene-info"><div class="scene-num">Сцена ' + num + '</div><div class="scene-title">' + desc.slice(0, 35) + '...</div></div>';
+      newCard.innerHTML = '<div class="scene-img">' + emoji + '</div><div class="scene-info"><div class="scene-num">РЎС†РµРЅР° ' + num + '</div><div class="scene-title">' + desc.slice(0, 35) + '...</div></div>';
       grid.insertBefore(newCard, addBtn);
       document.getElementById('scene-desc').value = '';
-      showToast('✅', 'Сцену згенеровано!', 'ok');
+      showToast('вњ…', 'РЎС†РµРЅСѓ Р·РіРµРЅРµСЂРѕРІР°РЅРѕ!', 'ok');
     }, 2000);
   });
 
   document.getElementById('btn-gen-all-scenes').addEventListener('click', function() {
-    showToast('⏳', 'Генерую всі сцени...', 'ok');
-    setTimeout(function() { showToast('✅', 'Всі сцени готові!', 'ok'); }, 3000);
+    showToast('вЏі', 'Р“РµРЅРµСЂСѓСЋ РІСЃС– СЃС†РµРЅРё...', 'ok');
+    setTimeout(function() { showToast('вњ…', 'Р’СЃС– СЃС†РµРЅРё РіРѕС‚РѕРІС–!', 'ok'); }, 3000);
   });
 
   // Characters
-  var CHAR_EMOJIS = ['👩‍🎨','👨‍💼','👩‍🔬','👨‍🍳','👸','🤴','👩‍🚀','👨‍🎤','🧙'];
+  var CHAR_EMOJIS = ['рџ‘©вЂЌрџЋЁ','рџ‘ЁвЂЌрџ’ј','рџ‘©вЂЌрџ”¬','рџ‘ЁвЂЌрџЌі','рџ‘ё','рџ¤ґ','рџ‘©вЂЌрџљЂ','рџ‘ЁвЂЌрџЋ¤','рџ§™'];
   document.getElementById('btn-gen-char').addEventListener('click', function() {
     var name = document.getElementById('char-name').value.trim();
-    if (!name) { showToast('⚠️', 'Введіть ім\'я персонажа', 'err'); return; }
-    showToast('⏳', 'Генерую портрет...', 'ok');
+    if (!name) { showToast('вљ пёЏ', 'Р’РІРµРґС–С‚СЊ С–Рј\'СЏ РїРµСЂСЃРѕРЅР°Р¶Р°', 'err'); return; }
+    showToast('вЏі', 'Р“РµРЅРµСЂСѓСЋ РїРѕСЂС‚СЂРµС‚...', 'ok');
     setTimeout(function() {
       var grid = document.getElementById('chars-grid');
       var addBtn = document.getElementById('add-char-btn');
       var newCard = document.createElement('div');
       newCard.className = 'scene-card';
       var emoji = CHAR_EMOJIS[Math.floor(Math.random() * CHAR_EMOJIS.length)];
-      newCard.innerHTML = '<div class="scene-img">' + emoji + '</div><div class="scene-info"><div class="scene-num">Персонаж</div><div class="scene-title">' + name + '</div></div>';
+      newCard.innerHTML = '<div class="scene-img">' + emoji + '</div><div class="scene-info"><div class="scene-num">РџРµСЂСЃРѕРЅР°Р¶</div><div class="scene-title">' + name + '</div></div>';
       grid.insertBefore(newCard, addBtn);
       document.getElementById('char-name').value = '';
-      showToast('✅', 'Портрет готовий!', 'ok');
+      showToast('вњ…', 'РџРѕСЂС‚СЂРµС‚ РіРѕС‚РѕРІРёР№!', 'ok');
     }, 2000);
   });
 
   // Animate
-  document.getElementById('upload-animate').addEventListener('click', function() { showToast('📁', 'Підключіть D-ID API для завантаження', 'ok'); });
+  document.getElementById('upload-animate').addEventListener('click', function() { showToast('рџ“Ѓ', 'РџС–РґРєР»СЋС‡С–С‚СЊ D-ID API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ', 'ok'); });
   document.getElementById('btn-animate').addEventListener('click', function() {
-    showToast('⏳', 'Оживлення фото...', 'ok');
+    showToast('вЏі', 'РћР¶РёРІР»РµРЅРЅСЏ С„РѕС‚Рѕ...', 'ok');
     var result = document.getElementById('anim-result');
     result.classList.add('loading');
     setTimeout(function() {
       result.classList.remove('loading');
-      result.innerHTML = '<div style="text-align:center;padding:20px"><div style="font-size:40px;margin-bottom:10px">🎞️</div><div style="color:var(--green);font-weight:600">✅ Анімацію створено!</div><div style="font-size:12px;color:var(--muted);margin-top:6px">Підключіть D-ID API для перегляду</div></div>';
-      showToast('✅', 'Фото оживлено!', 'ok');
+      result.innerHTML = '<div style="text-align:center;padding:20px"><div style="font-size:40px;margin-bottom:10px">рџЋћпёЏ</div><div style="color:var(--green);font-weight:600">вњ… РђРЅС–РјР°С†С–СЋ СЃС‚РІРѕСЂРµРЅРѕ!</div><div style="font-size:12px;color:var(--muted);margin-top:6px">РџС–РґРєР»СЋС‡С–С‚СЊ D-ID API РґР»СЏ РїРµСЂРµРіР»СЏРґСѓ</div></div>';
+      showToast('вњ…', 'Р¤РѕС‚Рѕ РѕР¶РёРІР»РµРЅРѕ!', 'ok');
     }, 3000);
   });
 
@@ -576,11 +667,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementById('btn-gen-voice').addEventListener('click', function() {
     var text = document.getElementById('voice-text').value.trim();
-    if (!text) { showToast('⚠️', 'Введіть текст', 'err'); return; }
+    if (!text) { showToast('вљ пёЏ', 'Р’РІРµРґС–С‚СЊ С‚РµРєСЃС‚', 'err'); return; }
     var wf = document.getElementById('waveform');
     wf.classList.remove('idle');
-    showToast('⏳', 'Генерую голос...', 'ok');
-    setTimeout(function() { wf.classList.add('idle'); showToast('✅', 'Підключіть ElevenLabs API для прослуховування', 'ok'); }, 3000);
+    showToast('вЏі', 'Р“РµРЅРµСЂСѓСЋ РіРѕР»РѕСЃ...', 'ok');
+    setTimeout(function() { wf.classList.add('idle'); showToast('вњ…', 'РџС–РґРєР»СЋС‡С–С‚СЊ ElevenLabs API РґР»СЏ РїСЂРѕСЃР»СѓС…РѕРІСѓРІР°РЅРЅСЏ', 'ok'); }, 3000);
   });
 
   // Enhance
@@ -591,10 +682,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  document.getElementById('upload-enhance').addEventListener('click', function() { showToast('📁', 'Підключіть API для завантаження', 'ok'); });
+  document.getElementById('upload-enhance').addEventListener('click', function() { showToast('рџ“Ѓ', 'РџС–РґРєР»СЋС‡С–С‚СЊ API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ', 'ok'); });
   document.getElementById('btn-enhance').addEventListener('click', function() {
     animateProgress('enhance-fill', 'enhance-pct', 'enhance-progress', function() {
-      showToast('✅', 'Якість покращено до 4K!', 'ok');
+      showToast('вњ…', 'РЇРєС–СЃС‚СЊ РїРѕРєСЂР°С‰РµРЅРѕ РґРѕ 4K!', 'ok');
     });
   });
 
@@ -606,11 +697,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  document.getElementById('btn-upload-photo').addEventListener('click', function() { showToast('📁', 'Підключіть API для завантаження', 'ok'); });
+  document.getElementById('btn-upload-photo').addEventListener('click', function() { showToast('рџ“Ѓ', 'РџС–РґРєР»СЋС‡С–С‚СЊ API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ', 'ok'); });
 
-  var PHOTO_EMOJIS = ['👩','👨','📦','🐕','🌸','💎','🍰','📱','👟','🧴','🎁','👗'];
+  var PHOTO_EMOJIS = ['рџ‘©','рџ‘Ё','рџ“¦','рџђ•','рџЊё','рџ’Ћ','рџЌ°','рџ“±','рџ‘џ','рџ§ґ','рџЋЃ','рџ‘—'];
   document.getElementById('btn-gen-photos').addEventListener('click', function() {
-    showToast('⏳', 'Генерую фотосесію...', 'ok');
+    showToast('вЏі', 'Р“РµРЅРµСЂСѓСЋ С„РѕС‚РѕСЃРµСЃС–СЋ...', 'ok');
     setTimeout(function() {
       var count = parseInt(document.getElementById('photo-count').value) || 3;
       var results = document.getElementById('photo-results');
@@ -619,38 +710,50 @@ document.addEventListener('DOMContentLoaded', function() {
         var emoji = PHOTO_EMOJIS[Math.floor(Math.random() * PHOTO_EMOJIS.length)];
         var card = document.createElement('div');
         card.className = 'photo-card';
-        card.innerHTML = emoji + '<div class="photo-label">Варіант ' + (i + 1) + '</div>';
+        card.innerHTML = emoji + '<div class="photo-label">Р’Р°СЂС–Р°РЅС‚ ' + (i + 1) + '</div>';
         results.appendChild(card);
       }
       document.getElementById('photo-results-card').style.display = 'block';
-      showToast('✅', 'Фотосесія готова!', 'ok');
+      showToast('вњ…', 'Р¤РѕС‚РѕСЃРµСЃС–СЏ РіРѕС‚РѕРІР°!', 'ok');
     }, 2500);
   });
 
-  document.getElementById('btn-download-photos').addEventListener('click', function() { showToast('⬇️', 'Підключіть API для завантаження', 'ok'); });
+  document.getElementById('btn-download-photos').addEventListener('click', function() { showToast('в¬‡пёЏ', 'РџС–РґРєР»СЋС‡С–С‚СЊ API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ', 'ok'); });
   document.getElementById('btn-regen-photos').addEventListener('click', function() { document.getElementById('btn-gen-photos').click(); });
 
   // Ads
   document.getElementById('fmt-916').addEventListener('click', function() { document.getElementById('fmt-916').classList.add('on'); document.getElementById('fmt-169').classList.remove('on'); });
   document.getElementById('fmt-169').addEventListener('click', function() { document.getElementById('fmt-169').classList.add('on'); document.getElementById('fmt-916').classList.remove('on'); });
-  document.getElementById('upload-ad').addEventListener('click', function() { showToast('📁', 'Підключіть API для завантаження', 'ok'); });
+  document.getElementById('upload-ad').addEventListener('click', function() { showToast('рџ“Ѓ', 'РџС–РґРєР»СЋС‡С–С‚СЊ API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ', 'ok'); });
 
   document.getElementById('btn-gen-ad').addEventListener('click', function() {
     var product = document.getElementById('ad-product').value.trim();
-    if (!product) { showToast('⚠️', 'Введіть назву товару', 'err'); return; }
+    if (!product) { showToast('вљ пёЏ', 'Р’РІРµРґС–С‚СЊ РЅР°Р·РІСѓ С‚РѕРІР°СЂСѓ', 'err'); return; }
     animateProgress('ad-fill', 'ad-pct', 'ad-progress', function() {
       document.getElementById('ad-result-card').style.display = 'block';
-      showToast('🎉', 'Реклама готова!', 'ok');
+      showToast('рџЋ‰', 'Р РµРєР»Р°РјР° РіРѕС‚РѕРІР°!', 'ok');
     });
   });
 
-  document.getElementById('btn-dl-ad').addEventListener('click', function() { showToast('⬇️', 'Підключіть API для завантаження', 'ok'); });
+  document.getElementById('btn-dl-ad').addEventListener('click', function() { showToast('в¬‡пёЏ', 'РџС–РґРєР»СЋС‡С–С‚СЊ API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ', 'ok'); });
   document.getElementById('btn-regen-ad').addEventListener('click', function() { document.getElementById('btn-gen-ad').click(); });
+
+  // Editor
+  ['btn-ed-play','btn-ed-cut','btn-ed-transition','btn-ed-music','btn-ed-sub','btn-ed-effect'].forEach(function(id) {
+    document.getElementById(id).addEventListener('click', function() {
+      showToast('рџЋ¬', 'РџС–РґРєР»СЋС‡С–С‚СЊ API РґР»СЏ РїРѕРІРЅРѕРіРѕ СЂРµРґР°РіСѓРІР°РЅРЅСЏ', 'ok');
+    });
+  });
+  document.getElementById('btn-ed-render').addEventListener('click', function() {
+    animateProgress('editor-fill', 'editor-pct', 'editor-progress', function() {
+      showToast('рџЋ‰', 'Р’С–РґРµРѕ РІС–РґСЂРµРЅРґРµСЂРµРЅРѕ! РџС–РґРєР»СЋС‡С–С‚СЊ API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ', 'ok');
+    });
+  });
 
   // Export
   document.getElementById('btn-export').addEventListener('click', function() {
     animateProgress('export-fill', 'export-pct', 'export-progress', function() {
-      showToast('🎉', 'Фільм експортовано! Підключіть API для завантаження', 'ok');
+      showToast('рџЋ‰', 'Р¤С–Р»СЊРј РµРєСЃРїРѕСЂС‚РѕРІР°РЅРѕ! РџС–РґРєР»СЋС‡С–С‚СЊ API РґР»СЏ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ', 'ok');
     });
   });
 
