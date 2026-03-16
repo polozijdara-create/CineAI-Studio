@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
@@ -516,32 +516,32 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:40px
     </div>
     <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px" data-uk="Оберіть спосіб оплати" data-en="Choose payment method">Оберіть спосіб оплати</div>
     <div class="pay-sel">
-      <div class="pay-opt on" id="pay-wfp">
-        <div class="pay-opt-icon">🇺🇦</div>
-        <div class="pay-opt-name">Wayforpay</div>
-        <div class="pay-opt-tag">Гривня · UAH</div>
-      </div>
-      <div class="pay-opt" id="pay-paddle">
+      <div class="pay-opt on" id="pay-paypal">
         <div class="pay-opt-icon">🌍</div>
-        <div class="pay-opt-name">Paddle</div>
-        <div class="pay-opt-tag">Долар · USD</div>
+        <div class="pay-opt-name">PayPal</div>
+        <div class="pay-opt-tag">USD · Картка/PayPal</div>
+      </div>
+      <div class="pay-opt" id="pay-card">
+        <div class="pay-opt-icon">💳</div>
+        <div class="pay-opt-name">Картка UA</div>
+        <div class="pay-opt-tag">Гривня · Mono/Приват</div>
       </div>
     </div>
     <div class="field"><label>Email</label><input type="email" id="co-email" placeholder="you@example.com"></div>
-    <div class="pay-form on" id="pf-wfp">
-      <div class="field"><label>Номер картки</label><input type="text" id="co-card" placeholder="4242 4242 4242 4242" maxlength="19"></div>
-      <div class="card-row">
-        <div class="field"><label>Термін дії</label><input type="text" id="co-exp" placeholder="MM/YY" maxlength="5"></div>
-        <div class="field"><label>CVV</label><input type="password" id="co-cvv" placeholder="•••" maxlength="3"></div>
-      </div>
-      <div class="field"><label>Ім'я на картці</label><input type="text" id="co-name" placeholder="IVAN PETRENKO"></div>
-      <button class="btn-submit" id="btn-pay-wfp">🔒 Оплатити через Wayforpay</button>
-      <div class="secure">🔒 Wayforpay · SSL · PCI DSS · Гривня</div>
+    <div class="pay-form on" id="pf-paypal">
+      <div style="background:rgba(0,102,204,.08);border:1px solid rgba(0,102,204,.25);border-radius:8px;padding:12px;font-size:13px;color:#4a9eff;margin-bottom:14px;line-height:1.6">🌍 Після натискання ви будете перенаправлені на PayPal.<br>Приймає Visa, Mastercard, PayPal з усього світу.</div>
+      <button class="btn-submit" id="btn-pay-paypal" style="background:linear-gradient(135deg,#003087,#009cde)">🌍 Оплатити через PayPal</button>
+      <div class="secure">🌍 PayPal · SSL · Захищено · 200+ країн</div>
     </div>
-    <div class="pay-form" id="pf-paddle">
-      <div class="paddle-box"><strong>🌍 Paddle — міжнародна оплата</strong>Після натискання ви будете перенаправлені на захищену сторінку Paddle. Приймає Visa, Mastercard, PayPal з усього світу.</div>
-      <button class="btn-submit" id="btn-pay-paddle" style="background:linear-gradient(135deg,#0066cc,#0088ff)">🌍 Оплатити через Paddle</button>
-      <div class="secure">🌍 Paddle · SSL · Податки включено · 245 країн</div>
+    <div class="pay-form" id="pf-card">
+      <div style="background:rgba(212,168,67,.08);border:1px solid rgba(212,168,67,.2);border-radius:8px;padding:14px;font-size:13px;margin-bottom:14px;line-height:1.7">
+        <div style="font-weight:700;color:var(--gold);margin-bottom:8px">💳 Реквізити для переказу:</div>
+        <div style="font-size:16px;letter-spacing:2px;font-weight:700;color:var(--text)">5375 4141 1547 8441</div>
+        <div style="color:var(--muted);margin-top:4px;font-size:12px">Monobank · Дар'я П.</div>
+        <div style="color:var(--silver);margin-top:10px;font-size:12px">1. Переведіть потрібну суму<br>2. Надішліть скріншот на: <strong style="color:var(--gold)">dasapolozij@gmail.com</strong><br>3. Вкажіть ваш email і план (Pro/Premium)<br>4. Активація протягом 1 години ✅</div>
+      </div>
+      <button class="btn-submit" id="btn-pay-card">✅ Я оплатив(ла) — надіслати підтвердження</button>
+      <div class="secure">🔒 Ручна активація · UAH · Безпечно</div>
     </div>
   </div>
 </div>
@@ -551,7 +551,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:40px
 
 <script data-cfasync="false">
 // ══ STATE ══
-var state = { user: null, plan: null, pendingPlan: null, payMethod: 'wfp' };
+var state = { user: null, plan: null, pendingPlan: null, payMethod: 'paypal' };
 
 var USERS = {
   'admin@cineai.com': { pass: 'admin123', role: 'admin', name: 'Адмін', plan: 'premium' },
@@ -640,40 +640,30 @@ function selectPay(method) {
 }
 
 function doPay(method) {
-  var email = document.getElementById('co-email').value.trim();
+  var email = document.getElementById('co-email') ? document.getElementById('co-email').value.trim() : '';
   if (!email) { toast('⚠️', 'Введіть email', 'error'); return; }
   var plan = state.pendingPlan || 'pro';
+  var amount = plan === 'premium' ? '19.99' : '9.99';
 
-  if (method === 'wfp') {
-    var card = document.getElementById('co-card').value.replace(/\s/g,'');
-    if (card.length < 16) { toast('⚠️', 'Введіть номер картки', 'error'); return; }
-    var btn = document.getElementById('btn-pay-wfp');
-    btn.textContent = '⏳ Обробка...';
-    btn.disabled = true;
+  if (method === 'paypal') {
+    window.open('https://www.paypal.com/paypalme/dasapolozij/' + amount, '_blank');
+    toast('🌍', 'Переходимо на PayPal...', 'success');
     setTimeout(function(){
-      btn.textContent = '🔒 Оплатити через Wayforpay';
-      btn.disabled = false;
-      var name = email.split('@')[0];
-      USERS[email] = { pass: 'auto', role: 'user', name: name, plan: plan };
-      loginOk(email, USERS[email]);
-      toast('🇺🇦', 'Підписку активовано через Wayforpay!', 'success');
+      closeModal('modal-checkout');
+      toast('✅', 'Після оплати напишіть на dasapolozij@gmail.com', 'success');
     }, 2000);
-  } else {
-    var btn2 = document.getElementById('btn-pay-paddle');
-    btn2.textContent = '⏳ Перенаправлення...';
-    btn2.disabled = true;
-    setTimeout(function(){
-      btn2.textContent = '🌍 Оплатити через Paddle';
-      btn2.disabled = false;
-      var name2 = email.split('@')[0];
-      USERS[email] = { pass: 'auto', role: 'user', name: name2, plan: plan };
-      loginOk(email, USERS[email]);
-      toast('🌍', 'Підписку активовано через Paddle!', 'success');
-    }, 1500);
+    return;
+  }
+
+  if (method === 'card') {
+    window.open('mailto:dasapolozij@gmail.com?subject=Оплата CineAI ' + plan + '&body=Email: ' + email + '%0AПлан: ' + plan, '_blank');
+    toast('✅', 'Відкрийте email і надішліть скріншот оплати!', 'success');
+    closeModal('modal-checkout');
+    return;
   }
 }
 
-// ══ DASHBOARD ══
+
 function showDash() {
   showPage('pg-dash');
   var u = state.user;
@@ -700,22 +690,22 @@ function renderTools(plan) {
   var isPro = plan === 'pro' || plan === 'premium';
   var isPrem = plan === 'premium';
   var tools = [
-    { icon:'📝', name:'AI Сценарист', desc:'Напишіть ідею — отримайте сценарій', locked: false, badge:'✓ Доступно', badgeClass:'badge-free' },
-    { icon:'🎨', name:'Генерація сцен', desc:'AI перетворює сцени на зображення', locked: false, badge:'✓ Доступно', badgeClass:'badge-free' },
-    { icon:'🎞️', name:'Оживлення фото', desc:'Анімація облич через D-ID API', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'🎙️', name:'Голоси & TTS', desc:'ElevenLabs реалістичне озвучення', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'✂️', name:'Відео Редактор', desc:'Монтаж, переходи, музика, субтитри', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'✨', name:'Покращення фото', desc:'Апскейлінг до 4K, різкість, корекція кольору', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'📸', name:'AI Фотосесія', desc:'Студія, кольорові фони, природні локації', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'📱', name:'Реклама TikTok 9:16', desc:'Вставте фото товару → готове відео для Reels', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free' },
-    { icon:'🎬', name:'Покращення відео', desc:'AI апскейлінг відео до 4K, стабілізація', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
-    { icon:'🔄', name:'360° Огляд товару', desc:'Автоматичне 360° обертання для магазину', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
-    { icon:'📺', name:'Реклама YouTube 16:9', desc:'Відеореклама з реальним товаром для YouTube', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
-    { icon:'📦', name:'Експорт 4K', desc:'Готовий MP4 у 4K Ultra HD якості', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free' },
+    { icon:'📝', name:'AI Сценарист', desc:'Напишіть ідею — отримайте сценарій', locked: false, badge:'✓ Доступно', badgeClass:'badge-free', page:'scenario' },
+    { icon:'🎨', name:'Генерація сцен', desc:'AI перетворює сцени на зображення', locked: false, badge:'✓ Доступно', badgeClass:'badge-free', page:'scenes' },
+    { icon:'🎞️', name:'Оживлення фото', desc:'Анімація облич через D-ID API', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free', page:'animate' },
+    { icon:'🎙️', name:'Голоси & TTS', desc:'ElevenLabs реалістичне озвучення', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free', page:'voice' },
+    { icon:'✂️', name:'Відео Редактор', desc:'Монтаж, переходи, музика, субтитри', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free', page:'editor' },
+    { icon:'✨', name:'Покращення фото', desc:'Апскейлінг до 4K, різкість, корекція кольору', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free', page:'enhance' },
+    { icon:'📸', name:'AI Фотосесія', desc:'Студія, кольорові фони, природні локації', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free', page:'photo' },
+    { icon:'📱', name:'Реклама TikTok 9:16', desc:'Вставте фото товару → готове відео для Reels', locked: !isPro, badge: isPro?'✓ Pro':'🔒 Pro', badgeClass: isPro?'badge-pro':'badge-free', page:'ads' },
+    { icon:'🎬', name:'Покращення відео', desc:'AI апскейлінг відео до 4K, стабілізація', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free', page:'enhance' },
+    { icon:'🔄', name:'360° Огляд товару', desc:'Автоматичне 360° обертання для магазину', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free', page:'photo' },
+    { icon:'📺', name:'Реклама YouTube 16:9', desc:'Відеореклама з реальним товаром для YouTube', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free', page:'ads' },
+    { icon:'📦', name:'Експорт 4K', desc:'Готовий MP4 у 4K Ultra HD якості', locked: !isPrem, badge: isPrem?'✓ Premium':'🔒 Premium', badgeClass: isPrem?'badge-prem':'badge-free', page:'export' },
   ];
   var html = '';
   tools.forEach(function(t){
-    html += '<div class="tool' + (t.locked?' locked':'') + '" onclick="' + (t.locked?'showLanding()':'openStudio()') + '">';
+    html += '<div class="tool' + (t.locked?' locked':'') + '" onclick="' + (t.locked?'showLanding()':('openStudio("'+t.page+'")'  )) + '">';
     if (t.locked) html += '<div class="tool-lock">🔒</div>';
     html += '<div class="tool-icon">' + t.icon + '</div>';
     html += '<div class="tool-name">' + t.name + '</div>';
@@ -726,8 +716,8 @@ function renderTools(plan) {
   document.getElementById('d-tools').innerHTML = html;
 }
 
-function openStudio() {
-  window.location.href = 'cineai-studio.html';
+function openStudio(page) {
+  window.location.href = 'cineai-studio.html' + (page ? '?page=' + page : '');
 }
 
 function showLanding() {
